@@ -56,7 +56,7 @@ document.getElementById("cd-age-skip").addEventListener("click", function(ev){ e
 if(/news\.html$/.test(location.pathname)){ return; }
 var KEY="cdNewsSeenVisit";
 try{ if(sessionStorage.getItem(KEY)){ return; } }catch(e){}
-var PHOTO="/img/icon-podedpro.png";
+var PHOTO="img/icon-podedpro.png";
 var STORIES=[
 ["Every app is getting a plain-words manual","The first two are done: Contracts and Wi-Fi Tether now have manuals anyone can read, no tech talk. The rest of the apps are in line."],
 ["Contracts became a paper vault too","Besides signing, the Contracts app now keeps your important papers: photograph them, seal them, and find them again fast."],

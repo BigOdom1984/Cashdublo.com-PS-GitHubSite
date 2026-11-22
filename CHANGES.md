@@ -1,5 +1,9 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Site links now work from any address
+
+Every page pointed at the server root for its styles, icons and other pages — addresses written as if the site always sits at the top of its host. On the GitHub Pages address, where the site lives under the repo's name, every one of those missed and the pages came up broken. The links in all 61 pages are now written relative to each page, so they land right whether the site is served from the root or under the repo name. The shared navigation script now works out the site's root from its own address and builds its links from that, so the menu, the footer links and the platform pages' app lists work from any address too. No link points at a different page or file than before — only the way the address is written changed.
+
 ## 2026-11-22 — Live site link moved to the preview address
 
 On Cash's choice, the readme's live site link now points at the preview address — chatgpt-cashdublo-navigation.bigodom1984-github-io.pages.dev — the copy he checked and confirmed valid, and the line saying where the site is served names that address. The version links and the products link are unchanged: the version pages do not exist on the preview copy (they answer 404 there and 200 on GitHub Pages).
