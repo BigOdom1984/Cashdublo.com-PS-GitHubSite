@@ -1,5 +1,9 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Readme website links corrected again — the repo name belongs in the address
+
+The fix in the entry below was still not right, and this entry corrects it. Since this repo was renamed, GitHub Pages serves the site under the repo's name, so the links also need Cashdublo.com-PS-GitHubSite in the address. Without it they land on a page that does not exist — checked live: the short address answers 404, the full address answers 200. The live site link, the ChatGPT, Onyx (muse) and Grok version links, and the products page link now carry the full address, and the line saying where GitHub Pages serves the site names the full address too.
+
 ## 2026-11-22 — Readme website links fixed
 
 Four links in the readme were missing part of the web address and led nowhere: the live site link and the links to the ChatGPT, Onyx (muse) and Grok versions in the all websites folder. All four now carry the full bigodom1984.github.io address. Every other link in the readme was checked against the files in this repo and stands correct.

@@ -2,10 +2,10 @@
 
 ## The versions — every AI's take on the official website
 
-- **The official website (live):** https://bigodom1984.github.io/
-- **ChatGPT's version:** https://bigodom1984.github.io/all%20websites/ChatGPT/
-- **Onyx's version:** https://bigodom1984.github.io/all%20websites/muse/
-- **Grok's version:** https://bigodom1984.github.io/all%20websites/Grok/
+- **The official website (live):** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/
+- **ChatGPT's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/ChatGPT/
+- **Onyx's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/muse/
+- **Grok's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/Grok/
 
 Each AI that builds a version of the official website gets its
 folder in this repo and its link in this list, added as it lands.
@@ -13,7 +13,7 @@ folder in this repo and its link in this list, added as it lands.
 
 What this is: the public web page for CashDublo apps. It shows each app with its
 icon, a short line about what it does, and a download button. It is the site
-GitHub Pages serves at bigodom1984.github.io.
+GitHub Pages serves at bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/.
 
 How the download buttons work: the buttons fill themselves in when the page
 loads. The page asks GitHub for the release list of this site repo itself. A
@@ -46,7 +46,7 @@ Website-only change history and multi-AI contribution rules live in [`changes/`]
 
 
 ## Products catalogue
-- Public Products page: https://bigodom1984.github.io/products.html
+- Public Products page: https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/products.html
 - The page lists only approved catalogue entries and distinguishes planned/research status from products actually available to buy. No purchase links or active checkout are claimed.
 
 
