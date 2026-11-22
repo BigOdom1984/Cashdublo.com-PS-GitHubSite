@@ -1,5 +1,12 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — App cards rebuilt to one default layout
+
+**Before:** On the All Apps page and the home page Featured Apps, each card stacked its version pill under the icon with the text locked to one line, so a long version line spilled outside its bubble. Most cards also carried two pricing blocks and a separate Platforms line at the bottom.
+
+**After:** Every card now puts the icon and the version bubble side by side at the top — that is the default version location. The bubble has a clear outline and its text wraps to fit inside it. The app name sits under the icon at the far left. Cards keep one pricing block, the separate Platforms line is gone (platforms still stand on each app's own page), and every app that has screen renders on the site now shows them in a scrolling row with arrows: 12 apps on the All Apps page, and Mixology and Hit Record in Featured Apps. Apps without renders yet (Marvin, PictureGlobe, IG Watch, Galaxy Repeat, VoiceModel and the rest) join the scroller as their renders are made.
+
+
 ## 2026-11-19 — ChatGPT / AI-02 — Navigation standard v2 repair
 
 **Before:** The home page had a separate inline header with hover-only dropdowns and no shared drawer. The other listed root pages loaded legacy navigation assets, and the Front Ends menu repeated Galaxy Repeat, Best Mac File Manager, Patent It!, Crash Catcher, and PodEdPro.
