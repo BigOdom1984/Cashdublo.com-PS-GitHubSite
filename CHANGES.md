@@ -1,5 +1,12 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Card names on one line; platform abbreviations at the bottom of every All Apps card
+
+**Before:** App names could wrap mid-word on narrow cards, and after the earlier card cleanup the All Apps cards carried no platform line at all.
+
+**After:** Every app name now sits on one line under the icon at the far left — long names shrink to fit the card instead of wrapping. Every All Apps card ends with its platform abbreviations at the bottom (for example IOS · ANDROID, MAC · WIN), the same style the Featured cards already use. No card carries a "Platforms:" line in its middle. The same layout was applied to the apps page on the ai-02/chatgpt-apps-nav-match-2026-11-20 branch, which is what the chatgpt-cashdublo-navigation preview shows.
+
+
 ## 2026-11-22 — Featured cards show platform abbreviations at the bottom
 
 The four Featured Apps cards on the home page now end with a short platform line in abbreviations: Marvin — IOS · ANDROID, PictureGlobe — ANDROID, Mixology — ANDROID, Hit Record — ANDROID · WEB. The All Apps cards stay as they are.
