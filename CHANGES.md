@@ -1,5 +1,9 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Live site link moved to the preview address
+
+On Cash's choice, the readme's live site link now points at the preview address — chatgpt-cashdublo-navigation.bigodom1984-github-io.pages.dev — the copy he checked and confirmed valid, and the line saying where the site is served names that address. The version links and the products link are unchanged: the version pages do not exist on the preview copy (they answer 404 there and 200 on GitHub Pages).
+
 ## 2026-11-22 — The live site link now points at the working site
 
 On Cash's word, the working official website is the Cloudflare Pages copy at cashdublowebsite.pages.dev, so the readme's live site link now points there, and the line saying where the site is served names that address. The version links (ChatGPT, muse, Grok) and the products page link keep the full GitHub Pages address: checked live, those pages answer 404 on the Cloudflare copy and 200 on GitHub Pages.
