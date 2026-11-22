@@ -1,5 +1,10 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Repo links corrected to the repos' current names
+
+Five links pointed at names the repos no longer carry. The course page now links to CashDublo...Online...Course, god...mode...training...course and kali...linux...training...course (the repos' real names, with three dots where the links had one). The Front Ends page and the all-websites viewer now link to Cashdublo.com-PS-GitHubSite instead of the old BigOdom1984.github.io name. One link was left as it stands: the Back Ends page points at cashdublo-server, a repo that no longer exists under that name — where the shared server's code lives now needs a ruling before that link can be corrected.
+
+
 ## 2026-11-22 — Card names on one line; platform abbreviations at the bottom of every All Apps card
 
 **Before:** App names could wrap mid-word on narrow cards, and after the earlier card cleanup the All Apps cards carried no platform line at all.
