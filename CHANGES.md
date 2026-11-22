@@ -1,5 +1,10 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — Featured cards show platform abbreviations at the bottom
+
+The four Featured Apps cards on the home page now end with a short platform line in abbreviations: Marvin — IOS · ANDROID, PictureGlobe — ANDROID, Mixology — ANDROID, Hit Record — ANDROID · WEB. The All Apps cards stay as they are.
+
+
 ## 2026-11-22 — App cards rebuilt to one default layout
 
 **Before:** On the All Apps page and the home page Featured Apps, each card stacked its version pill under the icon with the text locked to one line, so a long version line spilled outside its bubble. Most cards also carried two pricing blocks and a separate Platforms line at the bottom.
