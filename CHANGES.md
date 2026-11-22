@@ -1,5 +1,9 @@
 # Changes — the default website (root)
 
+## 2026-11-22 — The live site link now points at the working site
+
+On Cash's word, the working official website is the Cloudflare Pages copy at cashdublowebsite.pages.dev, so the readme's live site link now points there, and the line saying where the site is served names that address. The version links (ChatGPT, muse, Grok) and the products page link keep the full GitHub Pages address: checked live, those pages answer 404 on the Cloudflare copy and 200 on GitHub Pages.
+
 ## 2026-11-22 — Readme website links corrected again — the repo name belongs in the address
 
 The fix in the entry below was still not right, and this entry corrects it. Since this repo was renamed, GitHub Pages serves the site under the repo's name, so the links also need Cashdublo.com-PS-GitHubSite in the address. Without it they land on a page that does not exist — checked live: the short address answers 404, the full address answers 200. The live site link, the ChatGPT, Onyx (muse) and Grok version links, and the products page link now carry the full address, and the line saying where GitHub Pages serves the site names the full address too.
