@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Repositories & Engineering — CashDublo</title>
+<meta name="description" content="A public overview of the software projects and repository structure behind CashDublo. Private source code stays private.">
+<meta name="theme-color" content="#f5f0e6">
+<link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="stylesheet" href="assets/cashdublo-nav.css"><script src="assets/cashdublo-nav.js" defer></script>
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--lime:#c9ed72;--coral:#f0785e;--line:#d8d4c9;--deep:#193d39}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.hero{padding:clamp(48px,8vw,90px) max(22px,calc((100vw - 1120px)/2));background:var(--deep);color:#fff}
+.hero small{color:var(--lime);font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+h1{font-size:clamp(2.7rem,7vw,5.5rem);line-height:.96;letter-spacing:-.07em;margin:14px 0 18px}
+.hero p{max-width:760px;color:#d5e2d9;font-size:1.08rem}
+.wrap{max-width:1120px;margin:auto;padding:48px 22px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stat,.card,.note{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}
+.stat strong{display:block;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.06em;line-height:1.1}
+.stat span{color:var(--muted);font-size:.9rem}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.05em;line-height:1.05;margin:0 0 12px}
+.intro{color:var(--muted);max-width:800px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:22px}
+.card{display:flex;flex-direction:column;gap:10px;min-height:220px}
+.card h3{margin:0;font-size:1.2rem}.card p{margin:0;color:var(--muted);flex:1}
+.card a,.inline-link{color:#bd5946;font-weight:850;text-decoration:none}.card a:hover,.inline-link:hover{text-decoration:underline}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#7c5d36}
+.note{margin-top:24px;background:#e7e4d9;color:var(--muted)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;padding:12px 18px;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:900;text-decoration:none}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:30px 18px}footer a{color:var(--lime)}
+@media(max-width:600px){.stats{grid-template-columns:1fr}.wrap{padding:36px 18px}}
+</style>
+</head>
+<body>
+<header class="cd-site-header" data-cd-header>
+<button class="cd-header-hit" type="button" data-cd-toggle aria-controls="cd-site-drawer" aria-expanded="false" aria-label="Open navigation. Tap anywhere on the green header to open or close the menu."><span>Menu <b aria-hidden="true">☰</b></span></button>
+<a class="cd-site-brand" href="./index.html">CASH<span>DUBLO</span></a>
+</header>
+<nav id="cd-site-drawer" class="cd-site-drawer" aria-label="Site navigation" aria-hidden="true" hidden inert>
+<div class="cd-drawer-inner">
+<a href="./index.html">Home</a><a href="./apps.html">All Apps</a><a href="./front-ends.html">Front Ends</a><a href="./repositories.html" aria-current="page">Repositories</a><a href="./code.html">Source Code</a><a href="./products.html">Products</a><a href="./privacy.html">Privacy</a><a href="https://github.com/BigOdom1984">GitHub profile</a>
+</div></nav>
+<section class="hero"><small>Behind the products</small><h1>Built one repository at a time.</h1>
+<p>CashDublo is a growing software workshop: apps, companion editions, web experiences, reusable modules, APIs, AI systems, and the tools that help build and maintain them. This page gives a public overview without exposing private source code or internal project details.</p>
+<div class="actions"><a class="btn" href="./apps.html">Explore the apps</a><a class="btn" href="./front-ends.html">Explore front ends</a></div></section>
+<main class="wrap">
+<section aria-labelledby="fleet-title"><h2 id="fleet-title">The repository fleet</h2><p class="intro">The latest reconciled repository registry snapshot available for this page is dated November 21, 2026. It records the fleet's size and visibility; it is an inventory count, not a claim that every project is finished, released, or actively maintained.</p>
+<div class="stats">
+<div class="stat"><strong>142</strong><span>Active repositories in the recorded snapshot</span></div>
+<div class="stat"><strong>3</strong><span>Public repositories</span></div>
+<div class="stat"><strong>139</strong><span>Private repositories</span></div>
+</div></section>
+<section style="margin-top:48px"><h2>What the repositories build</h2><p class="intro">The repository fleet is organized around these broad areas. The app catalogue and Front Ends hub show customer-facing products and their published status.</p>
+<div class="grid">
+<article class="card"><span class="label">Apps & editions</span><h3>Mobile and desktop apps</h3><p>Android, iOS, macOS, Windows and Linux projects, including companion editions and platform-specific builds.</p><a href="./apps.html">Browse the app catalogue ↗</a></article>
+<article class="card"><span class="label">Web experiences</span><h3>Web apps and storefronts</h3><p>Public showcases, app front ends, learning experiences and supporting web interfaces.</p><a href="./front-ends.html">Browse front ends ↗</a></article>
+<article class="card"><span class="label">Reusable foundation</span><h3>Modules and APIs</h3><p>Shared capabilities, interface contracts, design foundations, app integrations and developer standards.</p><a href="https://github.com/BigOdom1984/my-modules">Shared development foundation ↗</a></article>
+<article class="card"><span class="label">AI systems</span><h3>AI and coordination</h3><p>AI tools, model experiments, assistant workflows and shared project handoff infrastructure.</p><a href="https://github.com/BigOdom1984/ai2ai_sync">AI2AISync repository ↗</a></article>
+<article class="card"><span class="label">Engineering tools</span><h3>Build, test and release</h3><p>Build scripts, developer utilities, compatibility checks, testing support and release infrastructure.</p><a href="https://github.com/BigOdom1984">GitHub project profile ↗</a></article>
+<article class="card"><span class="label">Research & learning</span><h3>Experiments and education</h3><p>Research, courses, creative tools, games, hardware explorations and early-stage product concepts.</p><a href="./games.html">Games and learning ↗</a></article>
+</div></section>
+<section style="margin-top:48px"><h2>Public repository doors</h2><p class="intro">These are the public-facing repository links relevant to the website. Most engineering work is held in private repositories and is intentionally not listed here.</p>
+<div class="grid">
+<article class="card"><span class="label">Public website</span><h3>CashDublo Website</h3><p>The source repository for this public showcase and its supporting pages.</p><a href="https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite">Open website repository ↗</a></article>
+<article class="card"><span class="label">Public backup project</span><h3>CashDublo Backups</h3><p>A separate public repository in the recorded fleet inventory.</p><a href="https://github.com/BigOdom1984/CashDublo.com-PS-Backups">Open backup repository ↗</a></article>
+<article class="card"><span class="label">Owner profile</span><h3>BigOdom1984 on GitHub</h3><p>See the public repositories currently visible on the GitHub profile. GitHub controls which repositories are public.</p><a href="https://github.com/BigOdom1984?tab=repositories">View public repositories ↗</a></article>
+</div></section>
+<div class="note"><strong>Privacy and accuracy:</strong> Private repository names, source files, credentials, customer data and internal implementation details are not published here. A repository's existence does not prove that its app is complete, tested, secure, available in an app store or deployed. Check the individual product page for its stated release status. Counts above are explicitly dated to the registry snapshot and should be refreshed when the canonical registry is reconciled.</div>
+</main>
+<footer><strong>CashDublo · Change the World One App at a Time.</strong><p><a href="./index.html">Home</a> · <a href="./apps.html">Apps</a> · <a href="./privacy.html">Privacy</a> · <a href="https://github.com/BigOdom1984">GitHub</a></p></footer>
+<script src="assets/site-navigation.js" defer></script>
+</body></html>
