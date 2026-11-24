@@ -1,3 +1,9 @@
+## 2026-11-24 — App Catalog count separated; unsupported prices removed
+
+The home and repository overview now distinguish the App Catalog's 152 records from the separately dated repository inventory count (142 at the November 21 snapshot). The repository figure remains explicitly identified as an inventory snapshot, not an app count. The memberships page no longer presents unsupported numerical prices or unapproved free-tier prices as offers; it labels pricing as unpublished. The website-design page removes all package and support price estimates pending catalog-backed approval. The course page's unsupported annual revenue amount was removed while preserving the surrounding lesson content. No checkout, subscription, or paid offer is activated. The canonical App Catalog currently contains no approved price values.
+
+**Verification:** Changes prepared against pinned site head `b5b3022557a34a8f01f32df2fabfe53f97ebebe6`; read-back and commit verification required before delivery.
+
 # Changes — the default website (root)
 
 ## 2026-11-22 — Site links now work from any address
