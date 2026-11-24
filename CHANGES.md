@@ -184,3 +184,12 @@ The Newsletter stands on the site (Module #68). A new page, news.html, carries s
 ## 2026-11-20 — ChatGPT / AI-02 — Website editions consolidated
 
 The 17 AI website editions now live together under `all websites/`. The old root-level AI edition folder(s), the `website builds/` copy, and the `websites/` copies were removed in the final batched cleanup (**8fea7cb03887d27ea98c76d5fd6a4fca79363277**). The choosing page, `double click to view all websites.html`, now points into `all websites/`. The README's **Which website is the real one** section explains the website roles, and the `cashtheblow.com production servers/` folder was added (README/restructure commit **befa5c13**). The midnight website job was repointed to the consolidated paths. This entry records the restructure and the final cleanup together. SQL record was written first in `CHANGES.sql`, as required.
+
+
+## 2026-11-24 — Cash Flow corporate umbrella website prototype
+
+Added a separate `corporate/` website experience with a parent-company landing page and four linked business-division sites: CashDublo Digital, CashDublo Learning, CashDublo Studio, and Get Cash Platform. Added a shared responsive design system, mobile navigation, and an architecture/acceptance document. Existing root website pages were left unchanged.
+
+**Legal presentation:** Cash Flow remains a proposed umbrella brand. The four areas are described as operating divisions/customer-facing brands, not formed subsidiaries. Entity registration, ownership, licensing and asset-transfer claims remain subject to primary-record verification.
+
+**Status:** Feature branch prototype only. No merge, production deployment, pricing activation, checkout, or legal status change.
