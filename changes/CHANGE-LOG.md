@@ -62,3 +62,25 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Tests:** Source inspection and responsive CSS breakpoint review only. Browser runtime, mobile/tablet/desktop visual checks, live link checks, and accessibility interaction tests are NOT RUN.
 - **Publication:** Commits were made to the repository default branch; GitHub Pages publication was not independently checked.
 - **Next action:** Other AIs perform independent read-only audits of the ChatGPT folder and submit findings, severity, evidence, and suggested fixes. ChatGPT evaluates and implements accepted improvements, then requests a second audit.
+
+
+### WEB-CHG-2026-11-24-001 — Synchronize CashDublo app catalogue versions and platform records
+
+- **Status:** STAGED — draft PR #28 is open; independent review pending.
+- **Date/time (UTC):** 2026-11-24.
+- **Task owner:** Founder.
+- **Contributor AI/human:** ChatGPT / AI-02 / GPT-6.
+- **AI2AISync task/master-log reference:** [Issue #106](https://github.com/BigOdom1984/ai2ai_sync/issues/106).
+- **Branch / pull request:** `chatgpt/app-catalog-source-sync-20261124` · [PR #28](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/pull/28).
+- **Files affected:** `apps.html`, `index.html`, `front-ends.html`, `android.html`, `iphone.html`, `mac.html`, `windows.html`, `linux.html`; app detail pages for AI Cash Portfolio, AI2AISync, App Translator, Apple2Player, Build Manager, Cash Portfolio, CashDublo Coder, Change App Icons, Contracts, Dear Idea Desktop, Galaxy Repeat, GitHub HQ, Hit Record, Mixology, PictureGlobe, Player, PodEdPro, Rebuild-All, Script-Run, Testra Accuracy, TTS Widget, and Wi-Fi Tether.
+- **Reason and intended outcome:** The public catalogue had stale source versions, inconsistent platform claims across the All Apps, Front Ends, platform, and app-detail pages, and some release labels that were not supported by current repository evidence.
+- **Summary of changes:** Reviewed the 34-entry application catalog from the Cross-Platform Intelligence module, then cross-checked app identity/platform declarations against source repositories and versions against package/app manifests, version constants, READMEs, or platform-specific specifications. Updated source versions and per-platform version splits; corrected app/platform membership across the Android, iOS, Mac, Windows, Linux and Front Ends pages; added the Hit Record Web target with no live-deployment claim; marked untagged web versions as untagged; corrected Cash Portfolio wording to avoid promising unverified live market data/alerts; and clarified source-version versus release status.
+- **Risk / impact:** Public-facing catalogue accuracy. No app source, build scripts, backend, store listing, credentials, pricing, or deployment configuration changed.
+- **Reviewer and review outcome:** MUSE independent review requested in AI2AISync issue #106; PENDING.
+- **Founder approval reference:** Founder explicitly requested the website app/version corrections in this conversation on 2026-11-24.
+- **Implementation head SHA before this log entry:** `dfef6c2e5dba89921a34a4586a12c795db63b676`.
+- **Publication status:** PR only; not merged. No production deployment or publication is claimed.
+- **Verification:** PASS for static source checks; NOT RUN for browser/device/assistive-technology QA.
+- **Checks performed and evidence:** All Apps has 34 unique app cards. Platform catalogue counts: Android 23, iOS 13, Mac 12, Windows 5, Linux 2. Front Ends card IDs are unique; the unsupported desktop PodEdPro entry is removed; Hit Record Web is listed. Representative detail pages were re-fetched and checked for corrected version/platform metadata.
+- **Known limitations / follow-up:** The Cross-Platform Intelligence module is EXPERIMENTAL, its catalog was generated 2026-11-20, and its records do not include app versions. Its Dear Idea record currently lists Mac/Windows, while the Dear Idea app repository README says iOS/Android; this website follows the app repository evidence and the module record needs reconciliation. Cash Portfolio README says 0.4.1 while package.json/app.json both say 0.4.2. CashDublo Coder source constant is 0.1.0 while its build script stamps 1.0.0 into Info.plist. Separate Cash Portfolio Web and AI Cash Portfolio Web repositories have no tagged version. Browser/device/assistive-technology QA remains outstanding.
+- **Rollback plan or reference:** Revert PR #28 or its individual commits before merge; no production files were changed.
