@@ -84,3 +84,23 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Checks performed and evidence:** All Apps has 34 unique app cards. Platform catalogue counts: Android 23, iOS 13, Mac 12, Windows 5, Linux 2. Front Ends card IDs are unique; the unsupported desktop PodEdPro entry is removed; Hit Record Web is listed. Representative detail pages were re-fetched and checked for corrected version/platform metadata.
 - **Known limitations / follow-up:** The Cross-Platform Intelligence module is EXPERIMENTAL, its catalog was generated 2026-11-20, and its records do not include app versions. Its Dear Idea record currently lists Mac/Windows, while the Dear Idea app repository README says iOS/Android; this website follows the app repository evidence and the module record needs reconciliation. Cash Portfolio README says 0.4.1 while package.json/app.json both say 0.4.2. CashDublo Coder source constant is 0.1.0 while its build script stamps 1.0.0 into Info.plist. Separate Cash Portfolio Web and AI Cash Portfolio Web repositories have no tagged version. Browser/device/assistive-technology QA remains outstanding.
 - **Rollback plan or reference:** Revert PR #28 or its individual commits before merge; no production files were changed.
+
+
+### WEB-CHG-2026-11-24-002 — Standardize the All Apps card layout
+
+- **Status:** STAGED — draft pull request pending review and publication.
+- **Date:** 2026-11-24.
+- **Task owner:** Founder.
+- **Contributor:** ChatGPT / GPT-6.
+- **Branch:** `chatgpt/all-app-cards-layout-20261124`.
+- **File changed:** `apps.html` only.
+- **Scope:** The All Apps card section only; platform landing pages and individual app detail pages are not part of this layout change.
+- **Card order:** App icon at left and version/release status at right on the same row; app name; app category; app description; Google Play and Apple App Store search links on one row; centered CashDublo app-page link; platform abbreviations on the final row.
+- **Platform labels:** WIN, LIN, MAC, AND, iOS, WEB. Android-targeted cards also show DUO/FOLD compatibility as NOT VERIFIED until tested on representative foldable/dual-screen devices.
+- **Store-link accuracy:** Existing generic store-search URLs are retained and explicitly labelled as searches, not verified direct app listings. Unsupported platforms display “not listed.” The centered website link opens the app's CashDublo detail page; it is not represented as a direct APK download unless a real download is available on that page.
+- **Categories:** Added a concise category label to each of the 34 app cards based on the current public app descriptions.
+- **Removed from card layout:** Proposed pricing blocks and screenshot carousels, to keep the requested information hierarchy consistent.
+- **Static verification:** 34 cards found; all 34 have icon, version/status, name, category, description, store-link row, centered CashDublo page link, and platform line. No pricing blocks or screenshot carousels remain in the All Apps cards. 23 Android-targeted cards carry the explicit DUO/FOLD NOT VERIFIED marker. Browser/device/accessibility QA NOT RUN.
+- **Limitations:** Fold/dual-screen compatibility is not certified. No direct Google Play or Apple App Store listing was verified by this change. The website page link is an app information page, not proof of an available download.
+- **Publication:** Not merged; no production deployment claimed.
+- **Rollback:** Revert this PR's merge commit on `main`; preserve the audit trail and verify the previous All Apps layout is restored.
