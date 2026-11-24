@@ -1,3 +1,9 @@
+## 2026-11-24 — Repository inventory count corrected to latest fleet sweep
+
+The repository overview now reports 146 repositories from the latest November 24 fleet sweep, replacing the older November 21 snapshot of 142. The App Catalog remains a separate count of 152 records. The page explicitly warns that repository totals can vary by inventory script and should retain their source and date.
+
+**Verification:** Prepared against pinned site head `a865226f6e7b1f3ab2fdb28f530ed3ba3a572f7c`; read-back verification required.
+
 ## 2026-11-24 — App Catalog count separated; unsupported prices removed
 
 The home and repository overview now distinguish the App Catalog's 152 records from the separately dated repository inventory count (142 at the November 21 snapshot). The repository figure remains explicitly identified as an inventory snapshot, not an app count. The memberships page no longer presents unsupported numerical prices or unapproved free-tier prices as offers; it labels pricing as unpublished. The website-design page removes all package and support price estimates pending catalog-backed approval. The course page's unsupported annual revenue amount was removed while preserving the surrounding lesson content. No checkout, subscription, or paid offer is activated. The canonical App Catalog currently contains no approved price values.
