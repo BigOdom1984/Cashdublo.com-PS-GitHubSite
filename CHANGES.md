@@ -193,3 +193,12 @@ Added a separate `corporate/` website experience with a parent-company landing p
 **Legal presentation:** Cash Flow remains a proposed umbrella brand. The four areas are described as operating divisions/customer-facing brands, not formed subsidiaries. Entity registration, ownership, licensing and asset-transfer claims remain subject to primary-record verification.
 
 **Status:** Feature branch prototype only. No merge, production deployment, pricing activation, checkout, or legal status change.
+
+
+## 2026-11-25 — The website takes the theme (W19)
+
+The site generator (`make_platform_pages.py`) now carries the **SUNLIGHT** block: the themes module's sunlight gradient (one house angle, 135°, light from the upper left, never moving), its stops derived from the site's own palette — highlight where the light catches, the base color, the falloff into shade — in place of flat color, with AA contrast checked across every stop for the text each surface carries. The generator injects the block into every page it builds or patches; privacy, whose palette is its own dark one, takes a dark variant derived from its own colors.
+
+The standing pages were themed with the identical block in the same round: 62 pages — the generator family, the front-ends overview and its five pages, the remaining root pages on the house palette, and the 34 per-app pages under `apps/`. No page's content changed; each themed page differs from its pinned predecessor only by the added block.
+
+**Named not-upgradable in this round:** the `corporate/` site (its own design system, external CSS), the per-AI folders under `all websites/` (each its own design), and the retired v2 navigation assets. SQL record was written first in `CHANGES.sql`, as required.

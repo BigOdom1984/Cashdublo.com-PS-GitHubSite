@@ -315,6 +315,58 @@ def cd_add(html_text):
     return html_text
 
 
+# ----------------------------------------------------------------
+# The website takes the theme (the President's order, 2026-11-25
+# 04:06; website queue W19): every page the generator builds or
+# patches carries the sunlight gradient from the themes module
+# (GRADIENTS.md) — one house sun angle (135deg, light from the
+# upper left, never moving), stops derived from the site's own
+# palette (highlight where the light catches, the base color,
+# the falloff into shade), in place of the flat color that stood
+# there. AA contrast was checked across every stop for the text
+# each surface carries before these stops were set (W19 round
+# report). The block rides in its own marked block, the same
+# pattern as the Front Ends app CSS and the CD widget CSS above,
+# so re-running the generator never doubles it. Privacy keeps
+# its own dark palette (as the CD block's note above records),
+# so it takes the dark variant: the same treatment derived from
+# its own colors.
+THEME_CSS = ("/*SUNLIGHT*/"
+             "body{background:linear-gradient(135deg,#fffdf8 0%,"
+             "var(--paper) 55%,#f1ead6 100%)}"
+             ".hero{background:linear-gradient(135deg,#225a4b 0%,"
+             "var(--deep) 52%,#102723 100%)}"
+             "footer{background:linear-gradient(135deg,#225a4b 0%,"
+             "var(--deep) 52%,#102723 100%)}"
+             ".ticker{background:linear-gradient(135deg,#e6faa9 0%,"
+             "var(--lime) 55%,#aed657 100%)}"
+             ".btn{background:linear-gradient(135deg,#e6faa9 0%,"
+             "var(--lime) 55%,#aed657 100%)}"
+             ".card{background:linear-gradient(135deg,var(--white) 0%,"
+             "#f9f3e2 100%)}"
+             ".note{background:linear-gradient(135deg,#f2eee1 0%,"
+             "#e9e5d7 100%)}"
+             ".featured{background:linear-gradient(135deg,#f2eee1 0%,"
+             "#e9e5d7 100%)}"
+             ".plist{background:linear-gradient(135deg,#fffdf8 0%,"
+             "#f9f3e2 100%)}"
+             ".cd-card{background:linear-gradient(135deg,#fffdf8 0%,"
+             "#f9f3e2 100%)}"
+             ".cd-btn{background:linear-gradient(135deg,#e6faa9 0%,"
+             "#c9ed72 55%,#aed657 100%)}"
+             ".cd-fab{background:linear-gradient(135deg,#225a4b 0%,"
+             "#193d39 52%,#102723 100%)}")
+
+THEME_CSS_DARK = ("/*SUNLIGHT*/"
+                  "body{background:linear-gradient(135deg,#171611 0%,"
+                  "var(--bg) 55%,#000000 100%)}")
+
+def theme_css(h, dark=False):
+    if "/*SUNLIGHT*/" not in h:
+        h = h.replace("</style>", (THEME_CSS_DARK if dark else THEME_CSS)
+                      + "</style>", 1)
+    return h
+
 
 REPO = {
  "ai-cash-portfolio": "https://github.com/BigOdom1984/ai-cash-portfolio",
@@ -448,6 +500,7 @@ def page(title, h1, intro, card_html_list, fname):
         h = h.replace("</style>", PMENU_CSS + "</style>")
     h = fe_css(h)
     h = cd_css(h)
+    h = theme_css(h)
     body = (header(extra_all_apps=True)
             + f'<section class="hero"><small>The collection</small>'
               f"<h1>{h1}</h1><p>{intro}</p></section>"
@@ -512,6 +565,7 @@ apps = re.sub(r"<header>.*?</header>", header(), apps, count=1, flags=re.S)
 apps = repo_links_in_page(apps)
 apps = plats_in_page(apps)
 apps = cd_add(apps)
+apps = theme_css(apps)
 open(os.path.join(HERE, "apps.html"), "w").write(apps)
 print("apps.html patched")
 
@@ -523,6 +577,7 @@ if ".pmenu{" not in index:
 index = fe_css(index)
 index = re.sub(r"<header>.*?</header>", header(), index, count=1, flags=re.S)
 index = cd_add(index)
+index = theme_css(index)
 open(ipath, "w").write(index)
 print("index.html patched")
 
@@ -535,6 +590,7 @@ if ".pmenu{" not in privacy:
 privacy = fe_css(privacy)
 privacy = re.sub(r"<header>.*?</header>", header(), privacy, count=1, flags=re.S)
 privacy = cd_add(privacy)
+privacy = theme_css(privacy, dark=True)
 open(ppath, "w").write(privacy)
 print("privacy.html patched")
 
@@ -716,6 +772,7 @@ def fe_overview():
         h = h.replace("</style>", PMENU_CSS + "</style>")
     h = fe_css(h)
     h = cd_css(h)
+    h = theme_css(h)
     body = (header()
             + '<section class="hero"><small>The websites</small>'
               "<h1>Front ends.</h1><p>Every CashDublo website that "
@@ -748,6 +805,7 @@ def fe_page(fe):
         h = h.replace("</style>", PMENU_CSS + "</style>")
     h = fe_css(h)
     h = cd_css(h)
+    h = theme_css(h)
     if fe["live"]:
         links = "".join(f'<a href="{u}">{label} ↗</a>'
                         for label, u in fe["live"])
