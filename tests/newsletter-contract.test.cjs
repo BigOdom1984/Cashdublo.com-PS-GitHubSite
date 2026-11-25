@@ -10,10 +10,12 @@ const generator = read("make_platform_pages.py");
 const suggestions = read("SUGGESTIONS.md");
 
 for (const id of ["comments", "cd-form", "cd-name", "cd-comment", "cd-sent"]) {
-  assert.ok(news.includes('id="' + id + '"'), "newsletter comments dialog is missing #" + id);
+  assert.ok(site.includes('id="' + id + '"'), "shared comments dialog is missing #" + id);
 }
-assert.ok(news.includes('data-cd-close="comments"'), "comments dialog has no close control");
 assert.ok(news.includes("data-cd-open"), "newsletter navigation has no comments opener");
+assert.ok(news.includes('<script src="site.js"></script>'), "newsletter page does not load the shared comment handler");
+assert.ok(site.includes('panel=document.createElement("div")'), "shared script does not create the missing comments dialog");
+assert.ok(site.includes('data-cd-close="comments"'), "comments dialog has no close control");
 assert.ok(site.includes("mailto:cash.dublo@gmail.com"), "comment mailto must use the approved contact address");
 assert.ok(!site.includes("CashDublo@gmail.com"), "stale comment email remains in site.js");
 assert.ok(site.includes("new MutationObserver"), "newsletter popup must observe overlay dismissal");
