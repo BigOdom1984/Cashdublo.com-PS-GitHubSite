@@ -94,3 +94,8 @@ INSERT INTO changes (date, who, what, docs) VALUES
 -- WEB-CHG-2026-11-25-001: bounded newsletter/comments and contact accuracy fixes.
 INSERT INTO changes (date, who, what, docs) VALUES
 ('2026-11-25', 'ChatGPT / GPT-6', 'Staged a bounded website-audit patch on an isolated branch: add the missing newsletter comments dialog/form, make mailto confirmation explicitly conditional on the visitor pressing Send, align remaining active contact references with the Founder-approved cash.dublo@gmail.com address, prevent duplicate shared-navigation CSS injection, and keep the newsletter popup from bypassing an active welcome/age overlay. Birthday copy, Spotify behavior, age-gate policy, pricing, catalogue claims, and generator execution remain outside this patch. Draft review only; no merge or publication is claimed.', 'news.html; site.js; assets/site-navigation.js; repositories.html; SUGGESTIONS.md; make_platform_pages.py; tests/newsletter-contract.test.cjs; .github/workflows/site-validation.yml');
+
+
+-- Scope correction for WEB-CHG-2026-11-25-001: keep news.html unchanged.
+INSERT INTO changes (date, who, what, docs) VALUES
+('2026-11-25', 'ChatGPT / GPT-6', 'Scope correction: the missing newsletter comments dialog is now created centrally by site.js when a page has a comments opener but no comments panel. news.html was restored byte-for-byte to the main-branch version to avoid overlapping the existing open navigation PR. The final staged diff does not change news.html.', 'site.js; news.html (restored to main); tests/newsletter-contract.test.cjs');
