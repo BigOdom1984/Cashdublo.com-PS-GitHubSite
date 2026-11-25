@@ -126,3 +126,12 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Checks performed and evidence:** Re-fetched the changed source files from the isolated branch; confirmed `news.html` content matches main and the dynamic comments panel is created by `site.js`. Added static assertions for modal, mailto, overlay, and stylesheet behavior. CI result pending.
 - **Known limitations / follow-up:** Check the draft PR's CI result and have an independent reviewer inspect the diff. Keep birthday copy/date, Spotify behavior/privacy, age-gate policy, app catalogue claims, pricing, and product identity decisions separate. The existing PR #11 overlaps historical website files; the final patch avoids a net `news.html` change, but change-log files may still require reconciliation with other open PRs. The generator template was edited but not run because the Founder build-readiness directive holds generator execution until its safety gates pass.
 - **Rollback plan or reference:** Revert the isolated branch/PR commits; no main-branch or production change has occurred.
+
+
+#### Verification follow-up — WEB-CHG-2026-11-25-001
+
+- **GitHub Actions:** [Run 45613943172](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/actions/runs/45613943172) — JavaScript syntax checks PASS; `navigation-contract.test.cjs` PASS; new `newsletter-contract.test.cjs` PASS.
+- **Existing suite failure:** `responsive-layout.test.mjs` FAILS because unchanged `index.html` does not use the standard green header required by the test. `index.html` is not part of PR #33; the separate existing PR #11 is the navigation/header workstream. This is recorded as a baseline blocker, not attributed to the newsletter patch.
+- **Cloudflare Pages check:** completed successfully for the PR check.
+- **Overall CI:** FAIL due to the existing responsive-layout contract failure. No tests were bypassed or removed.
+- **Browser/device/screen-reader QA:** NOT RUN.
