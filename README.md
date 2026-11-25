@@ -4,7 +4,8 @@
 
 ## The versions — every AI's take on the official website
 
-- **The official website (live):** https://chatgpt-cashdublo-navigation.bigodom1984-github-io.pages.dev/
+- **The official website (live):** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/ — the root of this repo is the one operational website.
+- **ChatGPT's earlier Cloudflare deployment:** https://chatgpt-cashdublo-navigation.bigodom1984-github-io.pages.dev/ — a lagging copy, not the official site.
 - **ChatGPT's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/ChatGPT/
 - **Onyx's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/muse/
 - **Grok's version:** https://bigodom1984.github.io/Cashdublo.com-PS-GitHubSite/all%20websites/Grok/
