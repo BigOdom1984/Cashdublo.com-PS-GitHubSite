@@ -210,6 +210,6 @@ The newsletter's existing Comments control now receives a comments dialog from t
 
 A focused Node regression test was added to the existing website-validation workflow. The original `news.html` file was restored unchanged on this branch to avoid overlap with the existing open navigation PR; the dialog is created centrally by `site.js` instead.
 
-**Status:** Staged on `chatgpt/newsletter-audit-fixes-20261125`; independent review pending. No merge, deployment, or publication is claimed. CI and browser/device/accessibility QA are pending/not run at this point.
+**Status:** Staged in [draft PR #33](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/pull/33) from `chatgpt/newsletter-audit-fixes-20261125`; independent review pending. No merge, deployment, or publication is claimed. CI and browser/device/accessibility QA are pending/not run at this point.
 
 **Scope exclusions:** Birthday wording/dates, Spotify autoplay/privacy, age-gate policy, catalogue claims, pricing, and generator execution remain unchanged pending the ordered readiness review or a separate Founder decision. SQL record was written first in `CHANGES.sql`.
