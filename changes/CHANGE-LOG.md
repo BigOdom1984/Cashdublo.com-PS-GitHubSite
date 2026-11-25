@@ -104,3 +104,25 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Limitations:** Fold/dual-screen compatibility is not certified. No direct Google Play or Apple App Store listing was verified by this change. The website page link is an app information page, not proof of an available download.
 - **Publication:** Not merged; no production deployment claimed.
 - **Rollback:** Revert this PR's merge commit on `main`; preserve the audit trail and verify the previous All Apps layout is restored.
+
+
+### WEB-CHG-2026-11-25-001 — Repair newsletter comments and contact accuracy
+
+- **Status:** STAGED — isolated draft branch; independent review and CI pending.
+- **Date/time (UTC):** 2026-11-25.
+- **Task owner:** Founder.
+- **Contributor AI/human:** ChatGPT / GPT-6.
+- **AI2AISync task/master-log reference:** Founder-directed website audit corrections; follow-up to AI2AISync issue #110.
+- **Branch / pull request:** `chatgpt/newsletter-audit-fixes-20261125`; draft PR to be opened after source/log read-back.
+- **Files affected:** `site.js`, `assets/site-navigation.js`, `repositories.html`, `SUGGESTIONS.md`, `make_platform_pages.py`, `tests/newsletter-contract.test.cjs`, `.github/workflows/site-validation.yml`, `CHANGES.sql`, `CHANGES.md`, this file. `news.html` was restored byte-for-byte to the base branch and is not part of the final diff.
+- **Reason and intended outcome:** Correct confirmed newsletter comments dead-end, stale active contact address, duplicate stylesheet injection, and popup overlay timeout behavior without changing unresolved user-facing policy or competing with existing website PRs.
+- **Summary of changes:** The shared `site.js` now creates an accessible comments dialog when a page has a comments opener but lacks a panel, returns focus after closing, and uses the approved email. The popup waits for age/welcome overlays to dismiss using MutationObserver, with a polling fallback that does not force-open after a fixed timeout. `assets/site-navigation.js` now checks both its marker and existing stylesheet before injecting CSS. Remaining active root contact references and the generator template were aligned with the approved address. Added a Node contract test and CI step.
+- **Risk / impact:** Low-to-moderate; public-facing comments workflow and shared navigation/popup behavior. The form remains mailto-based; it does not collect or send data server-side.
+- **Reviewer and review outcome:** MUSE / independent reviewer NOT YET RECEIVED. MUSE profile currently records `PROFILE_CREATED_NOT_CONNECTED`; do not treat this handoff as reviewed.
+- **Founder approval reference:** Founder instructed ChatGPT to proceed with the website audit corrections in conversation on 2026-11-25. Scope is limited to the defects above; no production publication or merge authorized.
+- **Commit SHAs:** SQL-first record `cfbde8794abd6b7fe8ecc2cc1383c9db79bb3655`; site script `c2370a23b5f9057cf28ac2168df337d9ea835ead` and follow-up dialog `20447d917750403eeba92be82f2f0f5478d3e0bb`; stylesheet loader `42c57a3d7af8999794b8e615703129fb96b969be`; repository contact `da2b14b5ebf05260b2429eec2bcf871789a266b1`; suggestions contact `32569f4b4422ac449933188d15d7b55084b4cb34`; generator template `01b949460ac2a2c7adf060c9bcc2cbb77265527e`; regression test `073aa49a6ca508eb90091f8cc7ca11d6effe0f8e` and update `1ed76a41320e71552c55a42681f3674f6cb3ea09`; CI `684805d17c2a4a6d6c768afeeb5668b6d6068376`; scope restoration `c742aa264cd027d0d0ffd593437f6a80814d5d68`.
+- **Publication status:** Branch only; no merge or deployment.
+- **Verification:** NOT RUN for CI at log creation; source read-back completed. Browser/device/screen-reader QA NOT RUN. Generator NOT EXECUTED.
+- **Checks performed and evidence:** Re-fetched the changed source files from the isolated branch; confirmed `news.html` content matches main and the dynamic comments panel is created by `site.js`. Added static assertions for modal, mailto, overlay, and stylesheet behavior. CI result pending.
+- **Known limitations / follow-up:** Check the draft PR's CI result and have an independent reviewer inspect the diff. Keep birthday copy/date, Spotify behavior/privacy, age-gate policy, app catalogue claims, pricing, and product identity decisions separate. The existing PR #11 overlaps historical website files; the final patch avoids a net `news.html` change, but change-log files may still require reconciliation with other open PRs. The generator template was edited but not run because the Founder build-readiness directive holds generator execution until its safety gates pass.
+- **Rollback plan or reference:** Revert the isolated branch/PR commits; no main-branch or production change has occurred.
