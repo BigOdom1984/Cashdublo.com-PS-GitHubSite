@@ -494,6 +494,13 @@ def header(extra_all_apps=False, prefix=""):
     return (f'<header><a class="brand" href="{prefix}index.html">CASH<span>DUBLO</span></a>'
             f"<nav>{links}</nav></header>")
 
+def root_img(card):
+    # Platform pages live at the repo root: a card icon path of
+    # "../img/..." would resolve above the project path and 404.
+    # Normalize any stepped-up icon path back to the root "img/".
+    return card.replace('src="../img/', 'src="img/')
+
+
 def page(title, h1, intro, card_html_list, fname):
     h = re.sub(r"<title>.*?</title>", f"<title>{title}</title>", head)
     if ".pmenu{" not in h:
@@ -505,7 +512,7 @@ def page(title, h1, intro, card_html_list, fname):
             + f'<section class="hero"><small>The collection</small>'
               f"<h1>{h1}</h1><p>{intro}</p></section>"
             + '<main class="wrap"><div class="grid">'
-            + "\n".join(set_plats(repo_links(c)) for c in card_html_list)
+            + "\n".join(set_plats(repo_links(root_img(c))) for c in card_html_list)
             + "</div>" + footer_note + "</main>" + footer + CD_BLOCK + "</body></html>")
     out = h + "<body>" + body
     open(os.path.join(HERE, fname), "w").write(out)
