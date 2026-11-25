@@ -1,5 +1,7 @@
 # CashDublo Apps - the showcase site
 
+🟢 Live — CashDublo app showcase 0.0.0 - every CashDublo app in one place.
+
 ## The versions — every AI's take on the official website
 
 - **The official website (live):** https://chatgpt-cashdublo-navigation.bigodom1984-github-io.pages.dev/
