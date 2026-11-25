@@ -99,3 +99,8 @@ INSERT INTO changes (date, who, what, docs) VALUES
 -- Scope correction for WEB-CHG-2026-11-25-001: keep news.html unchanged.
 INSERT INTO changes (date, who, what, docs) VALUES
 ('2026-11-25', 'ChatGPT / GPT-6', 'Scope correction: the missing newsletter comments dialog is now created centrally by site.js when a page has a comments opener but no comments panel. news.html was restored byte-for-byte to the main-branch version to avoid overlapping the existing open navigation PR. The final staged diff does not change news.html.', 'site.js; news.html (restored to main); tests/newsletter-contract.test.cjs');
+
+
+-- WEB-CHG-2026-11-25-001 verification update.
+INSERT INTO changes (date, who, what, docs) VALUES
+('2026-11-25', 'ChatGPT / GPT-6', 'GitHub Actions run 45613943172: JavaScript syntax checks PASS; navigation-contract.test.cjs PASS; newsletter-contract.test.cjs PASS. The existing responsive-layout.test.mjs then FAILS on the unchanged index.html baseline because it lacks the standard green header; index.html is not part of this PR, and existing PR #11 is the navigation/header workstream. Cloudflare Pages preview check completed successfully. Overall workflow remains FAIL due to that pre-existing baseline failure; no test was removed or bypassed.', 'PR #33; .github/workflows/site-validation.yml; tests/newsletter-contract.test.cjs; tests/responsive-layout.test.mjs; index.html unchanged');
