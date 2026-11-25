@@ -104,3 +104,24 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Limitations:** Fold/dual-screen compatibility is not certified. No direct Google Play or Apple App Store listing was verified by this change. The website page link is an app information page, not proof of an available download.
 - **Publication:** Not merged; no production deployment claimed.
 - **Rollback:** Revert this PR's merge commit on `main`; preserve the audit trail and verify the previous All Apps layout is restored.
+
+
+### WEB-CHG-2026-11-25-001 — Reconcile merged website PRs and review web-front-end suggestion
+
+- **Status:** STAGED — documentation and suggestion-evidence review only; no website source content changed.
+- **Date:** 2026-11-25.
+- **Task owner:** Founder.
+- **Contributor:** ChatGPT / AI-02 / GPT-6 (E0200).
+- **Base:** main at 77a3df64b25e930fa8f20ded9cd3c45aecf1ebbe.
+- **Branch:** chatgpt/website-readiness-legwork-20261125.
+- **AI2AISync coordination:** Issue #110; website catalogue source issue #106.
+- **Files added/updated:** CHANGES.sql; CHANGES.md; SUGGESTIONS.md; changes/CHANGE-LOG.md; reports/WEBSITE-BUILD-READINESS-LEGWORK-20261125.md.
+- **Purpose:** Correct the current status picture without rewriting historical entries, and evaluate the existing web-front-end suggestion against the current site and repository evidence.
+- **Merged PR status corrections:** PR #28 merged 2026-11-24 11:11:04 UTC, merge commit c37eabf96393f75c509138ae933498bffe3e027e. PR #29 merged 2026-11-24 11:22:07 UTC, merge commit 7e37e9c7c99079a9e5c55d723258b062895eabdd. PR #30 merged 2026-11-24 17:39:15 UTC, merge commit 56c42cba77bc00d48c60b133ded2e8ec0b4a67f6. These current states supersede the earlier STAGED / feature-branch-only descriptions; the earlier records remain intact as historical snapshots.
+- **Preview evidence:** Cloudflare Pages bot comments reported successful branch-preview deployments for PRs #28, #29 and #30. This does not prove independent browser/device/accessibility QA or production-site verification.
+- **Open PR state:** PRs #11, #13, #26 and #27 remain open; #11, #13 and #26 are drafts; #27 is not a draft. All four currently report mergeable=false. PR #13 is based on the PR #11 branch. No merge/rebase/closure was performed.
+- **Suggestion review:** Current front-ends page already has some similarly named entries. Cash Portfolio Web and AI Cash Portfolio Web specifications say TESTING; Name That Flag Web describes a local offline prototype; hit_record_web is a distinct planned collaboration-ledger web target with no web code; HACKED_web is a separate testing-stage project from HACKED..web..app / The Hack; Kali Linux Training Course Web is a 0.1.0 player shell / outline only and is not currently listed. Product identity and public wording need Founder confirmation before cards are added or relabeled.
+- **Verification:** GitHub file read-back, repository tree inspection, README/SPEC/package inspection, PR metadata and available PR discussion timelines. No automated test, browser, device, accessibility, screen-reader, performance, merge, or production deployment was run.
+- **Reviewer:** NOT ASSIGNED. MUSE receipt/acknowledgement not observed.
+- **Rollback:** Documentation-only branch; close the draft PR or revert its commit without merging. Original main files remain unchanged.
+- **Detailed evidence:** reports/WEBSITE-BUILD-READINESS-LEGWORK-20261125.md.

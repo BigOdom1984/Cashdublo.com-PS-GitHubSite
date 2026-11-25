@@ -202,3 +202,17 @@ The site generator (`make_platform_pages.py`) now carries the **SUNLIGHT** block
 The standing pages were themed with the identical block in the same round: 62 pages — the generator family, the front-ends overview and its five pages, the remaining root pages on the house palette, and the 34 per-app pages under `apps/`. No page's content changed; each themed page differs from its pinned predecessor only by the added block.
 
 **Named not-upgradable in this round:** the `corporate/` site (its own design system, external CSS), the per-AI folders under `all websites/` (each its own design), and the retired v2 navigation assets. SQL record was written first in `CHANGES.sql`, as required.
+
+## 2026-11-25 — Website build-readiness second-pass review
+
+A second-pass review reconciled the current website branch, merged pull requests, the website-specific change log, the web-front-end suggestion, and the six named web repositories.
+
+PR #28 (catalogue source sync), PR #29 (All Apps card layout), and PR #30 (corporate-site prototype) are confirmed merged into main on November 24. The older website accountability entries remain as historical records of their staged state at the time; the new dated website change-log entry supersedes those statuses. Cloudflare Pages bot comments report successful branch-preview deployments for these PRs. Those comments do not establish independent browser/device/accessibility QA or production-site verification.
+
+The web-front-end suggestion is only partly represented by the current page. Cash Portfolio Web and AI Cash Portfolio Web have cards but their specifications say TESTING and their package versions are 0.0.0. Name That Flag Web has a local offline prototype. The existing Hit Record Web card points to the mobile AI-DJ repository, while the separate hit_record_web repository says no web code has been built and describes a collaboration ledger. The existing HACKED! Web App card points to The Hack repository; HACKED_web is a separate testing-stage project with no web implementation. Kali Linux Training Course Web is not listed; its specification describes a 0.1.0 player shell / outline only, with no lesson content or production deployment.
+
+The shared navigation already has a Web Apps link to the web-app section. The current webAppLinks array is not used by the rendered navigation, so adding individual menu links before corresponding public pages exist would create dead destinations. Product identity, status, and public wording must be resolved before adding or relabeling cards.
+
+**Status:** Documentation and suggestion-evidence review staged on branch chatgpt/website-readiness-legwork-20261125. No HTML, CSS, JavaScript, app source, module source, production configuration, merge, or deployment was changed or performed. No automated tests or live browser/device/accessibility checks were run.
+
+**Evidence:** See reports/WEBSITE-BUILD-READINESS-LEGWORK-20261125.md for the pinned repository, file, specification, package, PR, and merge-commit references.
