@@ -113,7 +113,7 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Task owner:** Founder.
 - **Contributor AI/human:** ChatGPT / GPT-6.
 - **AI2AISync task/master-log reference:** Founder-directed website audit corrections; follow-up to AI2AISync issue #110.
-- **Branch / pull request:** `chatgpt/newsletter-audit-fixes-20261125`; draft PR to be opened after source/log read-back.
+- **Branch / pull request:** `chatgpt/newsletter-audit-fixes-20261125` · [Draft PR #33](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/pull/33).
 - **Files affected:** `site.js`, `assets/site-navigation.js`, `repositories.html`, `SUGGESTIONS.md`, `make_platform_pages.py`, `tests/newsletter-contract.test.cjs`, `.github/workflows/site-validation.yml`, `CHANGES.sql`, `CHANGES.md`, this file. `news.html` was restored byte-for-byte to the base branch and is not part of the final diff.
 - **Reason and intended outcome:** Correct confirmed newsletter comments dead-end, stale active contact address, duplicate stylesheet injection, and popup overlay timeout behavior without changing unresolved user-facing policy or competing with existing website PRs.
 - **Summary of changes:** The shared `site.js` now creates an accessible comments dialog when a page has a comments opener but lacks a panel, returns focus after closing, and uses the approved email. The popup waits for age/welcome overlays to dismiss using MutationObserver, with a polling fallback that does not force-open after a fixed timeout. `assets/site-navigation.js` now checks both its marker and existing stylesheet before injecting CSS. Remaining active root contact references and the generator template were aligned with the approved address. Added a Node contract test and CI step.
