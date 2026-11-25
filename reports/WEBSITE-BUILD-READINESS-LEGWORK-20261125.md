@@ -136,3 +136,12 @@ MUSE may independently review this evidence when its connection is available. Th
 - Draft PR: https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/pull/31.
 - Branch: chatgpt/website-readiness-legwork-20261125.
 - Current review state at opening: OPEN / DRAFT. No merge or production deployment.
+
+## Supplementary module change-control and suggestion sweep
+
+A further check of BigOdom1984/my-modules found:
+- Canonical website module files: modules/website-module/README.md v1.1.0 (blob e6cd559c838ec4a5bdbe6af77cbab82ab0c591ff) and manifest.json (blob 1bcc38bcfd3bfab9d0a07395bf9894082a102a4f). The module directory contains those two files; no module-local CHANGELOG.md was present in the inspected tree.
+- Root my-modules CHANGES.md (blob 69b0db722eed5d6198c3e50a13d6a1810bef24e6) and CHANGES.sql (blob 443a8d23d2a36e723ee9807ce265b4dd4b333bd0) contain no explicit occurrence of "website-module", "Website Module", or "website module". This does not prove no commit ever changed the module; it means the current canonical version has no explicit module-specific change-log entry discoverable by those names in the current root logs.
+- my-modules SUGGESTIONS.md (blob 134c6c281b21063bcb03be229ea638cefc8abc1c) contains B1 — Look 2027 standards additions. That proposal is unrelated to this website-readiness task and remains blocked because its named staged research file is a local production-side source not present in the repository. No changes were made to it.
+
+**Implication:** Before refreshing the website-local v1.0 copy to canonical v1.1.0, MUSE should trace the canonical module's actual version change/commit history and add an evidence-backed module change record through the my-modules repository's required SQL-first / Markdown-second process. Do not invent the change summary from the version number alone.
