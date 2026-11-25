@@ -2,6 +2,17 @@
 "use strict";
 function byId(i){return document.getElementById(i);}
 var welcome=byId("cd-welcome"),panel=byId("comments"),returnFocus=null;
+if(!panel&&document.querySelector("[data-cd-open]")){
+panel=document.createElement("div");
+panel.id="comments";
+panel.className="cd-comments-overlay";
+panel.hidden=true;
+panel.innerHTML='<section class="cd-comments-card" role="dialog" aria-modal="true" aria-labelledby="cd-comments-title" aria-describedby="cd-comments-help"><button class="cd-comments-close" type="button" data-cd-close="comments" aria-label="Close comments">&times;</button><h2 id="cd-comments-title">Leave a comment.</h2><p id="cd-comments-help">Write your comment here. Your email app should open with the message addressed to CashDublo. Nothing is submitted by this page.</p><form id="cd-form"><label for="cd-name">Your name (optional)</label><input id="cd-name" type="text" autocomplete="name" placeholder="Your name"><label for="cd-comment">Your comment</label><textarea id="cd-comment" rows="5" required placeholder="Write your comment"></textarea><button class="cd-comments-submit" type="submit">Open email app</button><p class="cd-comments-note" id="cd-sent" role="status" aria-live="polite" hidden>Your email app should open. Nothing is sent until you press Send in that app.</p></form></section>';
+document.body.appendChild(panel);
+var commentStyle=document.createElement("style");
+commentStyle.textContent='.cd-comments-overlay{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:20px;background:rgba(12,28,26,.72)}.cd-comments-overlay[hidden]{display:none}.cd-comments-card{position:relative;width:min(100%,560px);max-height:min(90vh,760px);overflow:auto;padding:28px;background:#fffdf8;color:#172d2b;border:1px solid #d8d4c9;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.28)}.cd-comments-card h2{padding-right:36px}.cd-comments-card label{display:block;margin:14px 0 6px;font-weight:800}.cd-comments-card input,.cd-comments-card textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid #d8d4c9;border-radius:10px;background:#fff;color:#172d2b;font:inherit}.cd-comments-card textarea{resize:vertical}.cd-comments-card button:focus-visible,.cd-comments-card input:focus-visible,.cd-comments-card textarea:focus-visible{outline:3px solid #c65f4a;outline-offset:3px}.cd-comments-close{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#172d2b;font-size:2rem;line-height:1;cursor:pointer}.cd-comments-submit{display:inline-flex;margin-top:14px;padding:13px 20px;border:0;border-radius:999px;background:#193d39;color:#f9f6ed;font:inherit;font-weight:850;cursor:pointer}.cd-comments-note{margin-top:12px;color:#596d68}@media(max-width:560px){.cd-comments-card{padding:24px 18px}}';
+document.head.appendChild(commentStyle);
+}
 function show(e){if(e){e.hidden=false;}}
 function hide(e){if(e){e.hidden=true;}}
 function restoreFocus(){if(returnFocus&&typeof returnFocus.focus==="function"){returnFocus.focus();}returnFocus=null;}
