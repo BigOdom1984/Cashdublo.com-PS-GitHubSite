@@ -104,3 +104,20 @@ Use only statuses supported by evidence. `COMMITTED` does not imply `PUBLISHED`;
 - **Limitations:** Fold/dual-screen compatibility is not certified. No direct Google Play or Apple App Store listing was verified by this change. The website page link is an app information page, not proof of an available download.
 - **Publication:** Not merged; no production deployment claimed.
 - **Rollback:** Revert this PR's merge commit on `main`; preserve the audit trail and verify the previous All Apps layout is restored.
+
+
+### WEB-CHG-2026-11-25-002 — Stage safe web-front-end catalogue corrections
+
+- **Status:** STAGED — draft PR; not merged or published.
+- **Date:** 2026-11-25.
+- **Contributor:** ChatGPT / AI-02 / GPT-6.
+- **Base:** 77a3df64b25e930fa8f20ded9cd3c45aecf1ebbe.
+- **Branch:** chatgpt/web-frontends-safe-corrections-20261125.
+- **Scope:** The web-app cards in front-ends.html and a focused regression test.
+- **Changes:** Cash Portfolio Web and AI Cash Portfolio Web status labels now say TESTING / no live address, consistent with their SPEC files. Name That Flag Web is labeled as a local-only prototype. Kali Linux Training Course Web is listed as Player shell / Outline only / Not live, with the public course overview link. Source repository links were removed from these four cards; existing public overview links are used where available.
+- **Held items:** Hit Record Web and HACKED / The Hack were not changed because the current source repositories describe different product identities. Founder confirmation is required before relabeling or adding a second entry.
+- **Navigation:** No shared navigation code change was needed; the existing Web Apps route already points to /front-ends.html#web-frontends.
+- **Files changed:** front-ends.html; tests/web-frontends-catalog.test.cjs; CHANGES.sql; CHANGES.md; changes/CHANGE-LOG.md; SUGGESTIONS.md.
+- **Verification:** Static source-string checks performed during staging; focused Node test added but not run in a repository checkout. No browser/device/accessibility QA, merge, or production deployment.
+- **Reviewer:** NOT ASSIGNED; MUSE acknowledgement pending.
+- **Rollback:** Revert the staging PR or its commit before merge; main remains unchanged.
