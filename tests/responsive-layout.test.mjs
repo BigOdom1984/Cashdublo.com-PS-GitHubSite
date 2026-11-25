@@ -20,8 +20,8 @@ for (const token of ['Escape', 'pointerdown', 'focusables', 'e.key==="Tab"', 'e.
 const navigationPages = ["index.html", "apps.html", "course.html", "code.html", "news.html", "android.html", "iphone.html", "mac.html", "windows.html", "linux.html", "front-ends.html", "terminal.html"];
 for (const page of navigationPages) {
   const html = readFileSync(page, "utf8");
-  assert.match(html, /href=["']\/assets\/cashdublo-nav\.css["']/, page + " must load canonical navigation CSS");
-  assert.match(html, /src=["']\/assets\/cashdublo-nav\.js["']/, page + " must load canonical navigation JS");
+  assert.doesNotMatch(html, /href=["']\/assets\/cashdublo-nav\.css["']/, page + " must not load the retired root-absolute navigation CSS");
+  assert.doesNotMatch(html, /src=["']\/assets\/cashdublo-nav\.js["']/, page + " must not load the retired root-absolute navigation JS");
   assert.match(html, /class=["']cd-site-header["'][^>]*data-cd-header/, page + " must use standard green header");
   assert.match(html, /<button[^>]*type=["']button["'][^>]*data-cd-toggle[^>]*aria-controls=["']cd-site-drawer["'][^>]*aria-expanded=["']false["'][^>]*aria-label=/, page + " must have a keyboard-operable, labelled toggle");
   assert.match(html, /id=["']cd-site-drawer["'][^>]*aria-hidden=["']true["'][^>]*hidden[^>]*inert/, page + " must have hidden inert drawer");
