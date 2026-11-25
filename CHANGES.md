@@ -213,3 +213,8 @@ A focused Node regression test was added to the existing website-validation work
 **Status:** Staged in [draft PR #33](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/pull/33) from `chatgpt/newsletter-audit-fixes-20261125`; independent review pending. No merge, deployment, or publication is claimed. CI and browser/device/accessibility QA are pending/not run at this point.
 
 **Scope exclusions:** Birthday wording/dates, Spotify autoplay/privacy, age-gate policy, catalogue claims, pricing, and generator execution remain unchanged pending the ordered readiness review or a separate Founder decision. SQL record was written first in `CHANGES.sql`.
+
+
+### Verification follow-up — WEB-CHG-2026-11-25-001
+
+GitHub Actions run [45613943172](https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite/actions/runs/45613943172): JavaScript syntax checks PASS; `navigation-contract.test.cjs` PASS; the new `newsletter-contract.test.cjs` PASS. The pre-existing `responsive-layout.test.mjs` then fails because unchanged `index.html` does not yet use the standard green header. `index.html` is not in this PR; the existing navigation/header work is tracked separately in PR #11. The Cloudflare Pages preview check completed successfully. Overall workflow status is FAIL because of the existing index-page contract failure; no tests were removed or bypassed. Browser/device/screen-reader QA remains NOT RUN.
