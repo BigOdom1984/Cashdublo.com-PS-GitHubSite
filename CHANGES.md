@@ -202,3 +202,14 @@ The site generator (`make_platform_pages.py`) now carries the **SUNLIGHT** block
 The standing pages were themed with the identical block in the same round: 62 pages — the generator family, the front-ends overview and its five pages, the remaining root pages on the house palette, and the 34 per-app pages under `apps/`. No page's content changed; each themed page differs from its pinned predecessor only by the added block.
 
 **Named not-upgradable in this round:** the `corporate/` site (its own design system, external CSS), the per-AI folders under `all websites/` (each its own design), and the retired v2 navigation assets. SQL record was written first in `CHANGES.sql`, as required.
+
+
+## 2026-11-25 — Newsletter comments and contact accuracy fixes (staged)
+
+The newsletter's existing Comments control now receives a comments dialog from the shared `site.js` handler when the page does not already contain one. The dialog uses the existing static-site mailto approach and explicitly tells visitors that a message is not sent until they press Send in their own email app. The comment handler and active contact fallbacks use the Founder-approved `cash.dublo@gmail.com` address. The site-navigation loader now checks for an existing shared navigation stylesheet before injecting another copy. The newsletter popup waits for active age/welcome overlays to close instead of forcing itself open after a timeout. The page generator's email template was aligned but was **not executed**.
+
+A focused Node regression test was added to the existing website-validation workflow. The original `news.html` file was restored unchanged on this branch to avoid overlap with the existing open navigation PR; the dialog is created centrally by `site.js` instead.
+
+**Status:** Staged on `chatgpt/newsletter-audit-fixes-20261125`; independent review pending. No merge, deployment, or publication is claimed. CI and browser/device/accessibility QA are pending/not run at this point.
+
+**Scope exclusions:** Birthday wording/dates, Spotify autoplay/privacy, age-gate policy, catalogue claims, pricing, and generator execution remain unchanged pending the ordered readiness review or a separate Founder decision. SQL record was written first in `CHANGES.sql`.
