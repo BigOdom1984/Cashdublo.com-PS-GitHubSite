@@ -483,16 +483,45 @@ def plats_in_page(html_text):
     return re.sub(r'<article class="card" id="[^"]+">.*?</article>',
                   lambda m: set_plats(m.group(0)), html_text, flags=re.S)
 
+# NAVIGATION-STANDARD v2 (2026-11-27): every generated or patched
+# page carries the standard green header and the static shared
+# drawer below, byte-identical on every root page — the same block
+# course.html, code.html and news.html already carry by hand. The
+# repo tests (tests/responsive-layout.test.mjs) require it.
+STANDARD_HEADER = """<header class="cd-site-header" data-cd-header>
+  <button class="cd-header-hit" type="button" data-cd-toggle aria-controls="cd-site-drawer" aria-expanded="false" aria-label="Open navigation. Tap anywhere on the green header to open or close the menu.">
+    <span>Menu <b aria-hidden="true">☰</b></span>
+  </button>
+  <a class="cd-site-brand" href="./index.html">CASH<span>DUBLO</span></a>
+</header>
+<nav id="cd-site-drawer" class="cd-site-drawer" aria-label="Site navigation" aria-hidden="true" hidden inert>
+  <div class="cd-drawer-inner">
+    <a href="./index.html">Home</a>
+    <a href="./apps.html">All Apps</a><a href="./memberships.html">Memberships</a><a href="./website-design.html">Website Design</a><a href="./cashdublo-app-store.html">App Store</a><a href="./products.html">Products</a>
+    <details class="cd-drawer-group"><summary>Platforms</summary><div class="cd-drawer-links"><a href="./android.html">Android</a><a href="./iphone.html">iPhone / iOS</a><a href="./mac.html">Mac</a><a href="./windows.html">Windows</a><a href="./linux.html">Linux</a><a href="./terminal.html">Command Tools</a></div></details>
+    <a href="./front-ends.html">Front Ends</a><a href="./front-ends.html#web-frontends">Web Apps</a>
+    <details class="cd-drawer-group"><summary>Web Front Ends</summary><div class="cd-drawer-links"><a href="./front-ends/showcase.html">CashDublo Showcase</a><a href="./front-ends/online-course.html">CashDublo Online Course</a><a href="./front-ends/server.html">CashDublo Server</a><a href="./front-ends/travel-journal-web.html">Travel Journal Web</a><a href="./front-ends/marvin-web.html">Marvin's Website</a></div></details>
+    <details class="cd-drawer-group"><summary>App Front Ends</summary><div class="cd-drawer-links"><a href="./front-ends.html#app-ai2aisync">AI2AISync</a><a href="./front-ends.html#app-voice-model">VoiceModel</a><a href="./front-ends.html#app-marvin">Marvin</a><a href="./front-ends.html#app-pictureglobe">PictureGlobe</a><a href="./front-ends.html#app-mixology">Mixology</a><a href="./front-ends.html#app-hit-record">Hit Record</a><a href="./front-ends.html#app-testra-accuracy">Testra Accuracy</a><a href="./front-ends.html#app-dear-idea">Dear Idea</a><a href="./front-ends.html#app-go">GO</a><a href="./front-ends.html#app-travel-journal">Travel Journal</a><a href="./front-ends.html#app-say">SAY</a><a href="./front-ends.html#app-tts-widget">TTS Widget</a><a href="./front-ends.html#app-player">Player</a><a href="./front-ends.html#app-ai-cash-portfolio">AI Cash Portfolio</a><a href="./front-ends.html#app-cash-portfolio">Cash Portfolio</a><a href="./front-ends.html#app-apple2player">Apple2Player</a><a href="./front-ends.html#app-dear-idea-desktop">Dear Idea Desktop</a><a href="./front-ends.html#app-github-hq">GitHub HQ</a><a href="./front-ends.html#app-script-installer">Script-Run</a><a href="./front-ends.html#app-change-app-icons">Change App Icons</a><a href="./front-ends.html#app-cashdublo-coder">CashDublo Coder</a><a href="./front-ends.html#app-app-translator">App Translator</a><a href="./front-ends.html#app-build-manager">Build Manager</a><a href="./front-ends.html#app-rebuild-all">Rebuild-All</a><a href="./front-ends.html#app-podedpro">PodEdPro</a><a href="./front-ends.html#app-galaxy-repeat">Galaxy Repeat</a><a href="./front-ends.html#app-best-mac-file-manager">Best Mac File Manager</a><a href="./front-ends.html#app-patent-it">Patent It!</a><a href="./front-ends.html#app-crash-catcher">Crash Catcher</a><a href="./front-ends.html#app-wifi-tether">Wi-Fi Tether</a><a href="./front-ends.html#app-ai-teacher">AI Teacher</a><a href="./front-ends.html#app-apple-dextop">Apple Dextop</a><a href="./front-ends.html#app-contracts">Contracts</a><a href="./front-ends.html#app-secure-terminal">Secure Terminal</a></div></details>
+    <details class="cd-drawer-group"><summary>Games</summary><div class="cd-drawer-links"><a href="./games.html">Games</a><a href="./games.html#story">Story</a><a href="./games.html#storyline-engine">Storyline Engine</a><a href="./games.html#storyline-studios">Storyline Studios</a><a href="./games.html#storyline-console">Storyline Console</a><a href="./games.html#hacked">Storyline — HACKED</a><a href="./games.html#name-that-flag">Name That Flag</a></div></details>
+    <details class="cd-drawer-group"><summary>Courses</summary><div class="cd-drawer-links"><a href="./course.html">The Course & Games</a><a href="./apps.html#ai-teacher">AI Teacher — Standalone App</a><a href="./course.html#kali-linux">Kali Linux</a><a href="./course.html#android-apple-os">Android & Apple OS</a><a href="./course.html#godmode-hacking-modding">Godmode: Hacking and Modding</a><a href="./course.html#cashdublo-app-course">CashDublo App Course</a></div></details>
+    <a href="./code.html">The Code / My Source Code</a>
+    <a href="./news.html">Newsletter</a>
+    <a href="./rss.html">RSS Feeds</a>
+    <a href="./privacy.html">Privacy</a>
+    <a href="./index.html#about">About</a>
+  </div>
+</nav>"""
+
+
 def header(extra_all_apps=False, prefix=""):
-    # Cash's nav order (2026-11-15): All apps where About was,
-    # Privacy in About's place, About on the right. Front Ends
-    # sits between All apps and Privacy (Cash's order, later
-    # the same day).
-    links = menu(prefix)
-    links += f'<a href="{prefix}privacy.html">Privacy</a>'
-    links += f'<a href="{prefix}index.html#about">About</a>'
-    return (f'<header><a class="brand" href="{prefix}index.html">CASH<span>DUBLO</span></a>'
-            f"<nav>{links}</nav></header>")
+    # The standard block's links are "./..." at the root; a page in
+    # a subfolder (front-ends/) passes prefix="../" and gets the
+    # same block with "../..." links. extra_all_apps is kept for
+    # the existing call sites; the standard drawer always carries
+    # the All Apps link, so it no longer changes anything.
+    if prefix:
+        return STANDARD_HEADER.replace('href="./', 'href="' + prefix)
+    return STANDARD_HEADER
 
 def root_img(card):
     # Platform pages live at the repo root: a card icon path of
@@ -565,10 +594,9 @@ if ".pmenu{" not in apps:
     apps = apps.replace("</style>", PMENU_CSS + "</style>", 1)
 apps = fe_css(apps)
 old_home = '<a href="index.html">Home</a>'
-assert old_home in apps
-if '<span class="pmenu">' not in apps:
+if old_home in apps and '<span class="pmenu">' not in apps:
     apps = apps.replace(old_home, MENU, 1)
-apps = re.sub(r"<header>.*?</header>", header(), apps, count=1, flags=re.S)
+apps = re.sub(r"<header>.*?</header>(\s*<nav id=\"cd-site-drawer\".*?</nav>)?", header(), apps, count=1, flags=re.S)
 apps = repo_links_in_page(apps)
 apps = plats_in_page(apps)
 apps = cd_add(apps)
@@ -582,7 +610,7 @@ index = open(ipath).read()
 if ".pmenu{" not in index:
     index = index.replace("</style>", PMENU_CSS + "</style>", 1)
 index = fe_css(index)
-index = re.sub(r"<header>.*?</header>", header(), index, count=1, flags=re.S)
+index = re.sub(r"<header>.*?</header>(\s*<nav id=\"cd-site-drawer\".*?</nav>)?", header(), index, count=1, flags=re.S)
 index = cd_add(index)
 index = theme_css(index)
 open(ipath, "w").write(index)
@@ -595,7 +623,7 @@ privacy = open(ppath).read()
 if ".pmenu{" not in privacy:
     privacy = privacy.replace("</style>", PMENU_CSS + "</style>", 1)
 privacy = fe_css(privacy)
-privacy = re.sub(r"<header>.*?</header>", header(), privacy, count=1, flags=re.S)
+privacy = re.sub(r"<header>.*?</header>(\s*<nav id=\"cd-site-drawer\".*?</nav>)?", header(), privacy, count=1, flags=re.S)
 privacy = cd_add(privacy)
 privacy = theme_css(privacy, dark=True)
 open(ppath, "w").write(privacy)
