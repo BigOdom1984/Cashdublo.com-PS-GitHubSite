@@ -94,7 +94,7 @@ var name=(byId("cd-name").value||"").trim();
 var text=(byId("cd-comment").value||"").trim();
 if(!text){return;}
 var body="Name: "+(name||"(not given)")+"\nPage: "+location.pathname+"\n\n"+text;
-window.location.href="mailto:CashDublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
+window.location.href="mailto:cash.dublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
 var sent=byId("cd-sent");if(sent){sent.hidden=false;}
 });}
 })();

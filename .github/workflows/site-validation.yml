@@ -24,4 +24,5 @@ jobs:
       - name: Validate navigation standard and responsive layout
         run: |
           node tests/navigation-contract.test.cjs
+          node tests/newsletter-contract.test.cjs
           node tests/responsive-layout.test.mjs

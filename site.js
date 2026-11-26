@@ -1,16 +1,29 @@
 (function(){
 "use strict";
 function byId(i){return document.getElementById(i);}
-var welcome=byId("cd-welcome"),panel=byId("comments");
+var welcome=byId("cd-welcome"),panel=byId("comments"),returnFocus=null;
+if(!panel&&document.querySelector("[data-cd-open]")){
+panel=document.createElement("div");
+panel.id="comments";
+panel.className="cd-comments-overlay";
+panel.hidden=true;
+panel.innerHTML='<section class="cd-comments-card" role="dialog" aria-modal="true" aria-labelledby="cd-comments-title" aria-describedby="cd-comments-help"><button class="cd-comments-close" type="button" data-cd-close="comments" aria-label="Close comments">&times;</button><h2 id="cd-comments-title">Leave a comment.</h2><p id="cd-comments-help">Write your comment here. Your email app should open with the message addressed to CashDublo. Nothing is submitted by this page.</p><form id="cd-form"><label for="cd-name">Your name (optional)</label><input id="cd-name" type="text" autocomplete="name" placeholder="Your name"><label for="cd-comment">Your comment</label><textarea id="cd-comment" rows="5" required placeholder="Write your comment"></textarea><button class="cd-comments-submit" type="submit">Open email app</button><p class="cd-comments-note" id="cd-sent" role="status" aria-live="polite" hidden>Your email app should open. Nothing is sent until you press Send in that app.</p></form></section>';
+document.body.appendChild(panel);
+var commentStyle=document.createElement("style");
+commentStyle.textContent='.cd-comments-overlay{position:fixed;inset:0;z-index:2000;display:grid;place-items:center;padding:20px;background:rgba(12,28,26,.72)}.cd-comments-overlay[hidden]{display:none}.cd-comments-card{position:relative;width:min(100%,560px);max-height:min(90vh,760px);overflow:auto;padding:28px;background:#fffdf8;color:#172d2b;border:1px solid #d8d4c9;border-radius:20px;box-shadow:0 24px 80px rgba(0,0,0,.28)}.cd-comments-card h2{padding-right:36px}.cd-comments-card label{display:block;margin:14px 0 6px;font-weight:800}.cd-comments-card input,.cd-comments-card textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid #d8d4c9;border-radius:10px;background:#fff;color:#172d2b;font:inherit}.cd-comments-card textarea{resize:vertical}.cd-comments-card button:focus-visible,.cd-comments-card input:focus-visible,.cd-comments-card textarea:focus-visible{outline:3px solid #c65f4a;outline-offset:3px}.cd-comments-close{position:absolute;top:12px;right:14px;border:0;background:transparent;color:#172d2b;font-size:2rem;line-height:1;cursor:pointer}.cd-comments-submit{display:inline-flex;margin-top:14px;padding:13px 20px;border:0;border-radius:999px;background:#193d39;color:#f9f6ed;font:inherit;font-weight:850;cursor:pointer}.cd-comments-note{margin-top:12px;color:#596d68}@media(max-width:560px){.cd-comments-card{padding:24px 18px}}';
+document.head.appendChild(commentStyle);
+}
 function show(e){if(e){e.hidden=false;}}
 function hide(e){if(e){e.hidden=true;}}
-function openPanel(){hide(welcome);show(panel);var t=byId("cd-comment");if(t){t.focus();}}
+function restoreFocus(){if(returnFocus&&typeof returnFocus.focus==="function"){returnFocus.focus();}returnFocus=null;}
+function closePanel(){hide(panel);restoreFocus();}
+function openPanel(ev){returnFocus=ev&&ev.currentTarget;hide(welcome);show(panel);var t=byId("cd-comment");if(t){t.focus();}}
 var openers=document.querySelectorAll("[data-cd-open]"),i;
-for(i=0;i<openers.length;i++){openers[i].addEventListener("click",function(ev){ev.preventDefault();openPanel();});}
+for(i=0;i<openers.length;i++){openers[i].addEventListener("click",function(ev){ev.preventDefault();openPanel(ev);});}
 var closers=document.querySelectorAll("[data-cd-close]");
-for(i=0;i<closers.length;i++){closers[i].addEventListener("click",function(){hide(byId(this.getAttribute("data-cd-close")));});}
-[welcome,panel].forEach(function(ov){if(ov){ov.addEventListener("click",function(ev){if(ev.target===ov){hide(ov);}});}});
-document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){hide(welcome);hide(panel);}});
+for(i=0;i<closers.length;i++){closers[i].addEventListener("click",function(){var target=byId(this.getAttribute("data-cd-close"));hide(target);if(target===panel){restoreFocus();}});}
+[welcome,panel].forEach(function(ov){if(ov){ov.addEventListener("click",function(ev){if(ev.target===ov){if(ov===panel){closePanel();}else{hide(ov);}}});}});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){hide(welcome);closePanel();}});
 var seen=false;
 try{seen=!!localStorage.getItem("cdWelcomeSeen");}catch(e){}
 if(!seen){show(welcome);try{localStorage.setItem("cdWelcomeSeen","1");}catch(e){}}
@@ -21,7 +34,7 @@ var name=(byId("cd-name").value||"").trim();
 var text=(byId("cd-comment").value||"").trim();
 if(!text){return;}
 var body="Name: "+(name||"(not given)")+"\nPage: "+location.pathname+"\n\n"+text;
-window.location.href="mailto:CashDublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
+window.location.href="mailto:cash.dublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
 var sent=byId("cd-sent");if(sent){sent.hidden=false;}
 });}
 })();
@@ -147,12 +160,20 @@ ov.addEventListener("click", function(ev){ if(ev.target===ov){ close(); } });
 ov.querySelectorAll(".cdnews-story button").forEach(function(b){ b.addEventListener("click", function(){ b.parentElement.classList.toggle("open"); }); });
 return true;
 }
-var tries=0;
-var timer=setInterval(function(){
-tries++;
+function buildWhenOverlaysClear(){
 var age=document.getElementById("cd-age");
 var welcome=document.getElementById("cd-welcome");
 var busy=(age && !age.hidden) || (welcome && !welcome.hidden);
-if(!busy || tries>25){ clearInterval(timer); build(); }
-},800);
+if(busy){return false;}
+build();
+return true;
+}
+if(!buildWhenOverlaysClear()){
+if(typeof MutationObserver==="function"){
+var observer=new MutationObserver(function(){if(buildWhenOverlaysClear()){observer.disconnect();}});
+observer.observe(document.body,{attributes:true,attributeFilter:["hidden"],childList:true,subtree:true});
+}else{
+var timer=setInterval(function(){if(buildWhenOverlaysClear()){clearInterval(timer);}},800);
+}
+}
 })();

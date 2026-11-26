@@ -213,7 +213,7 @@ def fe_css(h):
 # a floating Comment button that stays on screen while the
 # visitor scrolls — both opening one comment panel. The panel
 # sends through the visitor's own email app to
-# CashDublo@gmail.com: this is a static site with no server
+# cash.dublo@gmail.com: this is a static site with no server
 # door of its own, so nothing is posted on the page and
 # nothing pretends to be. The block is ONE shared block: the
 # page builders append it, cd_add() patches it into the
@@ -298,7 +298,7 @@ var name=(byId("cd-name").value||"").trim();
 var text=(byId("cd-comment").value||"").trim();
 if(!text){return;}
 var body="Name: "+(name||"(not given)")+"\\nPage: "+location.pathname+"\\n\\n"+text;
-window.location.href="mailto:CashDublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
+window.location.href="mailto:cash.dublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
 var sent=byId("cd-sent");if(sent){sent.hidden=false;}
 });}
 })();
