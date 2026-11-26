@@ -25,7 +25,7 @@ and an idea is only in the app when a released version says it is.
 ## Who reads this
 
 CashDublo reads every suggestion. To reach us directly:
-CashDublo@gmail.com · BigOdom1984 on GitHub · @cashdublo on Instagram.
+cash.dublo@gmail.com · BigOdom1984 on GitHub · @cashdublo on Instagram.
 
 
 ## SUG-2026-11-19-001 — Complete the web front-end catalogue
