@@ -66,7 +66,7 @@ header{padding:22px 5vw;display:flex;justify-content:space-between;gap:20px;flex
   <h2>Update check-ins and the update log</h2>
   <p>When a CashDublo app checks for updates, it sends a small check-in to the CashDublo update log: the name of the app, the version of the app, and a random ID number the app made up the first time it was opened. The Player app also sends the list of folders it provides.</p>
 
-  <p>CashDublo updates are secured with an update key. The first time an app takes a secure update, the update server makes a private key for that one install and the app keeps it. After that, the app shows its key with each check-in so the server knows the update is going to the right install. The public log holds only a fingerprint of the key, never the key itself. The log also records each update download: which app, and which version it moved from and to.</p>
+  <p>CashDublo updates are secured with an update key. The first time an app takes a secure update, the update server makes a private key for that one install and the app keeps it. After that, the app shows its key with each check-in so the server knows the update is going to the right install. The log holds only a fingerprint of the key, never the key itself. The log also records each update download: which app, and which version it moved from and to.</p>
 
   <p>Check-ins may also carry daily totals: how many seconds the app was used in the foreground, how many seconds it ran in the background, the app's share of the battery it used that day, and how much battery its updates and check-ins used. These are totals only. The log never holds what you did in an app, which screens you opened, or any content.</p>
 
@@ -80,7 +80,7 @@ header{padding:22px 5vw;display:flex;justify-content:space-between;gap:20px;flex
 
   <p>If you turn off "Update from GitHub" in an app's settings, that app stops checking in, and its usage and battery totals stop with the check-ins. Its error reports stop too, because they travel with the check-ins.</p>
 
-  <p>The update log is designed not to collect your name, email address or the content you create. It can contain app and version details, an installation identifier, device model information, usage totals and error details. This is device and usage information, even when it does not identify you by name. The log is stored in a public GitHub repository folder, so its contents can be read by anyone. Do not assume that a public log is private.</p>
+  <p>The update log is designed not to collect your name, email address or the content you create. It can contain app and version details, an installation identifier, device model information, usage totals and error details. This is device and usage information, even when it does not identify you by name. The log is stored in a CashDublo repository on GitHub. That repository is private, so only CashDublo can read the log.</p>
 
   <h2>Nothing is sold</h2>
   <p>CashDublo does not sell your personal information. Some free-tier pricing proposals may include clearly labeled advertising, but a proposal is not proof that ads are currently active. Before advertising is enabled in an app, its privacy notice must identify the ad provider and explain what information is shared. Private financial records, legal documents, personal notes, voice recordings and other private content must not be used for ad targeting.</p>
