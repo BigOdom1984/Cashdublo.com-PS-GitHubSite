@@ -202,3 +202,9 @@ The site generator (`make_platform_pages.py`) now carries the **SUNLIGHT** block
 The standing pages were themed with the identical block in the same round: 62 pages — the generator family, the front-ends overview and its five pages, the remaining root pages on the house palette, and the 34 per-app pages under `apps/`. No page's content changed; each themed page differs from its pinned predecessor only by the added block.
 
 **Named not-upgradable in this round:** the `corporate/` site (its own design system, external CSS), the per-AI folders under `all websites/` (each its own design), and the retired v2 navigation assets. SQL record was written first in `CHANGES.sql`, as required.
+
+## 2026-11-25 — Web front-end catalogue accuracy corrections staged
+
+Staged a limited set of evidence-backed corrections in the web-app section of front-ends.html. Cash Portfolio Web and AI Cash Portfolio Web now show TESTING and no live address, consistent with their current specifications. Name That Flag Web is labeled as a local-only prototype. Kali Linux Training Course Web is added as a player shell / outline only, with no lesson-content or deployment claim. Source-repository links were removed from these four cards and replaced with public overview links where available.
+
+Hit Record Web and HACKED / The Hack were deliberately not relabeled because their current source repositories describe different product identities. Those require Founder confirmation. The shared navigation was not changed because its existing Web Apps link already points to the web-app catalogue. A focused regression test was added; it must be run in a repository checkout before merge. This is a draft staging change only, not a merge or production publication.
