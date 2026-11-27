@@ -25,6 +25,24 @@ and get the app through the store shelf on the CashDublo server.
   storefront's "Browse all as cards" link and the All apps
   page's hero link. The stack page also links back to the
   storefront shelf for anyone who wants the grid instead.
+- `../login.html` — the customer sign-in page. Its Google
+  and Apple doors are drawn to each provider's published
+  button rules ("Continue with Google" on white with the
+  four-color G mark; "Continue with Apple" in white on
+  black with the Apple mark), standing full width above
+  the GitHub and Microsoft doors. The page reads its
+  configuration at load from the server's `/api/auth-config`
+  door and enables its doors only when that door answers
+  configured; until then every door stands disabled under
+  a plain line saying sign-in is not switched on yet —
+  nothing is faked. The storefront's hero carries the
+  account line that leads here: a Sign in link while
+  signed out or dormant, and — once sign-in is switched
+  on and a session stands — the signed-in name as the
+  provider gave it, with a Sign out control. The
+  storefront loads the sign-in library only when the
+  configuration door answers configured, so a dormant
+  storefront makes no new outside calls.
 - `apps-data.js` — the store's data file. **Generated — do not
   edit by hand.** It carries one listing per App Catalog row that
   has a display name: slug, name, version, status, description,
