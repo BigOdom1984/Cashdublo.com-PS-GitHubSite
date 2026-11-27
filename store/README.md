@@ -16,6 +16,15 @@ and get the app through the store shelf on the CashDublo server.
   its address (`app.html?app=<slug>`) and shows that app's name,
   version, status, platforms, description, price terms and its
   Get panel. Every listing on the storefront links here.
+- `cards.html` — all applications as a card stack: every listing
+  as a card loaded one over the other in a single stack, built
+  for the phone first — scrolling moves through the stack one
+  card at a time, each card settles in front, and tapping a card
+  opens that app's store page. It reads the same `apps-data.js`
+  and carries no data of its own. Two doors lead here: the
+  storefront's "Browse all as cards" link and the All apps
+  page's hero link. The stack page also links back to the
+  storefront shelf for anyone who wants the grid instead.
 - `apps-data.js` — the store's data file. **Generated — do not
   edit by hand.** It carries one listing per App Catalog row that
   has a display name: slug, name, version, status, description,
