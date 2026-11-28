@@ -41,6 +41,38 @@
   footer{margin-top:56px;border-top:1px solid var(--line);padding:28px 0 44px;color:var(--mute);font-size:14px}
   footer .cols{display:flex;flex-wrap:wrap;gap:28px;justify-content:space-between}
   .note{margin-top:18px;font-size:12px;color:var(--gold-dim);letter-spacing:.08em}
+  .reg-intro{color:var(--mute);font-size:15px;max-width:680px;margin:-6px 0 18px}
+  .reg-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:14px}
+  .reg-controls .grow{flex:1 1 260px}
+  .reg-controls label{display:block;font-size:11px;letter-spacing:.18em;color:var(--gold-dim);
+    text-transform:uppercase;margin-bottom:6px}
+  .reg-controls input,.reg-controls select{width:100%;background:var(--panel);color:var(--bone);
+    border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px}
+  .reg-controls input:focus,.reg-controls select:focus{outline:none;border-color:var(--gold)}
+  .reg-count{color:var(--gold-dim);font-size:13px;letter-spacing:.1em;margin-bottom:16px;text-transform:uppercase}
+  .reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .reg-card{display:flex;flex-direction:column}
+  .reg-card .head{display:flex;align-items:center;gap:12px}
+  .reg-card .tile{position:relative;flex:0 0 54px;width:54px;height:54px;border:1px solid var(--gold-dim);
+    border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    font-family:Anton,sans-serif;font-size:19px;color:var(--gold);background:#12100a}
+  .reg-card .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .reg-card h3{font-size:22px}
+  .reg-card .tagline{color:var(--gold-dim);font-size:13.5px;margin:10px 0 0;min-height:0}
+  .reg-card .desc{color:var(--mute);font-size:14px;margin:8px 0 12px;min-height:0}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+  .chip{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    border:1px solid var(--gold-dim);border-radius:999px;padding:2px 9px}
+  .chip.main{color:#050505;background:var(--gold);border-color:var(--gold);font-weight:600}
+  .reg-card .meta{font-size:12.5px;color:var(--mute);margin-top:2px}
+  .reg-card .new{font-size:13px;color:var(--bone);margin:10px 0 0;min-height:0}
+  .reg-card .new b{color:var(--gold);font-weight:600}
+  .shots{display:flex;gap:8px;overflow-x:auto;margin:12px 0 2px;padding-bottom:6px}
+  .shots img{height:118px;border:1px solid var(--line);border-radius:8px;flex:0 0 auto}
+  .price-line{font-weight:600;color:var(--bone);margin-top:auto;padding-top:12px}
+  .price-line small{display:block;font-weight:400;color:var(--mute);font-size:12.5px}
+  .reg-empty{color:var(--mute);font-size:15px;border:1px dashed var(--gold-dim);border-radius:14px;
+    padding:22px;text-align:center}
 </style>
 <link rel="stylesheet" href="/assets/site-navigation.css"></head>
 <body>
@@ -100,30 +132,27 @@
   </section>
 
   <section>
-    <h2>The Shelf</h2>
-    <div class="grid">
-      <div class="card"><h3>AI Cash Portfolio</h3><p>The portfolio with an AI riding shotgun on the numbers.</p><div class="plat">Android · iPhone</div></div>
-      <div class="card"><h3>Player</h3><p>Your music library, your rules — built for the songs that are hard to replace.</p><div class="plat">Android</div></div>
-      <div class="card"><h3>Apple2Player</h3><p>Your Apple Music library, carried over to the phone in your pocket.</p><div class="plat">Mac · Windows</div></div>
-      <div class="card"><h3>TTS Widget</h3><p>Text, spoken aloud, one tap from your home screen.</p><div class="plat">Android</div></div>
-      <div class="card"><h3>SAY</h3><p>English learning that starts from how people actually talk.</p><div class="plat">Android · iPhone</div></div>
-      <div class="card"><h3>Gallery Auto Sorter</h3><p>A camera roll that files itself — virtual folders, originals untouched.</p><div class="plat">Android · iPhone</div></div>
-      <div class="card"><h3>Galaxy Repeat</h3><p>Speed-montage maker: pick the length, the video finds its moments.</p><div class="plat">Android</div></div>
-      <div class="card"><h3>Legal Kit</h3><p>The law layer for builders — research and disclaimers before you ship.</p><div class="plat">Android · Web</div></div>
-      <div class="card"><h3>Dear Idea</h3><p>Ideas, kept like treasure — with the patent drawings to match.</p><div class="plat">Android · iPhone · Desktop</div></div>
-      <div class="card"><h3>Work Log</h3><p>Every app worked on, where in the world, and when — the builder's own ledger.</p><div class="plat">Android</div></div>
-      <div class="card"><h3>Connection Fixer</h3><p>When the internet lies to you, this finds the truth.</p><div class="plat">Mac · Windows</div></div>
-      <div class="card"><h3>How to Harvest</h3><p>Seed-making and harvest know-how for everything that grows — an encyclopedia of living plants.</p><div class="plat">Android · iPhone · Web (planned)</div></div>
+    <h2>The Full Shelf — The Whole Registry</h2>
+    <p class="reg-intro">Every app, game, tool and record in the CashDublo registry —
+    the same cards and information the store carries, drawn from the registry itself.
+    Search the shelf, or narrow it by platform and type.</p>
+    <div class="reg-controls">
+      <div class="grow">
+        <label for="reg-search">Search</label>
+        <input id="reg-search" type="search" placeholder="Search the registry — a name, a word, a kind…">
+      </div>
+      <div>
+        <label for="reg-platform">Platform</label>
+        <select id="reg-platform"></select>
+      </div>
+      <div>
+        <label for="reg-category">Type</label>
+        <select id="reg-category"></select>
+      </div>
     </div>
-  </section>
-
-  <section>
-    <h2>Games</h2>
-    <div class="grid">
-      <div class="card"><h3>Name That Flag</h3><p>235 flags, called by voice — kids, aficionados, and the drinkers' staking table.</p><div class="plat">Android · Web (planned)</div></div>
-      <div class="card"><h3>The Hack🪓</h3><p>A real educational game: learn the craft by playing the story.</p><div class="plat">Android · Web (planned)</div></div>
-      <div class="card"><h3>GO</h3><p>A snake of everywhere you have been in the world, drawn as you go.</p><div class="plat">Android · iPhone</div></div>
-    </div>
+    <p class="reg-count" id="reg-count"></p>
+    <div class="reg-grid" id="reg-grid"></div>
+    <p class="reg-empty" id="reg-empty" hidden>Nothing in the registry matches that — clear the search, or pick another platform or type.</p>
   </section>
 
   <footer>
@@ -136,5 +165,124 @@
     built on the app-store structure and the house's own gold. The live official site stands at the root of this repo.</div>
   </footer>
 </div>
+<script src="registry-data.js"></script>
+<script>
+var PLAT_LABELS = {"Android":"Android", "iOS":"iOS", "Mac":"Mac", "Windows":"Windows", "Linux":"Linux", "web":"Web", "desktop":"Desktop"};
+var PLAT_ORDER = ["Android", "iOS", "Mac", "Windows", "Linux", "web", "desktop"];
+var CAT_LABELS = {app:"App", game:"Game", tool:"Tool", course:"Course", model:"AI model", server:"Server", website:"Website", store:"Store", module:"Module", record:"Record"};
+var CAT_ORDER = ["app", "game", "tool", "course", "model", "server", "website", "store", "module", "record"];
+
+function esc(s){
+  return String(s === null || s === undefined ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function initials(name){
+  var parts = String(name || "").split(/\s+/).filter(function(w){ return w; });
+  if (!parts.length) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0].charAt(0) + parts[1].charAt(0)).toUpperCase();
+}
+function priceLine(a){
+  if (a.price !== null && a.price !== undefined && a.price !== "") {
+    return { main: "$" + a.price, sub: a.price_model ? String(a.price_model) : "" };
+  }
+  if (a.price_model === "trial") return { main: "Free trial", sub: a.trial_length ? String(a.trial_length) : "" };
+  if (a.price_model === "freemium") return { main: "Free with ads", sub: "" };
+  if (a.price_model) return { main: String(a.price_model), sub: "" };
+  return { main: "Price TBA", sub: "" };
+}
+function museFilterApps(apps, q, plat, cat){
+  q = String(q || "").trim().toLowerCase();
+  return apps.filter(function(a){
+    if (plat && (a.platforms || []).indexOf(plat) === -1) return false;
+    if (cat && a.category !== cat) return false;
+    if (q) {
+      var hay = [a.display_name, a.tagline, a.description, CAT_LABELS[a.category] || a.category]
+        .concat(a.subcategories || []).join(" ").toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
+    return true;
+  });
+}
+function cardHtml(a){
+  var p = priceLine(a);
+  var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; }).join(" · ");
+  var chips = "";
+  if (a.category) chips += '<span class="chip main">' + esc(CAT_LABELS[a.category] || a.category) + '</span>';
+  (a.subcategories || []).forEach(function(s){ chips += '<span class="chip">' + esc(s) + '</span>'; });
+  var ffs = (a.form_factors || []).join(" · ");
+  var meta = [];
+  if (a.version) meta.push("Version " + a.version);
+  if (a.status) meta.push(a.status);
+  var shots = (a.screenshots || []).filter(function(x){ return x; });
+  var shotsHtml = "";
+  if (shots.length) {
+    shotsHtml = '<div class="shots">' + shots.map(function(src, i){
+      return '<img src="../../' + esc(src) + '" alt="' + esc(a.display_name) + ' — layout ' + (i + 1) + ' of ' + shots.length + '" loading="lazy" onerror="this.remove()">';
+    }).join("") + '</div>';
+  }
+  var link = (a.get_links && a.get_links.web_store) ||
+    "https://bigodom1984-github-io.pages.dev/store/app.html?app=" + encodeURIComponent(a.slug);
+  return '<article class="card reg-card">' +
+    '<div class="head"><span class="tile">' + esc(initials(a.display_name)) +
+      '<img src="../../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" onerror="this.remove()"></span>' +
+      '<h3>' + esc(a.display_name) + '</h3></div>' +
+    (a.tagline ? '<p class="tagline">' + esc(a.tagline) + '</p>' : '') +
+    '<p class="desc">' + esc(a.description || "") + '</p>' +
+    (chips ? '<div class="chips">' + chips + '</div>' : '') +
+    (plats ? '<div class="plat">' + esc(plats) + '</div>' : '') +
+    (ffs ? '<div class="meta">' + esc(ffs) + '</div>' : '') +
+    (meta.length ? '<div class="meta">' + esc(meta.join(" · ")) + '</div>' : '') +
+    (a.whats_new ? '<p class="new"><b>What\'s new:</b> ' + esc(a.whats_new) + '</p>' : '') +
+    shotsHtml +
+    '<div class="price-line">' + esc(p.main) + (p.sub ? '<small>' + esc(p.sub) + '</small>' : '') + '</div>' +
+    '<a class="btn" href="' + esc(link) + '">View in the store</a>' +
+    '</article>';
+}
+
+var APPS = window.CD_MUSE_APPS || [];
+var grid = document.getElementById("reg-grid");
+var count = document.getElementById("reg-count");
+var empty = document.getElementById("reg-empty");
+var searchBox = document.getElementById("reg-search");
+var platSel = document.getElementById("reg-platform");
+var catSel = document.getElementById("reg-category");
+
+(function buildSelects(){
+  var pseen = {}, cseen = {};
+  APPS.forEach(function(a){
+    (a.platforms || []).forEach(function(p){ pseen[p] = true; });
+    if (a.category) cseen[a.category] = true;
+  });
+  var popts = '<option value="">All platforms</option>';
+  PLAT_ORDER.forEach(function(p){
+    if (pseen[p]) popts += '<option value="' + esc(p) + '">' + esc(PLAT_LABELS[p] || p) + '</option>';
+  });
+  Object.keys(pseen).forEach(function(p){
+    if (PLAT_ORDER.indexOf(p) === -1) popts += '<option value="' + esc(p) + '">' + esc(p) + '</option>';
+  });
+  platSel.innerHTML = popts;
+  var copts = '<option value="">All types</option>';
+  CAT_ORDER.forEach(function(c){
+    if (cseen[c]) copts += '<option value="' + esc(c) + '">' + esc(CAT_LABELS[c] || c) + '</option>';
+  });
+  Object.keys(cseen).forEach(function(c){
+    if (CAT_ORDER.indexOf(c) === -1) copts += '<option value="' + esc(c) + '">' + esc(c) + '</option>';
+  });
+  catSel.innerHTML = copts;
+})();
+
+function render(){
+  var list = museFilterApps(APPS, searchBox.value, platSel.value, catSel.value);
+  grid.innerHTML = list.map(cardHtml).join("");
+  count.textContent = "Showing " + list.length + " of " + APPS.length + " in the registry";
+  empty.hidden = list.length !== 0;
+}
+searchBox.addEventListener("input", render);
+platSel.addEventListener("change", render);
+catSel.addEventListener("change", render);
+render();
+</script>
 <script src="/assets/site-navigation.js" defer></script></body>
 </html>
