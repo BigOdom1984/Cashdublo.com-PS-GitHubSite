@@ -1,0 +1,117 @@
+/* Grok-design versions — Grok folder. Palette is the Grok page's
+   own: bg #070708, surface #111113, surface-2 #18181b,
+   border #27272a, text #fafafa, muted #a1a1aa, accent #22d3ee,
+   accent-2 #a78bfa, deep #0c0c0e. */
+:root{
+  --bg:#070708; --surface:#111113; --surface-2:#18181b;
+  --border:#27272a; --text:#fafafa; --muted:#a1a1aa;
+  --accent:#22d3ee; --accent-2:#a78bfa; --deep:#0c0c0e;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);
+  font:16px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--accent)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* The static top — the Grok page's own header, standing on every
+   edition page: brand left, the page's nav right. */
+.edition-top{position:sticky;top:0;z-index:50;background:rgba(7,7,8,0.85);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  padding:14px 5vw;display:flex;justify-content:space-between;
+  align-items:center;gap:20px}
+.edition-brand{font-weight:900;font-size:1.35rem;letter-spacing:-0.04em;color:var(--text)}
+.edition-brand span{color:var(--accent)}
+.edition-nav{display:flex;gap:22px;flex-wrap:wrap}
+.edition-nav a{font-weight:600;font-size:0.9rem;opacity:0.9;color:var(--text)}
+.edition-nav a:hover{opacity:1;color:var(--accent)}
+@media(max-width:800px){
+  .edition-top{flex-direction:column;align-items:flex-start}
+  .edition-nav{gap:14px}
+}
+
+/* Page heading block on the generated list pages. */
+.edition-head{padding:70px 0 8px}
+.section-kicker{font-size:0.72rem;font-weight:800;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--accent-2);margin-bottom:10px}
+.edition-head h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:0.98;
+  letter-spacing:-0.05em;font-weight:900;margin-bottom:16px}
+.edition-head .intro{color:var(--muted);max-width:640px;font-size:1.08rem}
+.edition-section{padding:30px 0 6px}
+.edition-section h2{font-size:clamp(1.9rem,4.5vw,3.2rem);letter-spacing:-0.04em;
+  line-height:1.1;margin-bottom:16px}
+
+/* Carried-over content: the palette restyle. The original pages keep
+   their own layout styles; these rules repaint the surfaces, words
+   and controls in the Grok folder's design. */
+.grok-content{max-width:1140px;margin:0 auto;padding:28px 24px 8px;background:var(--bg);color:var(--text)}
+.grok-content h1,.grok-content h2,.grok-content h3{color:var(--text) !important}
+.grok-content a{color:var(--accent)}
+.grok-content section,.grok-content .hero,.grok-content .band,.grok-content .section-band,
+.grok-content .featured,.grok-content .belief,.grok-content .ticker,.grok-content .full-bleed{
+  background:var(--bg) !important;color:var(--text) !important}
+.grok-content .card,.grok-content article,.grok-content .panel,.grok-content .tile,
+.grok-content .box,.grok-content .item{
+  background:var(--surface) !important;color:var(--text) !important;border-color:var(--border) !important}
+.grok-content p,.grok-content li,.grok-content td,.grok-content span{color:inherit}
+.grok-content table{border-color:var(--border)}
+.grok-content th,.grok-content td{border-color:var(--border)}
+.grok-content input,.grok-content select,.grok-content textarea{
+  background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:8px}
+.grok-content button,.grok-content .btn{
+  background:var(--surface);color:var(--accent);border:1px solid var(--border);border-radius:999px}
+.grok-content img{max-width:100%}
+
+/* Registry cards — the Grok page's own card vocabulary. */
+.reg-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-top:28px}
+.reg-controls .grow{flex:1 1 260px}
+.reg-controls label{display:block;font-size:0.68rem;font-weight:800;
+  letter-spacing:0.16em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+.reg-controls input,.reg-controls select{width:100%;background:var(--surface);color:var(--text);
+  border:1px solid var(--border);border-radius:12px;padding:11px 14px;font:inherit;font-size:0.95rem}
+.reg-controls input:focus,.reg-controls select:focus{outline:none;border-color:var(--accent)}
+.reg-count{color:var(--muted);font-size:0.8rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;margin-top:18px}
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;
+  padding:22px;display:flex;flex-direction:column;transition:border-color 0.15s,transform 0.15s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card h3{font-size:1.2rem;letter-spacing:-0.03em;margin:14px 0 8px}
+.card p{color:var(--muted);font-size:0.92rem;flex:1}
+.reg-card .head{display:flex;align-items:center;gap:12px}
+.reg-card .tile{position:relative;flex:0 0 54px;width:54px;height:54px;
+  border:1px solid var(--border);border-radius:14px;display:flex;align-items:center;
+  justify-content:center;overflow:hidden;background:var(--surface-2);
+  font-weight:900;font-size:1.05rem;letter-spacing:-0.03em;color:var(--accent)}
+.reg-card .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reg-card h3{margin:0}
+.reg-card .tagline{color:var(--accent-2);font-size:0.88rem;margin-top:12px;flex:none}
+.reg-card .desc{color:var(--muted);font-size:0.92rem;margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.chip{font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:4px 9px;border-radius:99px;border:1px solid var(--border);color:var(--muted)}
+.chip.main{background:var(--accent);border-color:var(--accent);color:#0a0a0a}
+.plat{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent)}
+.reg-card .meta{color:var(--muted);font-size:0.8rem;margin-top:4px}
+.reg-card .new{color:var(--text);font-size:0.88rem;margin-top:10px;flex:none}
+.reg-card .new b{color:var(--accent)}
+.shots{display:flex;gap:8px;overflow-x:auto;margin:12px 0 2px;padding-bottom:6px}
+.shots img{height:118px;border:1px solid var(--border);border-radius:10px;flex:0 0 auto}
+.price-line{font-weight:700;margin-top:auto;padding-top:14px}
+.price-line small{display:block;font-weight:400;color:var(--muted);font-size:0.82rem}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:13px 22px;border-radius:999px;
+  font-weight:700;font-size:0.95rem;transition:all 0.15s;margin-top:14px;align-self:flex-start}
+.btn-ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.reg-empty{color:var(--muted);font-size:0.98rem;border:1px dashed var(--border);
+  border-radius:18px;padding:22px;text-align:center;margin-top:16px}
+.grok-anchor{display:block;height:0;overflow:hidden}
+
+.edition-foot{background:var(--deep);border-top:1px solid var(--border);
+  padding:48px 24px;text-align:center;color:var(--muted);margin-top:56px}
+.edition-foot a{color:var(--accent)}
+.edition-foot strong{color:var(--text)}
+.edition-note{max-width:1140px;margin:0 auto;padding:0 24px 30px;color:var(--muted);
+  font-size:0.8rem;text-align:center}
