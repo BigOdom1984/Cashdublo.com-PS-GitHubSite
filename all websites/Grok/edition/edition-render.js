@@ -57,8 +57,7 @@ function cardHtml(a){
       return '<img src="' + IMG_ROOT + esc(src) + '" alt="' + esc(a.display_name) + ' — layout ' + (i + 1) + ' of ' + shots.length + '" loading="lazy" onerror="this.remove()">';
     }).join("") + '</div>';
   }
-  var link = (a.get_links && a.get_links.web_store) ||
-    "https://bigodom1984-github-io.pages.dev/store/app.html?app=" + encodeURIComponent(a.slug);
+  var link = IMG_ROOT + "store/app.html?app=" + encodeURIComponent(a.slug);
   return '<article class="card reg-card">' +
     '<div class="head"><span class="tile">' + esc(initials(a.display_name)) +
       '<img src="' + IMG_ROOT + 'img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" onerror="this.remove()"></span>' +

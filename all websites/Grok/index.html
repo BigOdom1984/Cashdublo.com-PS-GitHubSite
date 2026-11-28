@@ -52,6 +52,18 @@
   nav a { font-weight: 600; font-size: 0.9rem; opacity: 0.9; }
   nav a:hover { opacity: 1; color: var(--accent); }
 
+  /* Navigation colors — this page's own palette in every state:
+     resting menu items wear the text and muted tones, hover and
+     focus wear the cyan accent, the pressed state the purple.
+     No browser default link blue or visited purple in the menu. */
+  .brand, .brand:visited { color: var(--text); }
+  nav a, nav a:visited { color: var(--text); }
+  nav a:focus-visible { opacity: 1; color: var(--accent); }
+  nav a:active { color: var(--accent-2); }
+  .btn-primary, .btn-primary:visited { color: #0a0a0a; }
+  .btn-ghost, .btn-ghost:visited { color: var(--text); }
+  .card a:visited { color: var(--accent); }
+
   /* Hero */
   .hero {
     padding: clamp(70px, 12vw, 140px) 5vw 90px;
@@ -256,7 +268,9 @@
     text-align: center;
     color: var(--muted);
   }
-  footer a { color: var(--accent); }
+  footer a { color: var(--muted); }
+  footer a:visited { color: var(--muted); }
+  footer a:hover { color: var(--accent); }
   footer strong { color: var(--text); }
 
   /* Responsive */
@@ -374,7 +388,7 @@
   <nav>
     <a href="#about">About</a>
     <a href="#featured">Apps</a>
-    <a href="../../apps.html">All Apps</a>
+    <a href="#registry">All Apps</a>
     <a href="../../front-ends.html">Front Ends</a>
     <a href="../../privacy.html">Privacy</a>
   </nav>
@@ -387,7 +401,7 @@
     <h1>Make useful things.<br>Stay free to live.</h1>
     <p>I'm Greg Odom. I build apps for music, money, travel, learning and ideas — independently, thoughtfully, and with curiosity about what comes next.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="../../apps.html">Explore every app →</a>
+      <a class="btn btn-primary" href="#registry">Explore every app →</a>
       <a class="btn btn-ghost" href="#about">Meet the founder</a>
       <a class="btn btn-ghost" href="../../front-ends.html">Front Ends hub</a>
     </div>
@@ -456,7 +470,7 @@
     </div>
 
     <p style="margin-top:36px">
-      <a class="btn btn-primary" href="../../apps.html">See the complete collection →</a>
+      <a class="btn btn-primary" href="#registry">See the complete collection →</a>
     </p>
   </section>
 
@@ -526,7 +540,7 @@
   <strong>CashDublo · Apps by Greg Odom</strong>
   <p style="margin:12px 0">Independent software. Built with purpose. Made with care.</p>
   <p>
-    <a href="../../apps.html">All apps</a> ·
+    <a href="#registry">All apps</a> ·
     <a href="../../privacy.html">Privacy</a> ·
     <a href="https://github.com/BigOdom1984">GitHub</a>
   </p>
@@ -595,8 +609,7 @@ function cardHtml(a){
       return '<img src="../../' + esc(src) + '" alt="' + esc(a.display_name) + ' — layout ' + (i + 1) + ' of ' + shots.length + '" loading="lazy" onerror="this.remove()">';
     }).join("") + '</div>';
   }
-  var link = (a.get_links && a.get_links.web_store) ||
-    "https://bigodom1984-github-io.pages.dev/store/app.html?app=" + encodeURIComponent(a.slug);
+  var link = "../../store/app.html?app=" + encodeURIComponent(a.slug);
   return '<article class="card reg-card">' +
     '<div class="head"><span class="tile">' + esc(initials(a.display_name)) +
       '<img src="../../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" onerror="this.remove()"></span>' +
