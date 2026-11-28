@@ -39,6 +39,13 @@ h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.05;letter-spacing:-.06em;mar
 .state{font-size:.78rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:7px 12px;color:#7c5d36}
 .view{font-weight:850;text-decoration:none;color:#a64e3e}
 .plats{margin-top:14px;font-size:.64rem;font-weight:800;letter-spacing:.14em;color:#8a7a52}
+.rating{font-size:.9rem;font-weight:800;color:#7c5d36;margin:0 0 6px}
+.rating .none{color:var(--muted);font-weight:700}
+.updated{font-size:.8rem;font-weight:750;color:var(--muted);margin:8px 0 0}
+.contact-form{display:grid;gap:10px;max-width:640px}
+.contact-form label{font-size:.9rem;font-weight:800}
+.contact-form input,.contact-form textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#ffffff;color:var(--ink);margin-top:5px}
+.contact-form button{justify-self:start;padding:11px 22px;border-radius:999px;font:inherit;font-weight:900;background:var(--deep);color:#f5f0e6;border:1px solid var(--deep);cursor:pointer}
 .info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
 .info-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}
 .info-card h3{margin:0 0 8px}
@@ -52,7 +59,7 @@ footer a{color:var(--lime)}
 <section class="hero"><div class="kicker">The CashDublo store</div><h1>CashDublo App Store</h1>
 <p>Every CashDublo app, game and tool on one shelf — the same store the CashDublo App Store app carries, here on the web. Browse the shelves, check each app's price terms, and get the ones that are ready through the CashDublo server.</p>
 <p><span class="tag">One catalogue · every platform · purchases complete through the server shelf</span></p>
-<p class="account" id="store-account"><a href="login.html">Sign in to your CashDublo account</a></p></section>
+<p class="account" id="store-account"><a href="login.html">Sign in to your CashDublo account</a> · <a href="account.html">Your account &amp; membership</a></p></section>
 <main class="wrap">
 <p class="shelf" id="shelf-status">Purchases and downloads complete through the store shelf on the CashDublo server — the same shelf the App Store app reads. A download started is a download finished: packages move in pieces that resume when a connection drops, and every package is checked against its recorded fingerprint before it is installed.</p>
 <div class="toolbar">
@@ -65,6 +72,15 @@ footer a{color:var(--lime)}
 <div class="grid" id="store-grid"></div>
 <noscript><p class="notice">The shelves need JavaScript to load. The full catalogue also stands on the <a href="apps.html">All apps page</a>.</p></noscript>
 
+<section id="talk-to-the-developer"><h2>Talk to the developer</h2>
+<p>Every CashDublo app is built by one developer — and this store is the standing door to him. A question about an app, a problem with a download, an idea for what an app should do next: write it here. The form opens your own mail app with the letter addressed and started; nothing is sent from this page, and nothing is collected by it.</p>
+<form class="contact-form" id="dev-contact">
+<label>About which app?<input type="text" id="dc-app" autocomplete="off" placeholder="The app's name — or leave blank for the store itself"></label>
+<label>Your message<textarea id="dc-message" rows="5" placeholder="What happened, or what you would like to see…"></textarea></label>
+<button type="submit">Write to the developer →</button>
+<p class="muted">Addressed to cash.dublo@gmail.com, the public CashDublo address — the same address the footer carries.</p>
+</form>
+</section>
 <section id="about-this-store"><h2>About this store — the platform behind the shelves</h2>
 <p>A platform for developers to present their apps, distribute approved builds, manage customer purchases and subscriptions, handle licensing, and deliver updates through one coordinated service. The shelves above are that platform's catalogue, live on the web.</p>
 <div class="info-grid">
@@ -77,7 +93,7 @@ footer a{color:var(--lime)}
 <section><h2>Product-specific pricing</h2><p>The App Store is the catalogue, checkout, licensing and delivery layer. It does not impose a separate platform membership just to browse or purchase an app. Each product owns its own price and customer entitlement: app memberships belong to apps; engine and studio licences belong to their development platforms; published games and web apps own their own purchase or access terms.</p><p class="muted">See the <a href="memberships.html#platform-pricing">CashDublo commercial architecture and pricing guide</a> for product ownership, proposed prices and items whose prices have not yet been set.</p></section>
 <section><h2>Security and customer protections</h2><p>Signing operations are handled only through the designated protected service. This public page intentionally contains no private signing material or operational key details. Customer access is controlled by documented entitlements, notices, grace periods and appeal procedures. Local customer data must not be destroyed or held hostage when a hosted entitlement is suspended.</p><p>Lawful criticism, negative reviews and complaints are not grounds for suspension or fees. Enforcement is limited to genuine material breaches such as fraud, security abuse or unlawful use, under clear published terms.</p></section>
 <section><h2>Availability</h2><p>This page is the storefront; purchases complete through the CashDublo server shelf. Do not treat a listing as purchasable until the platform, payment processing, licensing, support terms and release status have been verified for it.</p>
-<p><a href="website-design.html">Website design services</a> · <a href="memberships.html">App pricing and memberships</a> · <a href="apps.html">Browse all apps</a></p></section>
+<p><a href="website-design.html">Website design services</a> · <a href="memberships.html">App pricing and memberships</a> · <a href="account.html">Your account &amp; membership</a> · <a href="apps.html">Browse all apps</a></p></section>
 </main>
 <footer>CashDublo — built by Cash.<div class="cd-footer-legal"><a href="privacy.html">Privacy Policy</a><a href="mailto:cash.dublo@gmail.com">Contact Us</a></div></footer>
 <script src="store/apps-data.js"></script>
@@ -105,6 +121,22 @@ function initials(name){
   if (!words.length) return "CD";
   return (words[0].charAt(0) + (words.length > 1 ? words[1].charAt(0) : "")).toUpperCase();
 }
+function ratingHtml(a){
+  var r = a.ratings;
+  if (r && typeof r.average === "number" && r.count > 0) {
+    var full = Math.round(r.average), stars = "";
+    for (var i = 1; i <= 5; i++) stars += i <= full ? "★" : "☆";
+    return '<p class="rating"><span aria-hidden="true">' + stars + '</span> ' + r.average.toFixed(1) + ' · ' + r.count + (r.count === 1 ? ' rating' : ' ratings') + '</p>';
+  }
+  return '<p class="rating"><span class="none">No ratings yet</span></p>';
+}
+var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function updatedHtml(a){
+  if (!a.last_code_at) return "";
+  var d = new Date(a.last_code_at);
+  if (isNaN(d.getTime())) return "";
+  return '<p class="updated">Updated ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + '</p>';
+}
 function card(a){
   var p = priceLine(a);
   var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; }).join(" · ").toUpperCase();
@@ -116,9 +148,11 @@ function card(a){
     '<img src="img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" width="74" height="74" onerror="this.remove()">' +
     (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') + '</div>' +
     '<h3>' + esc(a.display_name) + '</h3>' +
+    ratingHtml(a) +
     '<p class="desc">' + esc(a.description || "") + '</p>' +
     '<div class="price-line">' + esc(p.main) + (p.sub ? '<small>' + p.sub + '</small>' : '') + '</div>' +
     '<div class="actions">' + action + '<a class="view" href="store/app.html?app=' + encodeURIComponent(a.slug) + '">View in store →</a></div>' +
+    updatedHtml(a) +
     '<div class="plats">' + esc(plats || "PLATFORM TBA") + '</div>' +
     '</article>';
 }
@@ -162,6 +196,14 @@ function refresh(){
   render();
 }
 document.getElementById("store-search").addEventListener("input", function(e){ state.q = e.target.value.trim().toLowerCase(); render(); });
+var dc = document.getElementById("dev-contact");
+if (dc) dc.addEventListener("submit", function(e){
+  e.preventDefault();
+  var app = document.getElementById("dc-app").value.trim();
+  var msg = document.getElementById("dc-message").value.trim();
+  var subject = app ? "About " + app + " — from the CashDublo App Store" : "From the CashDublo App Store";
+  window.location.href = "mailto:cash.dublo@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(msg);
+});
 refresh();
 fetch(SHELF).then(function(r){ return r.json(); }).then(function(d){
   var n = (d && d.apps) ? d.apps.length : 0;

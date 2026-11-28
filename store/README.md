@@ -15,7 +15,13 @@ and get the app through the store shelf on the CashDublo server.
 - `app.html` — one app's store page. It reads the app's slug from
   its address (`app.html?app=<slug>`) and shows that app's name,
   version, status, platforms, description, price terms and its
-  Get panel. Every listing on the storefront links here.
+  Get panel. Every listing on the storefront links here. The
+  page also carries the app's star rating (see Ratings below),
+  its What's New with the catalog's updated date, a "You might
+  also like" rail of similar apps, and a "Talk to the
+  developer" panel that opens the reader's own mail app
+  addressed to the public CashDublo address — the standing
+  contact door, with no form endpoint behind it.
 - `cards.html` — all applications as a card stack: every listing
   as a card loaded one over the other in a single stack, built
   for the phone first — scrolling moves through the stack one
@@ -43,11 +49,39 @@ and get the app through the store shelf on the CashDublo server.
   storefront loads the sign-in library only when the
   configuration door answers configured, so a dormant
   storefront makes no new outside calls.
+- `../account.html` — the account page: account settings,
+  change password, membership access, and settings for your
+  apps. It stands in the same dormant-honest pattern as the
+  sign-in page: real surfaces, plainly marked as lighting up
+  when accounts switch on, its forms disabled until then —
+  nothing faked. The per-app settings surface is a stub that
+  fills its picker from `apps-data.js`; the contract those
+  settings will speak — and the ratings door's shape — stands
+  in `account-contract.md`.
 - `apps-data.js` — the store's data file. **Generated — do not
   edit by hand.** It carries one listing per App Catalog row that
-  has a display name: slug, name, version, status, description,
-  platforms, category, and the price terms (price model, price,
-  trial length) exactly as the catalog states them.
+  has a display name: slug, name, tagline, version, status,
+  description, platforms (in the store's short forms), category
+  and subcategories, form factors, get links, what's new, the
+  catalog's last-code date, and the price terms (price model,
+  price, trial length) exactly as the catalog states them. Two
+  fields are shaped by the generator: `ratings` (below) and
+  `similar` — up to six listings for the detail page's "You
+  might also like" rail: same overall category first (most
+  shared subcategories first, then name order), then listings
+  sharing a subcategory across categories. Computed from the
+  catalog's own declarations; no hand-picked lists.
+
+## Ratings
+
+A listing's `ratings` field is `{ average, count }` when the
+catalog carries ratings for the app, and null while it does
+not. No ratings stand in the catalog yet — the server's rating
+door will collect them from signed-in users and the catalog
+refresh will carry the aggregate in (the contract stands in
+`account-contract.md`). Until a real number exists, every
+surface says "No ratings yet": the shelves, the card stack,
+and each app's page. A rating is never invented.
 
 ## The one source
 

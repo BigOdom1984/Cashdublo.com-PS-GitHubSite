@@ -27,6 +27,22 @@ h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.06em;mar
 .get{display:inline-flex;padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:900;background:var(--lime);color:var(--ink);border:1px solid var(--ink);margin-top:14px}
 .state{font-size:.85rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:8px 14px;color:#7c5d36;display:inline-block;margin-top:14px}
 .muted{color:var(--muted)}
+.ratingline{font-size:1rem;font-weight:800;color:#7c5d36;margin:14px 0 0}
+.ratingline .none{color:var(--muted);font-weight:700}
+.rail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:1100px}
+.rcard{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink);display:flex;flex-direction:column}
+.rcard .rtop{display:flex;gap:10px;align-items:center}
+.rtile{width:48px;height:48px;flex:0 0 auto;border-radius:13px;background:var(--deep);color:var(--lime);display:grid;place-items:center;font-size:1rem;font-weight:950}
+.rcard img{width:48px;height:48px;object-fit:cover;border-radius:13px;flex:0 0 auto}
+.rcard h3{margin:10px 0 4px;font-size:1.02rem;line-height:1.25;letter-spacing:-.02em}
+.rcard .rcat{font-size:.72rem;font-weight:850;letter-spacing:.08em;color:#8a7a52;text-transform:uppercase}
+.rcard .rrate{font-size:.85rem;font-weight:800;color:#7c5d36;margin-top:auto;padding-top:8px}
+.rcard .rrate .none{color:var(--muted);font-weight:700}
+.contact-form{display:grid;gap:10px}
+.contact-form label{font-size:.9rem;font-weight:800}
+.contact-form input,.contact-form textarea{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;font:inherit;background:#ffffff;color:var(--ink);margin-top:5px}
+.contact-form button{justify-self:start;padding:11px 22px;border-radius:999px;font:inherit;font-weight:900;background:var(--deep);color:#f5f0e6;border:1px solid var(--deep);cursor:pointer}
+@media(max-width:800px){.rail{grid-template-columns:1fr}}
 .note{padding:15px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:18px 0;max-width:760px}
 .doors{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .door{display:inline-flex;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:850;background:var(--white);color:var(--ink);border:1.5px solid var(--ink);font-size:.92rem}
@@ -88,6 +104,22 @@ function shotCaption(p){
   base = base.replace(/^\d+[-_]/, "").replace(/[-_]+/g, " ").trim();
   if (!base) return "";
   return base.charAt(0).toUpperCase() + base.slice(1);
+}
+function ratingText(a){
+  var r = a.ratings;
+  if (r && typeof r.average === "number" && r.count > 0) {
+    var full = Math.round(r.average), stars = "";
+    for (var i = 1; i <= 5; i++) stars += i <= full ? "★" : "☆";
+    return '<span aria-hidden="true">' + stars + '</span> ' + r.average.toFixed(1) + ' · ' + r.count + (r.count === 1 ? ' rating' : ' ratings');
+  }
+  return '<span class="none">No ratings yet</span>';
+}
+var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function updatedText(a){
+  if (!a.last_code_at) return "";
+  var d = new Date(a.last_code_at);
+  if (isNaN(d.getTime())) return "";
+  return "Updated " + MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear();
 }
 var slug = new URLSearchParams(location.search).get("app") || "";
 var apps = window.CD_STORE_APPS || [];
@@ -153,8 +185,30 @@ if (shots.length) {
 }
 var whatsNew = "";
 if (a.whats_new) {
-  whatsNew = '<section class="panel"><h2>What\'s new</h2><p>' + esc(a.whats_new) + '</p></section>';
+  var wnUpdated = updatedText(a);
+  whatsNew = '<section class="panel"><h2>What\'s new</h2><p>' + esc(a.whats_new) + '</p>' + (wnUpdated ? '<p class="muted">' + esc(wnUpdated) + '</p>' : '') + '</section>';
 }
+var bySlug = {};
+apps.forEach(function(x){ bySlug[x.slug] = x; });
+var rail = "";
+var sims = (a.similar || []).map(function(s){ return bySlug[s]; }).filter(Boolean);
+if (sims.length) {
+  rail = '<section class="shots" aria-label="You might also like"><div class="shots-head"><h2>You might also like</h2></div>' +
+    '<div class="rail">' + sims.map(function(b){
+      return '<a class="rcard" href="app.html?app=' + encodeURIComponent(b.slug) + '">' +
+        '<span class="rtop"><span class="rtile" aria-hidden="true">' + esc(initials(b.display_name)) + '</span>' +
+        '<img src="../img/icon-' + esc(b.slug) + '.png" alt="" loading="lazy" width="48" height="48" onerror="this.remove()"></span>' +
+        '<h3>' + esc(b.display_name) + '</h3>' +
+        '<span class="rcat">' + esc(CAT_LABELS[b.category] || b.category || "Listing") + '</span>' +
+        '<span class="rrate">' + ratingText(b) + '</span></a>';
+    }).join("") + '</div></section>';
+}
+var contact = '<section class="panel"><h2>Talk to the developer</h2>' +
+  '<p>Questions about ' + esc(a.display_name) + ', a problem, an idea for what it should do next — this is the standing door to the developer. The form opens your own mail app with the letter addressed and started; nothing is sent from this page.</p>' +
+  '<form class="contact-form" id="dev-contact">' +
+  '<label>Your message<textarea id="dc-message" rows="4" placeholder="What happened, or what you would like to see…"></textarea></label>' +
+  '<button type="submit">Write to the developer →</button>' +
+  '<p class="muted">Addressed to cash.dublo@gmail.com, the public CashDublo address.</p></form></section>';
 var iosNote = "";
 if ((a.platforms || []).indexOf("ios") !== -1) {
   iosNote = '<p class="note">On iPhone, CashDublo apps are delivered within what Apple allows — TestFlight, and in the European Union the alternative marketplaces, for server editions. Nothing wider is promised than Apple honestly allows.</p>';
@@ -165,14 +219,24 @@ body.innerHTML =
   '<div><span class="tag">' + esc(CAT_LABELS[a.category] || a.category || "Listing") + '</span>' +
   '<div class="meta">' + (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') +
   '<span class="status">' + esc(a.status || "Status TBA") + '</span>' +
+  (updatedText(a) ? '<span class="status">' + esc(updatedText(a)) + '</span>' : '') +
   (plats.length ? '<span class="status">' + esc(plats.join(" · ")) + '</span>' : '') +
   (ffs.length ? '<span class="status">' + esc(ffs.join(" · ")) + '</span>' : '') + '</div></div></div>' +
+  '<p class="ratingline">' + ratingText(a) + '</p>' +
   '<p class="desc">' + esc(a.description || "") + '</p>' +
   shotsHtml +
   whatsNew +
   '<section class="panel"><h2>Get this app</h2>' + panel + doors + '</section>' +
+  rail +
+  contact +
   iosNote +
   '<p class="muted">Every listing in this store reads from the one App Catalog, so the name, version and status here match the catalogue exactly. See also <a href="../apps.html">the full catalogue on the All apps page</a>.</p>';
+var dcForm = document.getElementById("dev-contact");
+if (dcForm) dcForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  var msg = document.getElementById("dc-message").value.trim();
+  window.location.href = "mailto:cash.dublo@gmail.com?subject=" + encodeURIComponent("About " + a.display_name + " — from the CashDublo App Store") + "&body=" + encodeURIComponent(msg);
+});
 var track = document.getElementById("shots-track");
 if (track) {
   var section = document.getElementById("shots");
@@ -229,6 +293,7 @@ body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)
 .hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
 footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
 .panel{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.rcard{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
 .get{background:linear-gradient(135deg,#e6faa9 0%,var(--lime) 55%,#aed657 100%)}
 </style>
 </body></html>

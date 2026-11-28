@@ -32,6 +32,8 @@ h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.06em;mar
 .state{font-size:.78rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:7px 12px;color:#7c5d36}
 .open{font-weight:850;color:#a64e3e}
 .plats{margin-top:14px;font-size:.64rem;font-weight:800;letter-spacing:.14em;color:#8a7a52}
+.rating{font-size:.92rem;font-weight:800;color:#7c5d36;margin:0 0 6px}
+.rating .none{color:var(--muted);font-weight:700}
 .grid-link{margin:20px 0 4px}
 .grid-link a{font-weight:900;color:#a64e3e;text-decoration:none}
 .note{padding:15px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:18px 0;max-width:760px}
@@ -73,6 +75,15 @@ function initials(name){
   if (!words.length) return "CD";
   return (words[0].charAt(0) + (words.length > 1 ? words[1].charAt(0) : "")).toUpperCase();
 }
+function ratingHtml(a){
+  var r = a.ratings;
+  if (r && typeof r.average === "number" && r.count > 0) {
+    var full = Math.round(r.average), stars = "";
+    for (var i = 1; i <= 5; i++) stars += i <= full ? "★" : "☆";
+    return '<p class="rating"><span aria-hidden="true">' + stars + '</span> ' + r.average.toFixed(1) + ' · ' + r.count + (r.count === 1 ? ' rating' : ' ratings') + '</p>';
+  }
+  return '<p class="rating"><span class="none">No ratings yet</span></p>';
+}
 function card(a, i){
   var p = priceLine(a);
   var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; }).join(" · ").toUpperCase();
@@ -84,6 +95,7 @@ function card(a, i){
     '<img src="../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" width="74" height="74" onerror="this.remove()">' +
     (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') + '</div>' +
     '<h3>' + esc(a.display_name) + '</h3>' +
+    ratingHtml(a) +
     '<p class="desc">' + esc(a.description || "") + '</p>' +
     '<div class="price-line">' + esc(p.main) + (p.sub ? '<small>' + p.sub + '</small>' : '') + '</div>' +
     '<div class="actions">' + action + '<span class="open">Open in the store →</span></div>' +
