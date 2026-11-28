@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Repositories & Engineering — CashDublo</title>
+<meta name="description" content="A public overview of the software projects and repository structure behind CashDublo. Private source code stays private.">
+<meta name="theme-color" content="#f5f0e6">
+<link rel="icon" href="../../favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="stylesheet" href="assets/cashdublo-nav.css"><script src="assets/cashdublo-nav.js" defer></script>
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--lime:#c9ed72;--coral:#f0785e;--line:#d8d4c9;--deep:#193d39}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+.hero{padding:clamp(48px,8vw,90px) max(22px,calc((100vw - 1120px)/2));background:var(--deep);color:#fff}
+.hero small{color:var(--lime);font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+h1{font-size:clamp(2.7rem,7vw,5.5rem);line-height:.96;letter-spacing:-.07em;margin:14px 0 18px}
+.hero p{max-width:760px;color:#d5e2d9;font-size:1.08rem}
+.wrap{max-width:1120px;margin:auto;padding:48px 22px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.stat,.card,.note{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}
+.stat strong{display:block;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.06em;line-height:1.1}
+.stat span{color:var(--muted);font-size:.9rem}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-.05em;line-height:1.05;margin:0 0 12px}
+.intro{color:var(--muted);max-width:800px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:22px}
+.card{display:flex;flex-direction:column;gap:10px;min-height:220px}
+.card h3{margin:0;font-size:1.2rem}.card p{margin:0;color:var(--muted);flex:1}
+.card a,.inline-link{color:#a64e3e;font-weight:850;text-decoration:none}.card a:hover,.inline-link:hover{text-decoration:underline}
+.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:900;color:#7c5d36}
+.note{margin-top:24px;background:#e7e4d9;color:var(--muted)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-flex;padding:12px 18px;border-radius:999px;background:var(--lime);color:var(--ink);font-weight:900;text-decoration:none}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:30px 18px}footer a{color:var(--lime)}
+@media(max-width:600px){.stats{grid-template-columns:1fr}.wrap{padding:36px 18px}}
+.pmenu{position:relative;display:inline-block}.plist{display:none;position:absolute;top:100%;left:0;background:#ffffff;border:1px solid #d8d2c2;border-radius:12px;padding:8px;min-width:180px;z-index:60;box-shadow:0 14px 34px rgba(20,20,20,.18)}.plist a{display:block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700;color:#22252a;font-size:.95rem}.plist a:hover{background:#f3efe2;text-decoration:none}.pmenu:hover .plist,.pmenu:focus-within .plist{display:block}/*FEAPPS*/.plist{max-height:74vh;overflow-y:auto}.psep{display:block;border-top:1px solid #d8d2c2;margin:7px 4px 2px;padding:7px 12px 1px;font-size:.7rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#8a8272}.fe-h{font-size:2rem;letter-spacing:-.04em;margin:46px 0 6px}.fe-sub{color:var(--muted);max-width:760px;margin:0 0 20px}/*CDWIDGET*/.cd-overlay{position:fixed;inset:0;z-index:120;background:rgba(23,45,43,.55);display:flex;align-items:center;justify-content:center;padding:16px}.cd-overlay[hidden]{display:none}.cd-card{background:#fffdf8;color:#172d2b;border:1px solid #d8d4c9;border-radius:22px;max-width:430px;width:100%;max-height:calc(100vh - 32px);overflow:auto;padding:26px;position:relative;box-shadow:0 24px 60px rgba(20,20,20,.35)}.cd-card h2{margin:0 40px 10px 0;font-size:1.45rem;letter-spacing:-.03em;line-height:1.15}.cd-card p{color:#596d68;margin:0 0 14px}.cd-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid #d8d4c9;background:#fffdf8;color:#172d2b;font-size:1.3rem;line-height:1;cursor:pointer}.cd-x:hover{background:#f3efe2}.cd-btn{display:inline-block;background:#c9ed72;color:#172d2b;border:1px solid #172d2b;border-radius:999px;padding:11px 20px;font:inherit;font-weight:850;cursor:pointer}.cd-btn.alt{background:transparent}.cd-row{display:flex;gap:10px;flex-wrap:wrap}.cd-card label{display:block;font-weight:800;margin:0 0 12px}.cd-card input[type=text],.cd-card textarea{display:block;width:100%;margin-top:6px;padding:11px 12px;border:1px solid #d8d4c9;border-radius:12px;font:inherit;font-weight:400;background:#ffffff;color:#172d2b;box-sizing:border-box}.cd-note{font-size:.9rem}.cd-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:90;display:inline-flex;align-items:center;gap:8px;background:#193d39;color:#f5f0e6;border:1px solid #c9ed72;border-radius:999px;padding:11px 16px;font:inherit;font-weight:850;font-size:.95rem;cursor:pointer;box-shadow:0 12px 28px rgba(20,20,20,.3)}.cd-fab svg{width:18px;height:18px;flex:none}.cd-fab:hover{background:#172d2b}@media(max-width:550px){.cd-fab{right:12px;bottom:calc(12px + env(safe-area-inset-bottom));padding:10px 13px;font-size:.9rem}.cd-card{padding:22px 18px}}</style>
+</head>
+<body><header><a class="brand" href="index.html">CASH<span>DUBLO</span></a><nav><a href="index.html">Home</a><a href="#comments" data-cd-open>Comments</a><span class="pmenu"><a href="apps.html">All apps</a><span class="plist"><a href="android.html">Android</a><a href="iphone.html">iPhone</a><a href="mac.html">Mac</a><a href="windows.html">Windows</a><a href="linux.html">Linux</a></span></span><span class="pmenu"><a href="front-ends.html">Front Ends</a><span class="plist"><a href="front-ends/showcase.html">CashDublo Showcase</a><a href="front-ends/online-course.html">CashDublo Online Course</a><a href="front-ends/server.html">CashDublo Server</a><a href="front-ends/travel-journal-web.html">Travel Journal Web</a><a href="front-ends/marvin-web.html">Marvin's Website</a><span class="psep">Every app — front &amp; back end</span><a href="front-ends.html#app-ai-cash-portfolio">AI Cash Portfolio</a><a href="front-ends.html#app-ai2aisync">AI2AISync</a><a href="front-ends.html#app-app-translator">App Translator</a><a href="front-ends.html#app-apple2player">Apple2Player</a><a href="front-ends.html#app-build-manager">Build Manager</a><a href="front-ends.html#app-cash-portfolio">Cash Portfolio</a><a href="front-ends.html#app-cashdublo-coder">CashDublo Coder</a><a href="front-ends.html#app-change-app-icons">Change App Icons</a><a href="front-ends.html#app-dear-idea">Dear Idea</a><a href="front-ends.html#app-dear-idea-desktop">Dear Idea Desktop</a><a href="front-ends.html#app-github-hq">GitHub HQ</a><a href="front-ends.html#app-go">GO</a><a href="front-ends.html#app-hit-record">Hit Record</a><a href="front-ends.html#app-marvin">Marvin</a><a href="front-ends.html#app-mixology">Mixology</a><a href="front-ends.html#app-pictureglobe">PictureGlobe</a><a href="front-ends.html#app-player">Player</a><a href="front-ends.html#app-rebuild-all">Rebuild-All</a><a href="front-ends.html#app-say">SAY</a><a href="front-ends.html#app-script-installer">Script-Run</a><a href="front-ends.html#app-testra-accuracy">Testra Accuracy</a><a href="front-ends.html#app-travel-journal">Travel Journal</a><a href="front-ends.html#app-tts-widget">TTS Widget</a><a href="front-ends.html#app-voice-model">VoiceModel</a><a href="front-ends.html#app-podedpro">PodEdPro</a><a href="front-ends.html#app-galaxy-repeat">Galaxy Repeat</a><a href="front-ends.html#app-patent-it">Patent It!</a><a href="front-ends.html#app-crash-catcher">Crash Catcher</a><a href="front-ends.html#app-wifi-tether">Wi-Fi Tether</a><a href="front-ends.html#app-ai-teacher">AI Teacher</a><a href="front-ends.html#app-contracts">Contracts</a><a href="front-ends.html#app-best-mac-file-manager">Best Mac File Manager</a><a href="front-ends.html#app-apple-dextop">Apple Dextop</a></span></span><a href="privacy.html">Privacy</a><a href="index.html#about">About</a></nav></header>
+
+
+<section class="hero"><small>Behind the products</small><h1>Built one repository at a time.</h1>
+<p>CashDublo is a growing software workshop: apps, companion editions, web experiences, reusable modules, APIs, AI systems, and the tools that help build and maintain them. This page gives a public overview without exposing private source code or internal project details.</p>
+<div class="actions"><a class="btn" href="apps.html">Explore the apps</a><a class="btn" href="front-ends.html">Explore front ends</a></div></section>
+<main class="wrap">
+<section aria-labelledby="fleet-title"><h2 id="fleet-title">The repository fleet</h2><p class="intro">The latest reconciled repository registry snapshot available for this page is dated November 25, 2026. It records the fleet's size and visibility; it is an inventory count, not a claim that every project is finished, released, or actively maintained.</p>
+<div class="stats">
+<div class="stat"><strong>153</strong><span>App Catalog records</span></div>
+<div class="stat"><strong>170</strong><span>Repositories in the latest fleet sweep (Nov 25, 2026)</span></div>
+<div class="stat"><strong>3</strong><span>Public repositories</span></div>
+<div class="stat"><strong>167</strong><span>Private repositories</span></div>
+</div></section>
+<section style="margin-top:48px"><h2>What the repositories build</h2><p class="intro">The repository fleet is organized around these broad areas. The app catalogue and Front Ends hub show customer-facing products and their published status.</p>
+<div class="grid">
+<article class="card"><span class="label">Apps & editions</span><h3>Mobile and desktop apps</h3><p>Android, iOS, macOS, Windows and Linux projects, including companion editions and platform-specific builds.</p><a href="apps.html">Browse the app catalogue ↗</a></article>
+<article class="card"><span class="label">Web experiences</span><h3>Web apps and storefronts</h3><p>Public showcases, app front ends, learning experiences and supporting web interfaces.</p><a href="front-ends.html">Browse front ends ↗</a></article>
+<article class="card"><span class="label">Reusable foundation</span><h3>Modules and APIs</h3><p>Shared capabilities, interface contracts, design foundations, app integrations and developer standards.</p><a href="https://github.com/BigOdom1984/my-modules">Shared development foundation ↗</a></article>
+<article class="card"><span class="label">AI systems</span><h3>AI and coordination</h3><p>AI tools, model experiments, assistant workflows and shared project handoff infrastructure.</p><a href="https://github.com/BigOdom1984/ai2ai_sync">AI2AISync repository ↗</a></article>
+<article class="card"><span class="label">Engineering tools</span><h3>Build, test and release</h3><p>Build scripts, developer utilities, compatibility checks, testing support and release infrastructure.</p><a href="https://github.com/BigOdom1984">GitHub project profile ↗</a></article>
+<article class="card"><span class="label">Research & learning</span><h3>Experiments and education</h3><p>Research, courses, creative tools, games, hardware explorations and early-stage product concepts.</p><a href="games.html">Games and learning ↗</a></article>
+</div></section>
+<section style="margin-top:48px"><h2>Public repository doors</h2><p class="intro">These are the public-facing repository links relevant to the website. Most engineering work is held in private repositories and is intentionally not listed here.</p>
+<div class="grid">
+<article class="card"><span class="label">Public website</span><h3>CashDublo Website</h3><p>The source repository for this public showcase and its supporting pages.</p><a href="https://github.com/BigOdom1984/Cashdublo.com-PS-GitHubSite">Open website repository ↗</a></article>
+<article class="card"><span class="label">Public backup project</span><h3>CashDublo Backups</h3><p>A separate public repository in the recorded fleet inventory.</p><a href="https://github.com/BigOdom1984/CashDublo.com-PS-Backups">Open backup repository ↗</a></article>
+<article class="card"><span class="label">Owner profile</span><h3>BigOdom1984 on GitHub</h3><p>See the public repositories currently visible on the GitHub profile. GitHub controls which repositories are public.</p><a href="https://github.com/BigOdom1984?tab=repositories">View public repositories ↗</a></article>
+</div></section>
+<div class="note"><strong>Privacy and accuracy:</strong> Private repository names, source files, credentials, customer data and internal implementation details are not published here. A repository's existence does not prove that its app is complete, tested, secure, available in an app store or deployed. Check the individual product page for its stated release status. The App Catalog record count and repository inventory count measure different things. The 153 App Catalog records are not a repository count. The latest fleet sweep recorded 170 repositories on November 25, 2026 (3 public and 167 private). Repository totals can vary by inventory script; keep the source and date attached to the count, and do not force differing inventory methods into one number.</div>
+</main>
+<footer><strong>CashDublo · Change the World One App at a Time.</strong><p><a href="index.html">Home</a> · <a href="apps.html">Apps</a> · <a href="privacy.html">Privacy</a> · <a href="https://github.com/BigOdom1984">GitHub</a></p></footer>
+<script src="assets/site-navigation.js" defer></script>
+
+<div class="cd-overlay" id="cd-welcome" hidden><div class="cd-card" role="dialog" aria-modal="true" aria-label="Welcome"><button class="cd-x" type="button" data-cd-close="cd-welcome" aria-label="Close">&times;</button><h2>Welcome.</h2><p>Thank you for visiting your friend's store, and he appreciates your time to browse it — your time that you're using to browse his catalog.</p><p>Feel free to leave a comment while you're here — it goes straight to Greg.</p><div class="cd-row"><button class="cd-btn" type="button" data-cd-close="cd-welcome">Browse the catalog</button><button class="cd-btn alt" type="button" data-cd-open>Leave a comment</button></div></div></div>
+<button class="cd-fab" id="cd-fab" type="button" data-cd-open aria-label="Leave a comment"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5z" fill="none" stroke="#c9ed72" stroke-width="2" stroke-linejoin="round"/></svg><span>Comment</span></button>
+<div class="cd-overlay" id="comments" hidden><div class="cd-card" role="dialog" aria-modal="true" aria-label="Leave a comment"><button class="cd-x" type="button" data-cd-close="comments" aria-label="Close">&times;</button><h2>Leave a comment.</h2><p>Comments go straight to Greg's inbox. Write yours here, and your own email app will open with it addressed to him, ready for you to send.</p><form id="cd-form"><label>Your name<input type="text" id="cd-name" autocomplete="name" placeholder="Your name"></label><label>Your comment<textarea id="cd-comment" rows="5" required placeholder="Say it here"></textarea></label><button class="cd-btn" type="submit">Send it to Greg</button><p class="cd-note" id="cd-sent" hidden>Your email app should be opening now — press send there and it reaches Greg. Nothing is posted on this page.</p></form></div></div>
+<script>
+(function(){
+"use strict";
+function byId(i){return document.getElementById(i);}
+var welcome=byId("cd-welcome"),panel=byId("comments");
+function show(e){if(e){e.hidden=false;}}
+function hide(e){if(e){e.hidden=true;}}
+function openPanel(){hide(welcome);show(panel);var t=byId("cd-comment");if(t){t.focus();}}
+var openers=document.querySelectorAll("[data-cd-open]"),i;
+for(i=0;i<openers.length;i++){openers[i].addEventListener("click",function(ev){ev.preventDefault();openPanel();});}
+var closers=document.querySelectorAll("[data-cd-close]");
+for(i=0;i<closers.length;i++){closers[i].addEventListener("click",function(){hide(byId(this.getAttribute("data-cd-close")));});}
+[welcome,panel].forEach(function(ov){if(ov){ov.addEventListener("click",function(ev){if(ev.target===ov){hide(ov);}});}});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape"){hide(welcome);hide(panel);}});
+var seen=false;
+try{seen=!!localStorage.getItem("cdWelcomeSeen");}catch(e){}
+if(!seen){show(welcome);try{localStorage.setItem("cdWelcomeSeen","1");}catch(e){}}
+var form=byId("cd-form");
+if(form){form.addEventListener("submit",function(ev){
+ev.preventDefault();
+var name=(byId("cd-name").value||"").trim();
+var text=(byId("cd-comment").value||"").trim();
+if(!text){return;}
+var body="Name: "+(name||"(not given)")+"\nPage: "+location.pathname+"\n\n"+text;
+window.location.href="mailto:cash.dublo@gmail.com?subject="+encodeURIComponent("Website comment")+"&body="+encodeURIComponent(body);
+var sent=byId("cd-sent");if(sent){sent.hidden=false;}
+});}
+})();
+</script>
+<style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.btn{background:linear-gradient(135deg,#e6faa9 0%,var(--lime) 55%,#aed657 100%)}
+.card{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.note{background:linear-gradient(135deg,#f2eee1 0%,#e9e5d7 100%)}
+.plist{background:linear-gradient(135deg,#fffdf8 0%,#f9f3e2 100%)}
+.cd-card{background:linear-gradient(135deg,#fffdf8 0%,#f9f3e2 100%)}
+.cd-btn{background:linear-gradient(135deg,#e6faa9 0%,#c9ed72 55%,#aed657 100%)}
+.cd-fab{background:linear-gradient(135deg,#225a4b 0%,#193d39 52%,#102723 100%)}
+</style>
+</body></html>

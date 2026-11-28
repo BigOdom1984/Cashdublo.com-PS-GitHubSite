@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head>
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../../apple-touch-icon.png"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All applications as cards — CashDublo App Store</title>
+<meta name="description" content="Every CashDublo application as a card in one stack: scroll through the cards one over the other, and tap a card to open it in the store.">
+<link rel="stylesheet" href="../assets/site-navigation.css">
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--line:#d8d4c9;--deep:#193d39;--lime:#c9ed72}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+.hero{background:var(--deep);color:white;padding:58px 7vw}.hero p{max-width:780px;color:#d5e2d9}.kicker{color:var(--lime);font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.06em;margin:12px 0}
+.wrap{max-width:1100px;margin:auto;padding:34px 20px}
+.back{font-weight:850;text-decoration:none;color:#a64e3e}
+.hint{color:var(--muted);max-width:640px}
+.stack-count{font-weight:900;margin:18px 0 10px}
+.stack-count small{display:block;font-weight:700;color:var(--muted)}
+.stack{height:min(84svh,700px);overflow-y:auto;scroll-snap-type:y mandatory;border-radius:24px;padding:14px 4px 0;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.scard{display:flex;flex-direction:column;position:sticky;top:calc(10px + var(--i,0)*5px);width:min(430px,calc(100% - 12px - var(--i,0)*6px));height:86%;margin:0 auto 16svh;padding:22px;background:var(--white);border:1px solid var(--line);border-radius:20px;box-shadow:0 -6px 24px rgba(23,45,43,.14),0 18px 34px rgba(23,45,43,.16);text-decoration:none;color:var(--ink);scroll-snap-align:center;scroll-snap-stop:always}
+.scard:last-child{margin-bottom:22svh}
+.card-top{display:flex;gap:12px;align-items:flex-start}
+.tile{width:74px;height:74px;flex:0 0 auto;border-radius:18px;background:var(--deep);color:var(--lime);display:grid;place-items:center;font-size:1.5rem;font-weight:950;letter-spacing:-.04em}
+.card-top img{width:74px;height:74px;object-fit:cover;border-radius:18px;flex:0 0 auto}
+.status{font-size:.62rem;letter-spacing:.03em;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:5px 10px;color:#7c5d36;line-height:1.4}
+.scard h3{margin:14px 0 8px;font-size:1.35rem;letter-spacing:-.03em;line-height:1.2}
+.desc{color:var(--muted);font-size:.97rem;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.price-line{font-weight:900;margin-top:auto}
+.price-line small{display:block;font-weight:700;color:var(--muted)}
+.actions{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.get{display:inline-flex;padding:10px 20px;border-radius:999px;font-weight:900;background:var(--lime);color:var(--ink);border:1px solid var(--ink)}
+.state{font-size:.78rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:7px 12px;color:#7c5d36}
+.open{font-weight:850;color:#a64e3e}
+.plats{margin-top:14px;font-size:.64rem;font-weight:800;letter-spacing:.14em;color:#8a7a52}
+.grid-link{margin:20px 0 4px}
+.grid-link a{font-weight:900;color:#a64e3e;text-decoration:none}
+.note{padding:15px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:18px 0;max-width:760px}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:26px}
+footer a{color:var(--lime)}
+@media (prefers-reduced-motion: reduce){.stack{scroll-behavior:auto}}
+</style></head>
+<body>
+<section class="hero"><div class="kicker">The CashDublo store</div><h1>All applications, one over the other</h1>
+<p>Every CashDublo application as a card in one stack. Scroll, and the cards move through one at a time — each one settles in front of the stack. Tap the card in front to open it in the store.</p></section>
+<main class="wrap">
+<a class="back" href="../cashdublo-app-store.html">← Back to the store</a>
+<p class="hint">The same catalogue as the store shelves, dealt as cards. The edges peeking above the front card are the cards you have already passed — keep scrolling to go deeper into the stack.</p>
+<p class="stack-count" id="stack-count" aria-live="polite">Loading the stack…</p>
+<div class="stack" id="stack" tabindex="0" role="feed" aria-label="All applications as a stack of cards. Scroll to move through the stack one card at a time."></div>
+<p class="grid-link"><a href="../cashdublo-app-store.html">View as a shelf (grid) instead →</a></p>
+<noscript><p class="note">The card stack needs JavaScript to load. The full catalogue also stands on the <a href="../apps.html">All apps page</a> and on the <a href="../cashdublo-app-store.html">store shelves</a>.</p></noscript>
+</main>
+<footer>CashDublo — built by Cash.<div class="cd-footer-legal"><a href="../privacy.html">Privacy Policy</a><a href="mailto:cash.dublo@gmail.com">Contact Us</a></div></footer>
+<script src="apps-data.js"></script>
+<script>
+(function(){
+"use strict";
+var APPS = (window.CD_STORE_APPS || []).slice();
+var PLAT_LABELS = {android:"Android", ios:"iOS", web:"Web", desktop:"Desktop", windows:"Windows", linux:"Linux", macos:"Mac"};
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function available(a){ return a.status === "Builds and stable" || a.status === "Live"; }
+function priceLine(a){
+  if (a.price !== null && a.price !== undefined && a.price !== "") {
+    return { main: "$" + a.price, sub: a.price_model ? esc(a.price_model) : "" };
+  }
+  if (a.price_model === "trial") return { main: "Free trial", sub: a.trial_length ? esc(a.trial_length) : "" };
+  if (a.price_model === "freemium") return { main: "Free with ads", sub: "" };
+  if (a.price_model) return { main: esc(a.price_model), sub: "" };
+  return { main: "Price TBA", sub: "" };
+}
+function initials(name){
+  var words = String(name || "").replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
+  if (!words.length) return "CD";
+  return (words[0].charAt(0) + (words.length > 1 ? words[1].charAt(0) : "")).toUpperCase();
+}
+function card(a, i){
+  var p = priceLine(a);
+  var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; }).join(" · ").toUpperCase();
+  var action = available(a)
+    ? '<span class="get">Get</span>'
+    : '<span class="state">' + esc(a.status || "Status TBA") + '</span>';
+  return '<a class="scard" style="--i:' + Math.min(i, 8) + '" href="app.html?app=' + encodeURIComponent(a.slug) + '" aria-label="' + esc(a.display_name) + ' — open in the store">' +
+    '<div class="card-top"><span class="tile" aria-hidden="true">' + esc(initials(a.display_name)) + '</span>' +
+    '<img src="../../../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" width="74" height="74" onerror="this.remove()">' +
+    (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') + '</div>' +
+    '<h3>' + esc(a.display_name) + '</h3>' +
+    '<p class="desc">' + esc(a.description || "") + '</p>' +
+    '<div class="price-line">' + esc(p.main) + (p.sub ? '<small>' + p.sub + '</small>' : '') + '</div>' +
+    '<div class="actions">' + action + '<span class="open">Open in the store →</span></div>' +
+    '<div class="plats">' + esc(plats || "PLATFORM TBA") + '</div>' +
+    '</a>';
+}
+var stack = document.getElementById("stack");
+var count = document.getElementById("stack-count");
+stack.innerHTML = APPS.map(card).join("");
+function setCount(i){
+  var a = APPS[i];
+  count.innerHTML = "Card " + (i + 1) + " of " + APPS.length + (a ? " — " + esc(a.display_name) : "") +
+    '<small>Scroll to move through the stack — one card at a time.</small>';
+}
+if (APPS.length) setCount(0);
+if ("IntersectionObserver" in window) {
+  var seen = {};
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var idx = Array.prototype.indexOf.call(stack.children, e.target);
+        if (idx > -1) { seen.current = idx; setCount(idx); }
+      }
+    });
+  }, { root: stack, threshold: 0.55 });
+  Array.prototype.forEach.call(stack.children, function(el){ io.observe(el); });
+}
+})();
+</script>
+<script src="../assets/site-navigation.js" defer></script><style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.scard{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.get{background:linear-gradient(135deg,#e6faa9 0%,var(--lime) 55%,#aed657 100%)}
+</style>
+</body></html>

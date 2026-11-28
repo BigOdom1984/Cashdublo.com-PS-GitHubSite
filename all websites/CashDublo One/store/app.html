@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en"><head>
+<link rel="icon" href="../../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../../apple-touch-icon.png"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CashDublo App Store</title>
+<meta name="description" content="One app's page in the CashDublo App Store: what it is, its price terms, and how to get it through the CashDublo server shelf.">
+<link rel="stylesheet" href="../assets/site-navigation.css">
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--line:#d8d4c9;--deep:#193d39;--lime:#c9ed72}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+.hero{background:var(--deep);color:white;padding:58px 7vw}.hero p{max-width:780px;color:#d5e2d9}.kicker{color:var(--lime);font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;letter-spacing:-.06em;margin:12px 0}
+.wrap{max-width:1100px;margin:auto;padding:34px 20px}
+.back{font-weight:850;text-decoration:none;color:#a64e3e}
+.head{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin-top:18px}
+.tile{width:112px;height:112px;flex:0 0 auto;border-radius:24px;background:var(--deep);color:var(--lime);display:grid;place-items:center;font-size:2.2rem;font-weight:950;letter-spacing:-.04em}
+.head img{width:112px;height:112px;object-fit:cover;border-radius:24px;flex:0 0 auto}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.status{font-size:.66rem;letter-spacing:.03em;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:5px 10px;color:#7c5d36;line-height:1.4}
+.tag{display:inline-block;background:#edf3dc;color:#344d31;border-radius:99px;padding:4px 10px;font-size:.75rem;font-weight:850}
+.desc{max-width:760px;font-size:1.05rem}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:24px;margin:26px 0;max-width:760px}
+.panel h2{margin:0 0 10px;font-size:1.4rem;letter-spacing:-.03em}
+.price{font-size:1.8rem;font-weight:950;letter-spacing:-.04em}
+.price small{display:block;font-size:.95rem;font-weight:700;color:var(--muted);letter-spacing:0}
+.get{display:inline-flex;padding:13px 26px;border-radius:999px;text-decoration:none;font-weight:900;background:var(--lime);color:var(--ink);border:1px solid var(--ink);margin-top:14px}
+.state{font-size:.85rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:8px 14px;color:#7c5d36;display:inline-block;margin-top:14px}
+.muted{color:var(--muted)}
+.note{padding:15px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:18px 0;max-width:760px}
+.doors{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.door{display:inline-flex;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:850;background:var(--white);color:var(--ink);border:1.5px solid var(--ink);font-size:.92rem}
+.shots{margin:30px 0 6px}
+.shots-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.shots-head h2{margin:0;font-size:1.4rem;letter-spacing:-.03em}
+.shots-count{font-size:.85rem;font-weight:900;color:#7c5d36;border:1.5px solid #b39b5e;border-radius:999px;padding:4px 12px}
+.shots-nav{display:none;gap:8px;margin-left:auto}
+.shots-nav button{width:44px;height:44px;border-radius:999px;border:1.5px solid var(--ink);background:var(--white);color:var(--ink);font-size:1.25rem;font-weight:900;line-height:1;cursor:pointer}
+.shots-nav button:disabled{opacity:.35;cursor:default}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:14px 2px 10px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.slide{flex:0 0 min(78vw,290px);scroll-snap-align:start;margin:0}
+.slide img{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line);background:var(--white)}
+.slide figcaption{margin-top:8px;font-size:.85rem;font-weight:750;color:var(--muted);text-align:center}
+.dots{display:flex;gap:7px;justify-content:center;padding:4px 0 2px}
+.dots button{width:9px;height:9px;border-radius:999px;border:1px solid #b39b5e;background:transparent;padding:0;cursor:pointer}
+.dots button.on{background:#7c5d36}
+@media (min-width:720px){
+.slide{flex-basis:calc((100% - 28px)/3)}
+.shots-nav{display:flex}
+}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:26px}
+footer a{color:var(--lime)}
+</style></head>
+<body>
+<section class="hero"><div class="kicker">The CashDublo store</div><h1 id="app-name">CashDublo App Store</h1>
+<p id="app-tagline">One app's page in the store.</p></section>
+<main class="wrap">
+<a class="back" href="../cashdublo-app-store.html">← Back to the store</a>
+<div id="app-body">
+<p class="muted">Loading this app's page…</p>
+</div>
+<noscript><p class="note">This page needs JavaScript to load the app's details. The full catalogue stands on the <a href="../apps.html">All apps page</a>, and the shelves stand on the <a href="../cashdublo-app-store.html">store page</a>.</p></noscript>
+</main>
+<footer>CashDublo · <a href="../index.html">Home</a> · <a href="../privacy.html">Privacy</a></footer>
+<script src="apps-data.js"></script>
+<script>
+(function(){
+"use strict";
+var SHELF = "https://cashdublo.vercel.app/api/store/catalog";
+var CAT_LABELS = {app:"App", game:"Game", tool:"Tool", course:"Course", model:"AI model", server:"Server", website:"Website", store:"Store", module:"Module", record:"Record"};
+var PLAT_LABELS = {android:"Android", ios:"iOS", web:"Web", desktop:"Desktop", windows:"Windows", linux:"Linux", macos:"Mac"};
+var FF_LABELS = {phone:"Phone", iphone:"iPhone", tablet:"Tablet", fold:"Fold", "dual fold":"Dual Fold", desktop:"Desktop"};
+var DOOR_LABELS = {google_play:"Google Play", app_store:"App Store", testflight:"TestFlight", web_store:"CashDublo web store"};
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function initials(name){
+  var words = String(name || "").replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
+  if (!words.length) return "CD";
+  return (words[0].charAt(0) + (words.length > 1 ? words[1].charAt(0) : "")).toUpperCase();
+}
+function shotSrc(p){
+  p = String(p || "");
+  if (!p) return "";
+  if (/^(https?:)?\/\//.test(p) || p.charAt(0) === "/") return p;
+  return "../../../" + p.replace(/^\.\//, "");
+}
+function shotCaption(p){
+  var base = String(p || "").split("/").pop().replace(/\.[A-Za-z0-9]+$/, "");
+  base = base.replace(/^\d+[-_]/, "").replace(/[-_]+/g, " ").trim();
+  if (!base) return "";
+  return base.charAt(0).toUpperCase() + base.slice(1);
+}
+var slug = new URLSearchParams(location.search).get("app") || "";
+var apps = window.CD_STORE_APPS || [];
+var a = null;
+for (var i = 0; i < apps.length; i++) { if (apps[i].slug === slug) { a = apps[i]; break; } }
+var body = document.getElementById("app-body");
+if (!a) {
+  body.innerHTML = '<p class="note">That app is not in the catalogue. Head back to <a href="../cashdublo-app-store.html">the store</a> and browse the shelves.</p>';
+  return;
+}
+document.title = a.display_name + " — CashDublo App Store";
+document.getElementById("app-name").textContent = a.display_name;
+document.getElementById("app-tagline").textContent = a.tagline ? a.tagline : (CAT_LABELS[a.category] || "Listing") + " · " + (a.status || "Status TBA");
+var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; });
+var ffs = (a.form_factors || []).map(function(x){ return FF_LABELS[String(x).toLowerCase()] || x; });
+var available = a.status === "Builds and stable" || a.status === "Live";
+var priceMain = "Price TBA", priceSub = "";
+if (a.price !== null && a.price !== undefined && a.price !== "") { priceMain = "$" + a.price; priceSub = a.price_model || ""; }
+else if (a.price_model === "trial") { priceMain = "Free trial"; priceSub = a.trial_length || ""; }
+else if (a.price_model === "freemium") { priceMain = "Free with ads"; }
+else if (a.price_model) { priceMain = a.price_model; }
+var panel;
+if (available) {
+  panel = '<div class="price">' + esc(priceMain) + (priceSub ? '<small>' + esc(priceSub) + '</small>' : '') + '</div>' +
+    '<a class="get" href="' + SHELF + '">Get — through the store shelf</a>' +
+    '<p class="muted">Get leads to the store shelf on the CashDublo server — the door purchases and downloads complete through. The shelf stands empty while the store is being stocked, so no purchase completes yet; the moment this app lands on the shelf, this same button completes the purchase. Downloads are then delivered in pieces that resume if your connection drops, and every package is checked against its recorded fingerprint before it is installed — a download started is a download finished.</p>';
+} else {
+  panel = '<div class="price">' + esc(priceMain) + (priceSub ? '<small>' + esc(priceSub) + '</small>' : '') + '</div>' +
+    '<span class="state">' + esc(a.status || "Status TBA") + '</span>' +
+    '<p class="muted">This one is not on the shelf yet, so no purchase is offered. It joins the store when it is ready.</p>';
+}
+var doors = "";
+if (a.get_links) {
+  var doorKeys = ["google_play", "app_store", "testflight", "web_store"].filter(function(k){ return a.get_links[k]; });
+  if (doorKeys.length) {
+    doors = '<div class="doors">' + doorKeys.map(function(k){
+      return '<a class="door" href="' + esc(a.get_links[k]) + '">' + esc(DOOR_LABELS[k]) + '</a>';
+    }).join("") + '</div>';
+  }
+}
+var shots = (a.screenshots || []).filter(function(p){ return p; });
+var shotsHtml = "";
+if (shots.length) {
+  var slides = shots.map(function(p, idx){
+    var cap = shotCaption(p);
+    return '<figure class="slide"><img src="' + esc(shotSrc(p)) + '" alt="' + esc(a.display_name) + ' — layout ' + (idx + 1) + ' of ' + shots.length + '" loading="lazy">' +
+      (cap ? '<figcaption>' + esc(cap) + '</figcaption>' : '') + '</figure>';
+  }).join("");
+  var controls = "";
+  if (shots.length > 1) {
+    controls = '<span class="shots-count" id="shots-count">1 / ' + shots.length + '</span>' +
+      '<span class="shots-nav"><button type="button" id="shots-prev" aria-label="Scroll layouts back">‹</button>' +
+      '<button type="button" id="shots-next" aria-label="Scroll layouts forward">›</button></span>';
+  }
+  var dots = "";
+  if (shots.length > 1) {
+    dots = '<div class="dots" id="shots-dots">' + shots.map(function(_, idx){
+      return '<button type="button" data-i="' + idx + '" aria-label="Go to layout ' + (idx + 1) + '"' + (idx === 0 ? ' class="on"' : '') + '></button>';
+    }).join("") + '</div>';
+  }
+  shotsHtml = '<section class="shots" id="shots" aria-label="Layouts"><div class="shots-head"><h2>Layouts</h2>' + controls + '</div>' +
+    '<div class="track" id="shots-track">' + slides + '</div>' + dots + '</section>';
+}
+var whatsNew = "";
+if (a.whats_new) {
+  whatsNew = '<section class="panel"><h2>What\'s new</h2><p>' + esc(a.whats_new) + '</p></section>';
+}
+var iosNote = "";
+if ((a.platforms || []).indexOf("ios") !== -1) {
+  iosNote = '<p class="note">On iPhone, CashDublo apps are delivered within what Apple allows — TestFlight, and in the European Union the alternative marketplaces, for server editions. Nothing wider is promised than Apple honestly allows.</p>';
+}
+body.innerHTML =
+  '<div class="head"><span class="tile" aria-hidden="true">' + esc(initials(a.display_name)) + '</span>' +
+  '<img src="../../../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" width="112" height="112" onerror="this.remove()">' +
+  '<div><span class="tag">' + esc(CAT_LABELS[a.category] || a.category || "Listing") + '</span>' +
+  '<div class="meta">' + (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') +
+  '<span class="status">' + esc(a.status || "Status TBA") + '</span>' +
+  (plats.length ? '<span class="status">' + esc(plats.join(" · ")) + '</span>' : '') +
+  (ffs.length ? '<span class="status">' + esc(ffs.join(" · ")) + '</span>' : '') + '</div></div></div>' +
+  '<p class="desc">' + esc(a.description || "") + '</p>' +
+  shotsHtml +
+  whatsNew +
+  '<section class="panel"><h2>Get this app</h2>' + panel + doors + '</section>' +
+  iosNote +
+  '<p class="muted">Every listing in this store reads from the one App Catalog, so the name, version and status here match the catalogue exactly. See also <a href="../apps.html">the full catalogue on the All apps page</a>.</p>';
+var track = document.getElementById("shots-track");
+if (track) {
+  var section = document.getElementById("shots");
+  var count = document.getElementById("shots-count");
+  var dotsBox = document.getElementById("shots-dots");
+  var prev = document.getElementById("shots-prev");
+  var next = document.getElementById("shots-next");
+  var updateShots = function(){
+    var slidesNow = track.querySelectorAll(".slide");
+    if (!slidesNow.length) return;
+    var w = slidesNow[0].offsetWidth + 14;
+    var idx = w > 0 ? Math.round(track.scrollLeft / w) : 0;
+    if (idx < 0) idx = 0;
+    if (idx > slidesNow.length - 1) idx = slidesNow.length - 1;
+    if (count) count.textContent = (idx + 1) + " / " + slidesNow.length;
+    if (dotsBox) {
+      var kids = dotsBox.children;
+      for (var j = 0; j < kids.length; j++) { kids[j].className = j === idx ? "on" : ""; }
+    }
+    if (prev) prev.disabled = idx <= 0;
+    if (next) next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  };
+  track.addEventListener("scroll", function(){ window.requestAnimationFrame(updateShots); }, { passive: true });
+  window.addEventListener("resize", updateShots);
+  if (prev) prev.addEventListener("click", function(){ track.scrollBy({ left: -track.clientWidth, behavior: "smooth" }); });
+  if (next) next.addEventListener("click", function(){ track.scrollBy({ left: track.clientWidth, behavior: "smooth" }); });
+  if (dotsBox) dotsBox.addEventListener("click", function(e){
+    var b = e.target;
+    if (!b || !b.getAttribute || b.getAttribute("data-i") === null) return;
+    var target = track.querySelectorAll(".slide")[Number(b.getAttribute("data-i"))];
+    if (target) track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: "smooth" });
+  });
+  track.addEventListener("error", function(e){
+    var img = e.target;
+    if (!img || img.tagName !== "IMG") return;
+    var fig = img.closest ? img.closest(".slide") : null;
+    if (fig) fig.remove();
+    if (!track.querySelectorAll(".slide").length) { if (section) section.remove(); return; }
+    if (dotsBox) {
+      var n = track.querySelectorAll(".slide").length;
+      var html = "";
+      for (var k = 0; k < n; k++) { html += '<button type="button" data-i="' + k + '" aria-label="Go to layout ' + (k + 1) + '"></button>'; }
+      dotsBox.innerHTML = html;
+    }
+    updateShots();
+  }, true);
+  updateShots();
+}
+})();
+</script>
+<script src="../assets/site-navigation.js" defer></script><style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.panel{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.get{background:linear-gradient(135deg,#e6faa9 0%,var(--lime) 55%,#aed657 100%)}
+</style>
+</body></html>

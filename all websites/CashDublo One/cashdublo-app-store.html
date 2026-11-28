@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en"><head>
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CashDublo App Store — every CashDublo app in one store</title>
+<meta name="description" content="The CashDublo App Store on the web: browse every CashDublo app, game and tool, see its price terms, and get it through the CashDublo server shelf.">
+<link rel="stylesheet" href="assets/site-navigation.css">
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--line:#d8d4c9;--deep:#193d39;--lime:#c9ed72;--coral:#f0785e}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+.hero{background:var(--deep);color:white;padding:58px 7vw}.hero p{max-width:780px;color:#d5e2d9}.kicker{color:var(--lime);font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.05;letter-spacing:-.06em;margin:12px 0}.wrap{max-width:1100px;margin:auto;padding:34px 20px}
+.tag{display:inline-block;background:#edf3dc;color:#344d31;border-radius:99px;padding:4px 10px;font-size:.75rem;font-weight:850}
+.account{margin:20px 0 0;font-weight:800;color:#d5e2d9}
+.account a{color:var(--lime)}
+.account button{font:inherit;font-weight:800;background:transparent;color:#f5f0e6;border:1.5px solid #d5e2d9;border-radius:999px;padding:6px 14px;margin-left:12px;cursor:pointer}
+.shelf{padding:15px 18px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:0 0 22px}
+.toolbar{display:flex;flex-direction:column;gap:12px;margin:0 0 8px}
+.toolbar input[type=search]{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:999px;font:inherit;background:#ffffff;color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--white);color:var(--ink);border-radius:999px;padding:7px 14px;font:inherit;font-size:.88rem;font-weight:800;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--deep);color:#f5f0e6;border-color:var(--deep)}
+.chip .n{opacity:.65;font-weight:700}
+.count{color:var(--muted);font-size:.92rem;margin:10px 0 16px}
+.stack-link{margin:0 0 16px}.stack-link a{font-weight:900;color:#a64e3e;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column}
+.card h3{margin:12px 0 8px;font-size:1.22rem;letter-spacing:-.03em;line-height:1.2}
+.card-top{display:flex;gap:12px;align-items:flex-start}
+.tile{width:74px;height:74px;flex:0 0 auto;border-radius:18px;background:var(--deep);color:var(--lime);display:grid;place-items:center;font-size:1.5rem;font-weight:950;letter-spacing:-.04em}
+.card-top img{width:74px;height:74px;object-fit:cover;border-radius:18px;flex:0 0 auto}
+.status{font-size:.62rem;letter-spacing:.03em;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:5px 10px;color:#7c5d36;line-height:1.4}
+.desc{color:var(--muted);font-size:.94rem;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.price-line{font-weight:900;margin-top:auto}
+.price-line small{display:block;font-weight:700;color:var(--muted)}
+.actions{display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.get{display:inline-flex;padding:10px 20px;border-radius:999px;text-decoration:none;font-weight:900;background:var(--lime);color:var(--ink);border:1px solid var(--ink)}
+.state{font-size:.78rem;font-weight:900;border:1.5px solid #b39b5e;border-radius:999px;padding:7px 12px;color:#7c5d36}
+.view{font-weight:850;text-decoration:none;color:#a64e3e}
+.plats{margin-top:14px;font-size:.64rem;font-weight:800;letter-spacing:.14em;color:#8a7a52}
+.info-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.info-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}
+.info-card h3{margin:0 0 8px}
+.muted{color:var(--muted)}
+.notice{padding:15px;border-left:4px solid #b38b36;background:#f4ead2;border-radius:8px;margin:18px 0}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:26px}
+footer a{color:var(--lime)}
+@media(max-width:800px){.grid,.info-grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<section class="hero"><div class="kicker">The CashDublo store</div><h1>CashDublo App Store</h1>
+<p>Every CashDublo app, game and tool on one shelf — the same store the CashDublo App Store app carries, here on the web. Browse the shelves, check each app's price terms, and get the ones that are ready through the CashDublo server.</p>
+<p><span class="tag">One catalogue · every platform · purchases complete through the server shelf</span></p>
+<p class="account" id="store-account"><a href="login.html">Sign in to your CashDublo account</a></p></section>
+<main class="wrap">
+<p class="shelf" id="shelf-status">Purchases and downloads complete through the store shelf on the CashDublo server — the same shelf the App Store app reads. A download started is a download finished: packages move in pieces that resume when a connection drops, and every package is checked against its recorded fingerprint before it is installed.</p>
+<div class="toolbar">
+<input type="search" id="store-search" placeholder="Search the shelves — try &quot;music&quot;, &quot;travel&quot;, &quot;flags&quot;…" aria-label="Search the store">
+<div class="chips" id="cat-chips" role="group" aria-label="Browse by kind"></div>
+<div class="chips" id="plat-chips" role="group" aria-label="Browse by platform"></div>
+</div>
+<p class="count" id="store-count"></p>
+<p class="stack-link"><a href="store/cards.html">Browse all as cards — one over the other →</a></p>
+<div class="grid" id="store-grid"></div>
+<noscript><p class="notice">The shelves need JavaScript to load. The full catalogue also stands on the <a href="apps.html">All apps page</a>.</p></noscript>
+
+<section id="about-this-store"><h2>About this store — the platform behind the shelves</h2>
+<p>A platform for developers to present their apps, distribute approved builds, manage customer purchases and subscriptions, handle licensing, and deliver updates through one coordinated service. The shelves above are that platform's catalogue, live on the web.</p>
+<div class="info-grid">
+<article class="info-card"><h3>App catalogue</h3><p>Product pages, app metadata, platform compatibility, release channels and approved downloads.</p></article>
+<article class="info-card"><h3>Commerce and licensing</h3><p>One-time purchases, subscriptions, receipts, refunds, entitlements and license status.</p></article>
+<article class="info-card"><h3>Distribution and updates</h3><p>Version manifests, package integrity checks, staged releases, device enrollment and update delivery.</p></article>
+</div>
+<p><span class="tag">Development and availability status: to be confirmed</span></p>
+</section>
+<section><h2>Product-specific pricing</h2><p>The App Store is the catalogue, checkout, licensing and delivery layer. It does not impose a separate platform membership just to browse or purchase an app. Each product owns its own price and customer entitlement: app memberships belong to apps; engine and studio licences belong to their development platforms; published games and web apps own their own purchase or access terms.</p><p class="muted">See the <a href="memberships.html#platform-pricing">CashDublo commercial architecture and pricing guide</a> for product ownership, proposed prices and items whose prices have not yet been set.</p></section>
+<section><h2>Security and customer protections</h2><p>Signing operations are handled only through the designated protected service. This public page intentionally contains no private signing material or operational key details. Customer access is controlled by documented entitlements, notices, grace periods and appeal procedures. Local customer data must not be destroyed or held hostage when a hosted entitlement is suspended.</p><p>Lawful criticism, negative reviews and complaints are not grounds for suspension or fees. Enforcement is limited to genuine material breaches such as fraud, security abuse or unlawful use, under clear published terms.</p></section>
+<section><h2>Availability</h2><p>This page is the storefront; purchases complete through the CashDublo server shelf. Do not treat a listing as purchasable until the platform, payment processing, licensing, support terms and release status have been verified for it.</p>
+<p><a href="website-design.html">Website design services</a> · <a href="memberships.html">App pricing and memberships</a> · <a href="apps.html">Browse all apps</a></p></section>
+</main>
+<footer>CashDublo — built by Cash.<div class="cd-footer-legal"><a href="privacy.html">Privacy Policy</a><a href="mailto:cash.dublo@gmail.com">Contact Us</a></div></footer>
+<script src="store/apps-data.js"></script>
+<script>
+(function(){
+"use strict";
+var SHELF = "https://cashdublo.vercel.app/api/store/catalog";
+var APPS = (window.CD_STORE_APPS || []).slice();
+var CAT_LABELS = {app:"Apps", game:"Games", tool:"Tools", course:"Courses", model:"AI models", server:"Servers", website:"Websites", store:"Store", module:"Modules", record:"Records"};
+var PLAT_LABELS = {android:"Android", ios:"iOS", web:"Web", desktop:"Desktop", windows:"Windows", linux:"Linux", macos:"Mac"};
+var state = { q:"", cat:"all", plat:"all" };
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+function available(a){ return a.status === "Builds and stable" || a.status === "Live"; }
+function priceLine(a){
+  if (a.price !== null && a.price !== undefined && a.price !== "") {
+    return { main: "$" + a.price, sub: a.price_model ? esc(a.price_model) : "" };
+  }
+  if (a.price_model === "trial") return { main: "Free trial", sub: a.trial_length ? esc(a.trial_length) : "" };
+  if (a.price_model === "freemium") return { main: "Free with ads", sub: "" };
+  if (a.price_model) return { main: esc(a.price_model), sub: "" };
+  return { main: "Price TBA", sub: "" };
+}
+function initials(name){
+  var words = String(name || "").replace(/[^A-Za-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
+  if (!words.length) return "CD";
+  return (words[0].charAt(0) + (words.length > 1 ? words[1].charAt(0) : "")).toUpperCase();
+}
+function card(a){
+  var p = priceLine(a);
+  var plats = (a.platforms || []).map(function(x){ return PLAT_LABELS[x] || x; }).join(" · ").toUpperCase();
+  var action = available(a)
+    ? '<a class="get" href="' + SHELF + '">Get</a>'
+    : '<span class="state">' + esc(a.status || "Status TBA") + '</span>';
+  return '<article class="card">' +
+    '<div class="card-top"><span class="tile" aria-hidden="true">' + esc(initials(a.display_name)) + '</span>' +
+    '<img src="../../img/icon-' + esc(a.slug) + '.png" alt="" loading="lazy" width="74" height="74" onerror="this.remove()">' +
+    (a.version ? '<span class="status">Version: ' + esc(a.version) + '</span>' : '') + '</div>' +
+    '<h3>' + esc(a.display_name) + '</h3>' +
+    '<p class="desc">' + esc(a.description || "") + '</p>' +
+    '<div class="price-line">' + esc(p.main) + (p.sub ? '<small>' + p.sub + '</small>' : '') + '</div>' +
+    '<div class="actions">' + action + '<a class="view" href="store/app.html?app=' + encodeURIComponent(a.slug) + '">View in store →</a></div>' +
+    '<div class="plats">' + esc(plats || "PLATFORM TBA") + '</div>' +
+    '</article>';
+}
+function matches(a){
+  if (state.cat !== "all" && a.category !== state.cat) return false;
+  if (state.plat !== "all" && (a.platforms || []).indexOf(state.plat) === -1) return false;
+  if (state.q) {
+    var hay = (a.display_name + " " + (a.description || "") + " " + (CAT_LABELS[a.category] || "")).toLowerCase();
+    if (hay.indexOf(state.q) === -1) return false;
+  }
+  return true;
+}
+function render(){
+  var shown = APPS.filter(matches);
+  document.getElementById("store-grid").innerHTML = shown.map(card).join("");
+  document.getElementById("store-count").textContent = "Showing " + shown.length + " of " + APPS.length + " listings.";
+}
+function chips(elId, values, key){
+  var el = document.getElementById(elId);
+  el.innerHTML = "";
+  values.forEach(function(v){
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "chip";
+    b.setAttribute("aria-pressed", state[key] === v.value ? "true" : "false");
+    b.innerHTML = esc(v.label) + (v.count !== undefined ? ' <span class="n">' + v.count + '</span>' : "");
+    b.addEventListener("click", function(){ state[key] = v.value; refresh(); });
+    el.appendChild(b);
+  });
+}
+function refresh(){
+  var cats = [{ value:"all", label:"All kinds", count: APPS.length }];
+  var seen = {};
+  APPS.forEach(function(a){ if (a.category) { seen[a.category] = (seen[a.category] || 0) + 1; } });
+  Object.keys(seen).sort().forEach(function(c){ cats.push({ value:c, label: CAT_LABELS[c] || c, count: seen[c] }); });
+  chips("cat-chips", cats, "cat");
+  var plats = [{ value:"all", label:"All platforms" }];
+  var pseen = {};
+  APPS.forEach(function(a){ (a.platforms || []).forEach(function(p){ pseen[p] = true; }); });
+  Object.keys(PLAT_LABELS).forEach(function(p){ if (pseen[p]) plats.push({ value:p, label: PLAT_LABELS[p] }); });
+  chips("plat-chips", plats, "plat");
+  render();
+}
+document.getElementById("store-search").addEventListener("input", function(e){ state.q = e.target.value.trim().toLowerCase(); render(); });
+refresh();
+fetch(SHELF).then(function(r){ return r.json(); }).then(function(d){
+  var n = (d && d.apps) ? d.apps.length : 0;
+  var el = document.getElementById("shelf-status");
+  if (n === 0) {
+    el.textContent = "The server shelf stands empty today — the store is being stocked. The listings below are the full CashDublo catalogue: a Get button leads to the shelf door, and a purchase completes as soon as that app lands on the shelf. When it does, the download is delivered in pieces that resume if your connection drops, checked against the package's recorded fingerprint.";
+  } else {
+    el.textContent = n + (n === 1 ? " app is" : " apps are") + " on the server shelf now — Get completes the purchase and the download through the shelf. A download started is a download finished: packages move in pieces that resume when a connection drops, and every package is checked against its recorded fingerprint before it is installed.";
+  }
+}).catch(function(){ /* the standing note above stays as written */ });
+})();
+</script>
+<script>
+(function(){
+"use strict";
+var box = document.getElementById("store-account");
+if (!box) return;
+function el(tag, text){ var n = document.createElement(tag); if (text != null) n.textContent = text; return n; }
+function showSignedOut(){
+  box.innerHTML = "";
+  var a = el("a", "Sign in to your CashDublo account");
+  a.href = "login.html";
+  box.appendChild(a);
+}
+function showSignedIn(user, client){
+  box.innerHTML = "";
+  var meta = user.user_metadata || {};
+  var name = meta.full_name || meta.name || user.email || "your CashDublo account";
+  box.appendChild(el("span", "Signed in as " + name));
+  var b = el("button", "Sign out");
+  b.type = "button";
+  b.addEventListener("click", function(){
+    client.auth.signOut().then(function(){ showSignedOut(); });
+  });
+  box.appendChild(b);
+}
+fetch("https://cashdublo.vercel.app/api/auth-config", { headers: { Accept: "application/json" } })
+  .then(function(r){ return r.json(); })
+  .then(function(config){
+    if (!config || !config.configured) return; /* the plain sign-in link stands; the login page carries the word */
+    var s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+    s.onload = function(){
+      if (!window.supabase || !window.supabase.createClient) return;
+      var client = window.supabase.createClient(config.supabaseUrl, config.supabaseAnonKey, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
+      client.auth.getSession().then(function(res){
+        var session = res && res.data ? res.data.session : null;
+        if (session && session.user) showSignedIn(session.user, client);
+      });
+      client.auth.onAuthStateChange(function(_event, session){
+        if (session && session.user) showSignedIn(session.user, client); else showSignedOut();
+      });
+    };
+    document.head.appendChild(s);
+  })
+  .catch(function(){ /* the plain sign-in link stands */ });
+})();
+</script>
+<script src="assets/site-navigation.js" defer></script><style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.card{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.info-card{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+.get{background:linear-gradient(135deg,#e6faa9 0%,var(--lime) 55%,#aed657 100%)}
+</style>
+</body></html>
