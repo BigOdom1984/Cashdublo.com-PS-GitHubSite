@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Website Design & App Integration | CashDublo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#172d2b;--muted:#596d68;--paper:#f5f0e6;--white:#fffdf8;--line:#d8d4c9;--deep:#193d39;--lime:#c9ed72}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 system-ui,sans-serif}
+.hero{background:var(--deep);color:#fff;padding:58px 7vw}.hero p{max-width:780px;color:#d5e2d9}
+.kicker{color:var(--lime);font-size:.76rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,7vw,4.3rem);line-height:1.05;letter-spacing:-.06em;max-width:900px;margin:12px 0}
+.wrap{max-width:1120px;margin:auto;padding:34px 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card h2{margin:0 0 8px;font-size:1.3rem}.price{font-size:1.35rem;font-weight:900;letter-spacing:-.03em}
+.muted{color:var(--muted)}.tag{display:inline-block;background:#edf3dc;color:#344d31;border-radius:99px;padding:4px 10px;font-size:.75rem;font-weight:850}
+ul{padding-left:20px}.notice{font-size:.88rem;color:var(--muted);margin-top:20px}
+.steps{counter-reset:step;list-style:none;padding:0}.steps li{counter-increment:step;padding:12px 0 12px 46px;position:relative;border-bottom:1px solid var(--line)}
+.steps li:before{content:counter(step);position:absolute;left:0;top:10px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--deep);color:#fff;font-weight:900}
+.cta{display:inline-block;background:var(--lime);color:var(--ink);font-weight:900;padding:12px 20px;border-radius:99px;text-decoration:none;margin-top:12px}
+footer{text-align:center;background:var(--deep);color:#d5e2d9;padding:26px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+</style>
+<style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.card{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+</style>
+<link rel="stylesheet" href="gold.css">
+</head>
+<body>
+<header class="gold-top">
+  <a class="gold-login" href="login.html">Log in</a>
+  <a class="gold-brand" href="index.html">CASH<span>DUBLO</span></a>
+  <details class="gold-menu"><summary>Menu ☰</summary>
+    <nav class="gold-drawer" aria-label="Site navigation"><div class="gold-drawer-inner"><a class="tile" href="index.html">Home</a><a class="tile" href="website-design.html">Website Design</a><a class="tile" href="memberships.html">Memberships</a><a class="tile" href="cashdublo-app-store.html">App Store</a><a class="tile" href="apps.html">All Apps</a><details class="gold-group"><summary>Platforms</summary><div class="gold-group-links"><a href="android.html">Android</a><a href="iphone.html">iPhone / iOS</a><a href="mac.html">Mac</a><a href="windows.html">Windows</a><a href="linux.html">Linux</a><a href="terminal.html">Command Tools</a></div></details><a class="tile" href="front-ends.html#web-frontends">Web Apps</a><details class="gold-group"><summary>Front Ends</summary><div class="gold-group-links"><a href="front-ends.html">All front ends — full catalog</a><a href="front-ends.html#app-ai2aisync">AI2AISync</a><a href="front-ends.html#app-voice-model">VoiceModel</a><a href="front-ends.html#app-marvin">Marvin</a><a href="front-ends.html#app-pictureglobe">PictureGlobe</a><a href="front-ends.html#app-mixology">Mixology</a><a href="front-ends.html#app-hit-record">Hit Record</a><a href="front-ends.html#app-testra-accuracy">Testra Accuracy</a><a href="front-ends.html#app-dear-idea">Dear Idea</a><a href="front-ends.html#app-go">GO</a><a href="front-ends.html#app-travel-journal">Travel Journal</a><a href="front-ends.html#app-say">SAY</a><a href="front-ends.html#app-tts-widget">TTS Widget</a><a href="front-ends.html#app-player">Player</a><a href="front-ends.html#app-ai-cash-portfolio">AI Cash Portfolio</a><a href="front-ends.html#app-cash-portfolio">Cash Portfolio</a><a href="front-ends.html#app-apple2player">Apple2Player</a><a href="front-ends.html#app-dear-idea-desktop">Dear Idea Desktop</a><a href="front-ends.html#app-github-hq">GitHub HQ</a><a href="front-ends.html#app-script-installer">Script-Run</a><a href="front-ends.html#app-change-app-icons">Change App Icons</a><a href="front-ends.html#app-cashdublo-coder">CashDublo Coder</a><a href="front-ends.html#app-app-translator">App Translator</a><a href="front-ends.html#app-build-manager">Build Manager</a><a href="front-ends.html#app-rebuild-all">Rebuild-All</a><a href="front-ends.html#app-podedpro">PodEdPro</a><a href="front-ends.html#app-galaxy-repeat">Galaxy Repeat</a><a href="front-ends.html#app-best-mac-file-manager">Best Mac File Manager</a><a href="front-ends.html#app-patent-it">Patent It!</a><a href="front-ends.html#app-crash-catcher">Crash Catcher</a><a href="front-ends.html#app-wifi-tether">Wi-Fi Tether</a><a href="front-ends.html#app-ai-teacher">AI Teacher</a><a href="front-ends.html#app-apple-dextop">Apple Dextop</a><a href="front-ends.html#app-contracts">Contracts</a><a href="front-ends.html#app-secure-terminal">Secure Mac Remote Terminal</a></div></details><details class="gold-group"><summary>Back Ends</summary><div class="gold-group-links"><a href="front-ends/server.html">CashDublo Server</a></div></details><a class="tile" href="products.html">Products</a><details class="gold-group"><summary>Games</summary><div class="gold-group-links"><a href="games.html#story">Story</a><a href="games.html#storyline-engine">Engine</a><a href="games.html#storyline-studios">Storyline Studio</a><a href="games.html#storyline-console">Storyline Console</a><a href="games.html#hacked">Storyline HACKED</a><div class="sep">Other games · add as released</div><a href="games.html#name-that-flag">Name That Flag</a></div></details><a class="tile" href="course.html">Courses</a><a class="tile" href="code.html">My Source Code</a><a class="tile" href="news.html">Newsletter</a><a class="tile" href="rss.html">RSS Feeds</a><a class="tile" href="privacy.html">Privacy</a><a class="tile" href="mailto:cash.dublo@gmail.com">Contact Us</a><a class="tile" href="#comments">Comments</a><a class="tile" href="index.html#about">About Us</a></div></nav>
+  </details>
+</header>
+<nav class="gold-primary" aria-label="Primary navigation"><a href="apps.html">All apps</a><a href="index.html#featured">Featured apps</a><a href="rss.html">RSS Feeds</a><a href="cashdublo-app-store.html">App Store</a></nav>
+<main class="gold-content">
+
+<section class="hero">
+<div class="kicker">CashDublo website services</div>
+<h1>Your website, apps and customer experience working together.</h1>
+<p>We design and build responsive websites that can connect to product catalogues, app listings, memberships, customer portals and secure APIs. You get a clear scope, a staged build and an agreed support plan—not a mystery monthly bill.</p>
+<a class="cta" href="mailto:cash.dublo@gmail.com?subject=Website%20design%20enquiry">Discuss a website project</a>
+</section>
+<main class="wrap">
+<section>
+<h2>What we can build</h2>
+<div class="grid">
+<article class="card"><h2>Business websites</h2><p>Responsive company websites, service pages, contact forms, search-friendly content and consistent navigation.</p></article>
+<article class="card"><h2>Websites with apps</h2><p>App catalogues, product overviews, version/status displays, downloads and companion-app information.</p></article>
+<article class="card"><h2>Membership and commerce</h2><p>Pricing pages, subscription tiers, customer accounts and hosted checkout integrations through supported payment providers.</p></article>
+<article class="card"><h2>Customer control panels</h2><p>Manage approved pages, products, menus, prices and publication status without editing source code.</p></article>
+</div>
+</section>
+<section>
+<h2>Website packages</h2>
+<p class="muted">Pricing is not published. Quotes require an approved scope and a price recorded in the App Catalog.</p>
+<div class="grid">
+<article class="card"><span class="tag">Launch</span><h2>Starter website</h2><p class="price">Quote required — not published</p><p class="muted">Support pricing: not published</p><ul><li>Up to 5 pages</li><li>Responsive layout</li><li>Contact route and basic SEO</li><li>One revision round</li></ul></article>
+<article class="card"><span class="tag">Business</span><h2>Growing business</h2><p class="price">Quote required — not published</p><p class="muted">Support pricing: not published</p><ul><li>Up to 12 pages</li><li>Managed content workflow</li><li>Catalogue or booking integration</li><li>Analytics setup and three revision rounds</li></ul></article>
+<article class="card"><span class="tag">Commerce & Apps</span><h2>Connected products</h2><p class="price">Quote required — not published</p><p class="muted">Support pricing: not published</p><ul><li>Product and app catalogue</li><li>Membership and pricing display</li><li>Hosted checkout integration</li><li>Customer portal and API connection</li></ul></article>
+<article class="card"><span class="tag">Custom</span><h2>Custom platform</h2><p class="price">Quote required — not published</p><p class="muted">Support pricing: not published</p><ul><li>Multi-tenant website control plane</li><li>Custom APIs and integrations</li><li>Migration and release planning</li><li>Support SLA defined by contract</li></ul></article>
+</div>
+<p class="notice">No prices are published. Quotes, support terms and third-party costs must be approved and recorded before an offer is made. Hosting, domains, payment processing, taxes, app-store fees, copywriting and additional revisions must be scoped explicitly.</p>
+</section>
+<section>
+<h2>How a project works</h2>
+<ol class="steps">
+<li><strong>Discovery:</strong> confirm goals, audience, pages, apps, content, integrations and budget.</li>
+<li><strong>Proposal:</strong> agree the initial payment, deliverables, milestones, revision allowance and acceptance criteria.</li>
+<li><strong>Build:</strong> create the site using approved reusable modules and an isolated customer configuration.</li>
+<li><strong>Review:</strong> test desktop, tablet and mobile layouts, accessibility, speed, security and integrations.</li>
+<li><strong>Launch:</strong> connect the verified domain, publish, test forms and integrations, and hand over access.</li>
+<li><strong>Support:</strong> maintain backups, dependencies, content and approved updates under the selected support plan.</li>
+</ol>
+</section>
+<section>
+<h2>Support plans</h2>
+<div class="grid">
+<article class="card"><h2>Essential</h2><p>For routine maintenance, dependency updates and basic monitoring within the agreed monthly allowance.</p></article>
+<article class="card"><h2>Business</h2><p>For regular content changes, integration checks, backups and a defined response target.</p></article>
+<article class="card"><h2>Priority</h2><p>For more frequent updates, priority incident triage and expanded maintenance hours.</p></article>
+<article class="card"><h2>Custom SLA</h2><p>For critical services requiring negotiated response windows, escalation and operational responsibilities.</p></article>
+</div>
+<p class="notice">Exact support hours, response windows, uptime targets and incident coverage are written into each agreement. No 24/7 or guaranteed uptime claim is made unless it is staffed, measured and contracted.</p>
+</section>
+<section>
+<h2>CashDublo App Store</h2>
+<p>For developers who need an app catalogue, distribution, payments, licensing and update delivery, see the <a href="cashdublo-app-store.html">CashDublo App Store platform and proposed subscription plans</a>.</p>
+</section>
+<section>
+<h2>Built around reusable modules</h2>
+<p>When appropriate, the website can consume the CashDublo central API for approved navigation, product records, membership display and website configuration. Each customer's content and settings remain isolated. Public pages keep a static fallback so a temporary API outage does not make the website disappear.</p>
+<p class="muted">The customer control application and full hosted API platform are being developed in stages. Features are included in a project only after implementation and verification.</p>
+</section>
+</main>
+<footer>CashDublo — built by Cash.<div class="cd-footer-legal"><a href="privacy.html">Privacy Policy</a><a href="mailto:cash.dublo@gmail.com">Contact Us</a></div></footer>
+
+<style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#fffdf8 0%,var(--paper) 55%,#f1ead6 100%)}
+.hero{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+footer{background:linear-gradient(135deg,#225a4b 0%,var(--deep) 52%,#102723 100%)}
+.card{background:linear-gradient(135deg,var(--white) 0%,#f9f3e2 100%)}
+</style>
+
+</main>
+<footer class="gold-foot">
+  <div>CashDublo LLC<br>CashDublo@gmail.com</div>
+  <div><a href="privacy.html">Privacy</a> · <a href="mailto:cash.dublo@gmail.com">Contact Us</a> · <a href="index.html#about">About Us</a></div>
+  <div>Sole developer of record:<br>Cash (Greg Odom)</div>
+</footer>
+<p class="gold-note">The black-and-gold version of this page, kept in the Muse folder. The original page stands untouched on the main site.</p>
+</body>
+</html>

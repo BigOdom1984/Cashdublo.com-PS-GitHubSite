@@ -15,7 +15,7 @@
   body{background:var(--bg);color:var(--bone);font-family:Inter,system-ui,sans-serif;line-height:1.55}
   a{color:var(--gold);text-decoration:none}
   .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-  header{padding:64px 0 30px;text-align:center;border-bottom:1px solid var(--line);
+  .muse-hero{padding:64px 0 30px;text-align:center;border-bottom:1px solid var(--line);
     background:radial-gradient(ellipse 70% 90% at 50% -10%, rgba(201,162,39,.16), transparent 60%)}
   .umbrella{font-size:54px;color:var(--gold);line-height:1}
   h1{font-family:Anton,sans-serif;font-size:64px;letter-spacing:.04em;color:var(--bone);margin-top:10px}
@@ -74,9 +74,10 @@
   .reg-empty{color:var(--mute);font-size:15px;border:1px dashed var(--gold-dim);border-radius:14px;
     padding:22px;text-align:center}
 </style>
-<link rel="stylesheet" href="/assets/site-navigation.css"></head>
+<link rel="stylesheet" href="/assets/site-navigation.css">
+<link rel="stylesheet" href="gold-top.css"></head>
 <body>
-<header>
+<div class="muse-hero">
   <div class="wrap">
     <div class="umbrella">☂</div>
     <h1>CASH<span>DUBLO</span></h1>
@@ -85,7 +86,7 @@
     companions, music machines and games, made by hand and carried everywhere he goes.</p>
     <div class="verse">Built in Cambodia · Bound for everywhere</div>
   </div>
-</header>
+</div>
 
 <div class="wrap">
   <section>
@@ -284,5 +285,6 @@ platSel.addEventListener("change", render);
 catSel.addEventListener("change", render);
 render();
 </script>
-<script src="/assets/site-navigation.js" defer></script></body>
+<script src="/assets/site-navigation.js" defer></script>
+<script src="gold-top.js" defer></script></body>
 </html>

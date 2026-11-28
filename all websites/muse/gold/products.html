@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products | CashDublo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d1512;color:#edf4ef;font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+main{width:min(1100px,calc(100% - 36px));margin:44px auto 80px}.eyebrow{color:#a7cbb5;text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:700}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:.5rem 0 1rem}p{color:#c2d0c8}.intro{max-width:760px;font-size:1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:32px}
+.product{border:1px solid #33443a;background:#142019;border-radius:18px;padding:24px;display:flex;flex-direction:column;min-height:270px}
+.tag{display:inline-flex;align-self:flex-start;border:1px solid #607d6b;border-radius:999px;padding:4px 10px;color:#c5e2d0;font-size:.78rem;font-weight:700}
+.product h2{font-size:1.35rem;margin:16px 0 4px}.product p{margin:.4rem 0}.status{margin-top:auto;padding-top:18px;color:#b3c9bb;font-size:.9rem}
+.note{margin-top:28px;padding:18px 20px;border-left:3px solid #789d85;background:#15221a;border-radius:8px;color:#d3e0d8}
+a{color:#b8dfc6}footer{margin-top:70px}
+</style>
+<style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#182820 0%,#0d1512 55%,#060a08 100%)}
+</style>
+<link rel="stylesheet" href="gold.css">
+</head>
+<body>
+<header class="gold-top">
+  <a class="gold-login" href="login.html">Log in</a>
+  <a class="gold-brand" href="index.html">CASH<span>DUBLO</span></a>
+  <details class="gold-menu"><summary>Menu ☰</summary>
+    <nav class="gold-drawer" aria-label="Site navigation"><div class="gold-drawer-inner"><a class="tile" href="index.html">Home</a><a class="tile" href="website-design.html">Website Design</a><a class="tile" href="memberships.html">Memberships</a><a class="tile" href="cashdublo-app-store.html">App Store</a><a class="tile" href="apps.html">All Apps</a><details class="gold-group"><summary>Platforms</summary><div class="gold-group-links"><a href="android.html">Android</a><a href="iphone.html">iPhone / iOS</a><a href="mac.html">Mac</a><a href="windows.html">Windows</a><a href="linux.html">Linux</a><a href="terminal.html">Command Tools</a></div></details><a class="tile" href="front-ends.html#web-frontends">Web Apps</a><details class="gold-group"><summary>Front Ends</summary><div class="gold-group-links"><a href="front-ends.html">All front ends — full catalog</a><a href="front-ends.html#app-ai2aisync">AI2AISync</a><a href="front-ends.html#app-voice-model">VoiceModel</a><a href="front-ends.html#app-marvin">Marvin</a><a href="front-ends.html#app-pictureglobe">PictureGlobe</a><a href="front-ends.html#app-mixology">Mixology</a><a href="front-ends.html#app-hit-record">Hit Record</a><a href="front-ends.html#app-testra-accuracy">Testra Accuracy</a><a href="front-ends.html#app-dear-idea">Dear Idea</a><a href="front-ends.html#app-go">GO</a><a href="front-ends.html#app-travel-journal">Travel Journal</a><a href="front-ends.html#app-say">SAY</a><a href="front-ends.html#app-tts-widget">TTS Widget</a><a href="front-ends.html#app-player">Player</a><a href="front-ends.html#app-ai-cash-portfolio">AI Cash Portfolio</a><a href="front-ends.html#app-cash-portfolio">Cash Portfolio</a><a href="front-ends.html#app-apple2player">Apple2Player</a><a href="front-ends.html#app-dear-idea-desktop">Dear Idea Desktop</a><a href="front-ends.html#app-github-hq">GitHub HQ</a><a href="front-ends.html#app-script-installer">Script-Run</a><a href="front-ends.html#app-change-app-icons">Change App Icons</a><a href="front-ends.html#app-cashdublo-coder">CashDublo Coder</a><a href="front-ends.html#app-app-translator">App Translator</a><a href="front-ends.html#app-build-manager">Build Manager</a><a href="front-ends.html#app-rebuild-all">Rebuild-All</a><a href="front-ends.html#app-podedpro">PodEdPro</a><a href="front-ends.html#app-galaxy-repeat">Galaxy Repeat</a><a href="front-ends.html#app-best-mac-file-manager">Best Mac File Manager</a><a href="front-ends.html#app-patent-it">Patent It!</a><a href="front-ends.html#app-crash-catcher">Crash Catcher</a><a href="front-ends.html#app-wifi-tether">Wi-Fi Tether</a><a href="front-ends.html#app-ai-teacher">AI Teacher</a><a href="front-ends.html#app-apple-dextop">Apple Dextop</a><a href="front-ends.html#app-contracts">Contracts</a><a href="front-ends.html#app-secure-terminal">Secure Mac Remote Terminal</a></div></details><details class="gold-group"><summary>Back Ends</summary><div class="gold-group-links"><a href="front-ends/server.html">CashDublo Server</a></div></details><a class="tile" href="products.html">Products</a><details class="gold-group"><summary>Games</summary><div class="gold-group-links"><a href="games.html#story">Story</a><a href="games.html#storyline-engine">Engine</a><a href="games.html#storyline-studios">Storyline Studio</a><a href="games.html#storyline-console">Storyline Console</a><a href="games.html#hacked">Storyline HACKED</a><div class="sep">Other games · add as released</div><a href="games.html#name-that-flag">Name That Flag</a></div></details><a class="tile" href="course.html">Courses</a><a class="tile" href="code.html">My Source Code</a><a class="tile" href="news.html">Newsletter</a><a class="tile" href="rss.html">RSS Feeds</a><a class="tile" href="privacy.html">Privacy</a><a class="tile" href="mailto:cash.dublo@gmail.com">Contact Us</a><a class="tile" href="#comments">Comments</a><a class="tile" href="index.html#about">About Us</a></div></nav>
+  </details>
+</header>
+<nav class="gold-primary" aria-label="Primary navigation"><a href="apps.html">All apps</a><a href="index.html#featured">Featured apps</a><a href="rss.html">RSS Feeds</a><a href="cashdublo-app-store.html">App Store</a></nav>
+<main class="gold-content">
+
+<main>
+<div class="eyebrow">CashDublo · Product catalogue</div>
+<h1>Products</h1>
+<p class="intro">Software and tools from Cash Flow's creative and developer ecosystem. This page distinguishes products being prepared from products that are actually available to buy. A product will only show a purchase destination once its seller, delivery method, price and terms have been verified.</p>
+<section class="grid" aria-label="Products">
+<article class="product">
+<span class="tag">Planned commercial product</span>
+<h2>APK Signing Software</h2>
+<p>A signing utility intended to help developers prepare Android application packages for distribution. Final feature set, supported workflows, platform availability and security controls are still being defined.</p>
+<p>Private signing keys, certificates, secret values, internal key paths and confidential signing operations are never published on this product page.</p>
+<div class="status">Pricing and delivery: under review. A subscription may suit hosted signing, continuing updates and support; a one-time licence may suit a fully local utility. No checkout is active.</div>
+</article>
+<article class="product">
+<span class="tag">Planned developer service</span>
+<h2>Managed App Build &amp; Signing</h2>
+<p>A hosted build workflow for customer-authorized projects, including Expo/EAS and supported native app builds, artifact checks, release history and secure delivery. Customers will see build and signing status without being shown private signing credentials.</p>
+<p>Expo projects are planned to use official EAS Build with EAS-managed credentials by default. CashDublo provides the customer workflow and orchestration; it is not an independent Expo signing authority.</p>
+<div class="status">Availability, supported platforms, pricing, provider costs and service-level terms: under review. No build or signing checkout is active.</div>
+</article>
+<article class="product">
+<span class="tag">Planning-stage research</span>
+<h2>NFC USB Pokémon / Amiibo-compatible driver or emulator</h2>
+<p>Research concept for an NFC USB driver or emulator workflow. Compatibility, supported hardware, legal permissions and release scope have not been verified.</p>
+<div class="status">Not available for purchase. No endorsement or affiliation is implied.</div>
+</article>
+</section>
+<div class="note"><strong>Availability notice:</strong> This catalogue is informational. Prices, subscriptions, payment processing, licensing, delivery and support are not active until the relevant product is approved and its purchase channel is linked here.</div>
+</main>
+
+<style>
+/*SUNLIGHT — the website takes the theme (W19, 2026-11-25): the sunlight gradient from the themes module (GRADIENTS.md), carried by the site's own generator — one house sun angle (135deg, light from the upper left, never moving), stops derived from this page's own palette (highlight where the light catches, the base color, the falloff into shade), AA held across every stop for the text each surface carries.*/
+body{background:linear-gradient(135deg,#182820 0%,#0d1512 55%,#060a08 100%)}
+</style>
+
+</main>
+<footer class="gold-foot">
+  <div>CashDublo LLC<br>CashDublo@gmail.com</div>
+  <div><a href="privacy.html">Privacy</a> · <a href="mailto:cash.dublo@gmail.com">Contact Us</a> · <a href="index.html#about">About Us</a></div>
+  <div>Sole developer of record:<br>Cash (Greg Odom)</div>
+</footer>
+<p class="gold-note">The black-and-gold version of this page, kept in the Muse folder. The original page stands untouched on the main site.</p>
+</body>
+</html>

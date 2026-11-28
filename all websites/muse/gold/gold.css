@@ -1,0 +1,138 @@
+/* Black-and-gold versions — Muse folder. Palette is the Muse page's
+   own: black #050505, panel #0d0c09, gold #c9a227, gold-dim #8c7051,
+   bone #e9e5d9, mute #9a937f, line #262216. */
+:root{
+  --bg:#050505; --panel:#0d0c09; --gold:#c9a227; --gold-dim:#8c7051;
+  --bone:#e9e5d9; --mute:#9a937f; --line:#262216;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--bone);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+a{color:var(--gold);text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* The static top — header bar, Menu drawer, secondary nav. */
+.gold-top{position:sticky;top:0;z-index:1000;display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:12px;min-height:72px;padding:8px clamp(14px,3vw,42px);
+  background:var(--bg);border-bottom:2px solid var(--gold)}
+.gold-login{justify-self:start;display:inline-flex;align-items:center;min-height:40px;
+  padding:7px 14px;border:1px solid var(--gold);border-radius:999px;background:var(--panel);
+  color:var(--gold) !important;font-size:.88rem;font-weight:600;white-space:nowrap}
+.gold-login:hover{background:#262216}
+.gold-brand{justify-self:center;color:var(--bone) !important;font-size:clamp(1.25rem,2vw,1.65rem);
+  font-weight:900;letter-spacing:-.045em;white-space:nowrap}
+.gold-brand span{color:var(--gold)}
+.gold-menu{justify-self:end;position:relative}
+.gold-menu>summary{display:inline-flex;align-items:center;min-height:48px;padding:8px 14px;
+  border:1px solid var(--gold);border-radius:999px;background:var(--panel);color:var(--gold);
+  font-weight:600;cursor:pointer;list-style:none;white-space:nowrap}
+.gold-menu>summary::-webkit-details-marker{display:none}
+.gold-menu>summary:hover{background:#262216}
+.gold-drawer{position:fixed;top:72px;left:0;right:0;z-index:999;max-height:min(72vh,680px);
+  overflow:auto;background:var(--bg);border-bottom:3px solid var(--gold);
+  box-shadow:0 18px 38px rgba(0,0,0,.5)}
+.gold-drawer-inner{max-width:1240px;margin:0 auto;padding:18px clamp(14px,3vw,42px) 24px;
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:start}
+.gold-drawer a.tile,.gold-group{min-width:0;border:1px solid var(--gold-dim);border-radius:11px;
+  background:var(--panel);color:var(--bone)}
+.gold-drawer a.tile{display:flex;align-items:center;min-height:52px;padding:12px 15px;font-weight:600}
+.gold-drawer a.tile:hover{background:#262216}
+.gold-group{overflow:hidden}
+.gold-group>summary{display:flex;align-items:center;min-height:52px;padding:12px 15px;
+  cursor:pointer;list-style:none;font-weight:600}
+.gold-group>summary::-webkit-details-marker{display:none}
+.gold-group>summary::after{content:"+";margin-left:auto;color:var(--gold);font-weight:900}
+.gold-group[open ]>summary::after{content:"-"}
+.gold-group-links{display:grid;gap:3px;padding:0 7px 8px}
+.gold-group-links a{display:flex;align-items:center;min-height:44px;padding:8px 10px;
+  border-radius:8px;color:var(--bone) !important;font-size:.9rem}
+.gold-group-links a:hover{background:#262216}
+.gold-group-links .sep{padding:8px 10px 2px;border-top:1px solid var(--line);
+  color:var(--gold-dim);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.gold-primary{position:sticky;top:72px;z-index:998;display:flex;align-items:center;justify-content:center;
+  gap:clamp(14px,3vw,36px);min-height:54px;padding:8px clamp(14px,3vw,42px);
+  background:var(--bg);border-bottom:1px solid var(--gold);overflow-x:auto;white-space:nowrap}
+.gold-primary a{color:var(--bone) !important;font-size:.92rem;font-weight:600;padding:7px 2px;
+  border-bottom:3px solid transparent}
+.gold-primary a:hover{color:var(--gold) !important;border-bottom-color:var(--gold)}
+@media(max-width:1024px){.gold-drawer-inner{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+  .gold-drawer-inner{grid-template-columns:minmax(0,1fr)}
+  .gold-primary{justify-content:flex-start}
+}
+
+/* Page heading block on the generated list pages. */
+.gold-head{padding:52px 0 10px;text-align:center}
+.gold-head .umbrella{font-size:44px;color:var(--gold);line-height:1}
+.gold-head h1{font-family:Anton,sans-serif;font-size:44px;letter-spacing:.04em;color:var(--bone);margin-top:8px}
+.gold-head h1 span{color:var(--gold)}
+.gold-head .sub{color:var(--mute);max-width:620px;margin:12px auto 0;font-size:15px}
+
+/* Carried-over content: the palette restyle. The original pages keep
+   their own layout styles; these rules repaint the surfaces, words
+   and controls in black and gold. */
+.gold-content{max-width:1080px;margin:0 auto;padding:28px 20px 8px;background:var(--bg);color:var(--bone)}
+.gold-content h1,.gold-content h2,.gold-content h3{color:var(--gold) !important}
+.gold-content a{color:var(--gold)}
+.gold-content section,.gold-content .hero,.gold-content .band,.gold-content .section-band,
+.gold-content .featured,.gold-content .belief,.gold-content .ticker,.gold-content .full-bleed{
+  background:var(--bg) !important;color:var(--bone) !important}
+.gold-content .card,.gold-content article,.gold-content .panel,.gold-content .tile,
+.gold-content .box,.gold-content .item{
+  background:var(--panel) !important;color:var(--bone) !important;border-color:var(--line) !important}
+.gold-content p,.gold-content li,.gold-content td,.gold-content span{color:inherit}
+.gold-content table{border-color:var(--line)}
+.gold-content th,.gold-content td{border-color:var(--line)}
+.gold-content input,.gold-content select,.gold-content textarea{
+  background:var(--panel);color:var(--bone);border:1px solid var(--line);border-radius:8px}
+.gold-content button,.gold-content .btn{
+  background:var(--panel);color:var(--gold);border:1px solid var(--gold);border-radius:999px}
+.gold-content img{max-width:100%}
+
+/* Registry cards — the Muse page's own card vocabulary. */
+.reg-intro{color:var(--mute);font-size:15px;max-width:680px;margin:0 auto 18px;text-align:center}
+.reg-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:14px}
+.reg-controls .grow{flex:1 1 260px}
+.reg-controls label{display:block;font-size:11px;letter-spacing:.18em;color:var(--gold-dim);
+  text-transform:uppercase;margin-bottom:6px}
+.reg-controls input,.reg-controls select{width:100%;background:var(--panel);color:var(--bone);
+  border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;font-size:14px}
+.reg-controls input:focus,.reg-controls select:focus{outline:none;border-color:var(--gold)}
+.reg-count{color:var(--gold-dim);font-size:13px;letter-spacing:.1em;margin-bottom:16px;text-transform:uppercase}
+.reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{font-family:Anton,sans-serif;font-size:21px;letter-spacing:.03em;color:var(--bone)}
+.card p{color:var(--mute);font-size:14px;margin:8px 0 12px}
+.reg-card{display:flex;flex-direction:column}
+.reg-card .head{display:flex;align-items:center;gap:12px}
+.reg-card .tile{position:relative;flex:0 0 54px;width:54px;height:54px;border:1px solid var(--gold-dim);
+  border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;
+  font-family:Anton,sans-serif;font-size:19px;color:var(--gold);background:#12100a}
+.reg-card .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.reg-card h3{font-size:22px}
+.reg-card .tagline{color:var(--gold-dim);font-size:13.5px;margin:10px 0 0;min-height:0}
+.reg-card .desc{color:var(--mute);font-size:14px;margin:8px 0 12px;min-height:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.chip{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+  border:1px solid var(--gold-dim);border-radius:999px;padding:2px 9px}
+.chip.main{color:#050505;background:var(--gold);border-color:var(--gold);font-weight:600}
+.plat{font-size:12px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+.reg-card .meta{font-size:12.5px;color:var(--mute);margin-top:2px}
+.reg-card .new{font-size:13px;color:var(--bone);margin:10px 0 0;min-height:0}
+.reg-card .new b{color:var(--gold);font-weight:600}
+.shots{display:flex;gap:8px;overflow-x:auto;margin:12px 0 2px;padding-bottom:6px}
+.shots img{height:118px;border:1px solid var(--line);border-radius:8px;flex:0 0 auto}
+.price-line{font-weight:600;color:var(--bone);margin-top:auto;padding-top:12px}
+.price-line small{display:block;font-weight:400;color:var(--mute);font-size:12.5px}
+.btn{display:inline-block;margin-top:12px;border:1px solid var(--gold);color:var(--gold);
+  padding:7px 14px;border-radius:999px;font-size:13px;letter-spacing:.06em}
+.reg-empty{color:var(--mute);font-size:15px;border:1px dashed var(--gold-dim);border-radius:14px;
+  padding:22px;text-align:center}
+.gold-anchor{display:block;height:0;overflow:hidden}
+.gold-section{padding:30px 0 6px}
+.gold-section h2{font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.18em;
+  color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:20px}
+
+.gold-foot{max-width:1080px;margin:40px auto 0;padding:24px 20px 40px;border-top:1px solid var(--line);
+  color:var(--mute);font-size:14px;display:flex;flex-wrap:wrap;gap:14px 28px;justify-content:space-between}
+.gold-note{max-width:1080px;margin:0 auto;padding:0 20px 30px;color:var(--gold-dim);
+  font-size:12px;letter-spacing:.06em}
